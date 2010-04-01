@@ -15,6 +15,7 @@ namespace uTorrentNotifier
         {
             try
             {
+                System.Windows.Forms.MessageBox.Show(Properties.Settings.Default.URI);
                 this._URI = Properties.Settings.Default.URI;
             }
             catch { }

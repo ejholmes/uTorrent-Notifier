@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,8 +16,6 @@ namespace uTorrentNotifier
     {
         private Config Config = new Config();
         private WebUIAPI utorrent;
-        private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        //List<TorrentFile> last = new List<TorrentFile>();
 
         public SettingsForm()
         {
