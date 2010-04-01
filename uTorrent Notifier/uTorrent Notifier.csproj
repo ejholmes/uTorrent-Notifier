@@ -8,7 +8,7 @@
     <ProjectGuid>{080211CB-A622-4BA3-8442-7A43F182155E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>µTorrent</RootNamespace>
+    <RootNamespace>uTorrentNotifier</RootNamespace>
     <AssemblyName>µTorrent Notifier</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Prowl.cs" />
     <Compile Include="WebUIAPI.cs" />
     <Compile Include="Codes.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

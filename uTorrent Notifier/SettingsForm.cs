@@ -11,44 +11,33 @@ using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace µTorrent
+namespace uTorrentNotifier
 {
     public partial class SettingsForm : Form
     {
         private Config Config = new Config();
         private WebUIAPI utorrent;
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        List<TorrentFile> last = new List<TorrentFile>();
+        //List<TorrentFile> last = new List<TorrentFile>();
 
         public SettingsForm()
         {
             InitializeComponent();
 
             utorrent = new WebUIAPI(this.Config);
-            timer.Tick += new EventHandler(PollForChanges);
-            timer.Interval = 5000;
-            timer.Start();
+            utorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(utorrent_TorrentAdded);
+            utorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(utorrent_DownloadComplete);
+            utorrent.Start();
         }
 
-        void PollForChanges(object sender, EventArgs e)
+        void utorrent_DownloadComplete(List<TorrentFile> finished)
         {
-            List<TorrentFile> current = new List<TorrentFile>();
-            current = utorrent.List();
+            MessageBox.Show("complete");
+        }
 
-            List<TorrentFile> changes = utorrent.FindDone(current, last);
-            List<TorrentFile> newtors = utorrent.FindNew(current, last);
-
-            if (changes.Count > 0)
-            {
-                this.systrayIcon.ShowBalloonTip(5000, "Download Finished", changes[0].Name, ToolTipIcon.Info);
-            }
-
-            if (newtors.Count > 0)
-            {
-                this.systrayIcon.ShowBalloonTip(5000, "Torrent Added", newtors[0].Name, ToolTipIcon.Info);
-            }
-
-            last = current;
+        void utorrent_TorrentAdded(List<TorrentFile> added)
+        {
+            MessageBox.Show(added[0].Name);
         }
 
         private void BackToSystray()

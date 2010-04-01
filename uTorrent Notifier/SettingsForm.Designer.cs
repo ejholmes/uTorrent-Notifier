@@ -1,4 +1,4 @@
-﻿namespace µTorrent
+﻿namespace uTorrentNotifier
 {
     partial class SettingsForm
     {

@@ -4,19 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
+using System.Windows.Forms;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace µTorrent
+namespace uTorrentNotifier
 {
     public partial class WebUIAPI
     {
+        public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
+        public event DownloadFinishedEventHandler DownloadComplete;
+
+        public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
+        public event TorrentAddedEventHandler TorrentAdded;
+
+        private Timer timer = new Timer();
+
         private Config _Config;
+        private List<TorrentFile> last = new List<TorrentFile>();
 
         public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = 5000;
+        }
+
+        public void Start()
+        {
+            timer.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            List<TorrentFile> current = new List<TorrentFile>();
+            current = this.List();
         }
 
         public List<TorrentFile> FindDone(List<TorrentFile> current, List<TorrentFile> last)
@@ -101,6 +124,15 @@ namespace µTorrent
 
                 l.Add(f);
             }
+
+            List<TorrentFile> completed = this.FindDone(l, last);
+            List<TorrentFile> added = this.FindNew(l, last);
+
+            if (completed.Count > 0)
+                DownloadComplete(completed);
+
+            if (added.Count > 0)
+                TorrentAdded(added);
 
             return l;
         }
