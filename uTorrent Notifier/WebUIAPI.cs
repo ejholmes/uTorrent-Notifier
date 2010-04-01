@@ -10,11 +10,11 @@ using Newtonsoft.Json.Linq;
 
 namespace µTorrent
 {
-    public partial class API
+    public partial class WebUIAPI
     {
         private Config _Config;
 
-        public API(Config cfg)
+        public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
         }
@@ -126,6 +126,12 @@ namespace µTorrent
             response.Close();
 
             return json;
+        }
+
+        public Config Config
+        {
+            get { return this._Config; }
+            set { this._Config = value; }
         }
     }
 }

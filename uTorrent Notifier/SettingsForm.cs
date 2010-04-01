@@ -13,18 +13,18 @@ using Newtonsoft.Json.Linq;
 
 namespace µTorrent
 {
-    public partial class Settings : Form
+    public partial class SettingsForm : Form
     {
         private Config Config = new Config();
-        private API utorrent;
+        private WebUIAPI utorrent;
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         List<TorrentFile> last = new List<TorrentFile>();
 
-        public Settings()
+        public SettingsForm()
         {
             InitializeComponent();
 
-            utorrent = new API(this.Config);
+            utorrent = new WebUIAPI(this.Config);
             timer.Tick += new EventHandler(PollForChanges);
             timer.Interval = 5000;
             timer.Start();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace µTorrent
 {
-    public partial class API
+    public partial class WebUIAPI
     {
 
         public struct Action
