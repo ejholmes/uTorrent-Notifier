@@ -31,7 +31,7 @@ namespace uTorrentNotifier
 
         public Prowl(string apikey)
         {
-            defaults.Add(new KeyValuePair<string,string>("apikey", apikey));
+            defaults.Add(new KeyValuePair<string, string>("apikey", apikey));
             defaults.Add(new KeyValuePair<string, string>("providerkey", this._providerKey));
             defaults.Add(new KeyValuePair<string, string>("priority", this._priority.ToString()));
             defaults.Add(new KeyValuePair<string, string>("application", this._application));
