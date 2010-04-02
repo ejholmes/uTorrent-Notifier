@@ -22,8 +22,7 @@ namespace uTorrentNotifier
         private Timer timer = new Timer();
 
         private Config _Config;
-        private List<TorrentFile> last = new List<TorrentFile>();
-
+        private List<TorrentFile> last = null;
         public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
@@ -40,6 +39,20 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> current = new List<TorrentFile>();
             current = this.List();
+
+            if (last != null)
+            {
+                List<TorrentFile> completed = this.FindDone(current, last);
+                List<TorrentFile> added = this.FindNew(current, last);
+
+                if (completed.Count > 0)
+                    DownloadComplete(completed);
+
+                if (added.Count > 0)
+                    TorrentAdded(added);
+            }
+
+            last = current;
         }
 
         public List<TorrentFile> FindDone(List<TorrentFile> current, List<TorrentFile> last)
@@ -124,16 +137,6 @@ namespace uTorrentNotifier
 
                 l.Add(f);
             }
-
-            List<TorrentFile> completed = this.FindDone(l, last);
-            List<TorrentFile> added = this.FindNew(l, last);
-
-            if (completed.Count > 0)
-                DownloadComplete(completed);
-
-            if (added.Count > 0)
-                TorrentAdded(added);
-
             return l;
         }
 

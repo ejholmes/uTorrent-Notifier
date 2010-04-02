@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>uTorrentNotifier</RootNamespace>
-    <AssemblyName>µTorrent Notifier</AssemblyName>
+    <AssemblyName>uTorrent Notifier</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Prowl.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WebUIAPI.cs" />
     <Compile Include="Codes.cs" />
     <Compile Include="Config.cs" />
