@@ -148,6 +148,7 @@ namespace uTorrentNotifier
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this._Config.URI);
+            sb.Append("/");
             sb.Append("?");
 
             foreach (KeyValuePair<string, string> kv in args)

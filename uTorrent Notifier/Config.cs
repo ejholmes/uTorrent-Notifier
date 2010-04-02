@@ -71,8 +71,10 @@ namespace uTorrentNotifier
             get { return this._URI; }
             set 
             {
-                Properties.Settings.Default.URI = value;
-                this._URI = value; 
+                string uri = value.TrimEnd('/');
+
+                Properties.Settings.Default.URI = uri;
+                this._URI = uri; 
             }
         }
         public string Username

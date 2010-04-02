@@ -18,6 +18,7 @@ namespace uTorrentNotifier
         private Config Config = new Config();
         private WebUIAPI utorrent;
         private Prowl prowl;
+        private int notifiedCount = 25;
 
         public SettingsForm()
         {
@@ -34,8 +35,15 @@ namespace uTorrentNotifier
 
         void utorrent_LoginError()
         {
-            this.systrayIcon.ShowBalloonTip(5000, "Login Error", "Either the credentials or the web ui url is not correct", ToolTipIcon.Error);
-            utorrent.Stop();
+            if (this.notifiedCount >= 25)
+            {
+                this.systrayIcon.ShowBalloonTip(5000, "Login Error", "Either the credentials or the WebUI URL is incorrect", ToolTipIcon.Error);
+                this.notifiedCount = 0;
+            }
+            else
+            {
+                this.notifiedCount++;
+            }
         }
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)

@@ -51,6 +51,7 @@
             this.lblProwlAPIKey = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.systrayMenuStrip.SuspendLayout();
@@ -64,7 +65,7 @@
             this.groupBox1.Controls.Add(this.tbUsername);
             this.groupBox1.Controls.Add(this.lblPassword);
             this.groupBox1.Controls.Add(this.lblUserName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 67);
+            this.groupBox1.Location = new System.Drawing.Point(6, 78);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(244, 84);
             this.groupBox1.TabIndex = 0;
@@ -106,10 +107,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbWebUI_URL);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(6, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(244, 49);
+            this.groupBox2.Size = new System.Drawing.Size(244, 60);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WebUI URL";
@@ -124,7 +126,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(12, 305);
+            this.btnSave.Location = new System.Drawing.Point(12, 301);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -135,7 +137,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(181, 305);
+            this.btnCancel.Location = new System.Drawing.Point(170, 301);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -186,7 +188,7 @@
             this.groupBox3.Controls.Add(this.cbProwlEnable);
             this.groupBox3.Controls.Add(this.tbProwlAPIKey);
             this.groupBox3.Controls.Add(this.lblProwlAPIKey);
-            this.groupBox3.Location = new System.Drawing.Point(13, 157);
+            this.groupBox3.Location = new System.Drawing.Point(7, 168);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(243, 73);
             this.groupBox3.TabIndex = 5;
@@ -232,7 +234,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cbRunOnStartup);
-            this.groupBox4.Location = new System.Drawing.Point(13, 236);
+            this.groupBox4.Location = new System.Drawing.Point(7, 247);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(118, 44);
             this.groupBox4.TabIndex = 6;
@@ -249,15 +251,25 @@
             this.cbRunOnStartup.Text = "Yes";
             this.cbRunOnStartup.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(7, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "e.x. http://localhost/gui/";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 340);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(257, 336);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -303,6 +315,7 @@
         private System.Windows.Forms.CheckBox cbProwlEnable;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox cbRunOnStartup;
+        private System.Windows.Forms.Label label1;
 
     }
 }
