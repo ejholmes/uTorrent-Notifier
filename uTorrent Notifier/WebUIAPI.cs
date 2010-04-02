@@ -73,16 +73,19 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> finishedTorrents = new List<TorrentFile>();
 
-            foreach (TorrentFile currentTorrent in current)
+            if (last.Count > 0)
             {
-                foreach (TorrentFile lastTorrent in last)
+                foreach (TorrentFile currentTorrent in current)
                 {
-                    if (currentTorrent.Hash == lastTorrent.Hash)
+                    foreach (TorrentFile lastTorrent in last)
                     {
-                        if ((currentTorrent.PercentProgress == 1000) &&
-                            (lastTorrent.PercentProgress != 1000))
+                        if (currentTorrent.Hash == lastTorrent.Hash)
                         {
-                            finishedTorrents.Add(currentTorrent);
+                            if ((currentTorrent.PercentProgress == 1000) &&
+                                (lastTorrent.PercentProgress != 1000))
+                            {
+                                finishedTorrents.Add(currentTorrent);
+                            }
                         }
                     }
                 }
@@ -95,12 +98,15 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
-            foreach (TorrentFile currentTorrent in current)
+            if (last.Count > 0)
             {
-                TorrentFile result = last.Find(item => item.Hash == currentTorrent.Hash);
+                foreach (TorrentFile currentTorrent in current)
+                {
+                    TorrentFile result = last.Find(item => item.Hash == currentTorrent.Hash);
 
-                if (result == null)
-                    newTorrents.Add(currentTorrent);
+                    if (result == null)
+                        newTorrents.Add(currentTorrent);
+                }
             }
 
             return newTorrents;
