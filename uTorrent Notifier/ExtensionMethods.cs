@@ -13,16 +13,23 @@ namespace ExtensionMethods
             List<KeyValuePair<string, string>> defaults)
         {
             List<KeyValuePair<string, string>> merged = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, string>> updated = new List<KeyValuePair<string, string>>();
 
-            foreach (KeyValuePair<string, string> kv in major)
+            updated.AddRange(defaults);
+
+            foreach (KeyValuePair<string, string> kv in defaults)
             {
-                KeyValuePair<string, string> found = defaults.Find(item => item.Key == kv.Key);
+                KeyValuePair<string, string> found = major.Find(item => item.Key == kv.Key);
 
                 if (found.Key != null)
                 {
-                    major.Add(found);
+                    updated.Remove(kv);
                 }
             }
+
+            merged.AddRange(major);
+            merged.AddRange(updated);
+
             return merged;
         }
     }

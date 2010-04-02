@@ -14,15 +14,19 @@ namespace uTorrentNotifier
     public partial class WebUIAPI
     {
         public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
-        public event DownloadFinishedEventHandler DownloadComplete;
-
         public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
+        public delegate void LoginErrorEventHandler();
+
+        public event DownloadFinishedEventHandler DownloadComplete;
         public event TorrentAddedEventHandler TorrentAdded;
+        public event LoginErrorEventHandler LoginError;
 
         private Timer timer = new Timer();
 
         private Config _Config;
+
         private List<TorrentFile> last = null;
+
         public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
@@ -35,6 +39,16 @@ namespace uTorrentNotifier
             timer.Start();
         }
 
+        public void Stop()
+        {
+            timer.Stop();
+        }
+
+        public bool Stopped
+        {
+            get { return timer.Enabled; }
+        }
+
         void timer_Tick(object sender, EventArgs e)
         {
             List<TorrentFile> current = new List<TorrentFile>();
@@ -45,11 +59,11 @@ namespace uTorrentNotifier
                 List<TorrentFile> completed = this.FindDone(current, last);
                 List<TorrentFile> added = this.FindNew(current, last);
 
-                if (completed.Count > 0)
-                    DownloadComplete(completed);
+                if ((completed.Count > 0) && (this.DownloadComplete != null))
+                    this.DownloadComplete(completed);
 
-                if (added.Count > 0)
-                    TorrentAdded(added);
+                if ((added.Count > 0) && (this.TorrentAdded != null))
+                    this.TorrentAdded(added);
             }
 
             last = current;
@@ -92,75 +106,86 @@ namespace uTorrentNotifier
             return newTorrents;
         }
 
-        public string Get(string action, params KeyValuePair<string, string>[] args)
+        public void PauseAll()
         {
-            StringBuilder sb = new StringBuilder();
 
-            sb.Append(this._Config.URI);
-            sb.Append("?action=");
-            sb.Append(action);
-
-            foreach (KeyValuePair<string, string> kv in args)
-            {
-                sb.Append("&");
-                sb.Append(kv.Key);
-                sb.Append("=");
-                sb.Append(kv.Value);
-            }
-
-            return this._Get(sb.ToString());
         }
 
-        public string Get(string action)
+        public void StartAll()
         {
-            return this.Get(action, null);
+
         }
 
         public List<TorrentFile> List()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(this._Config.URI);
-            sb.Append("?list=1");
-
-            string json = this._Get(sb.ToString());
-
             List<TorrentFile> l = new List<TorrentFile>();
 
-            JObject o = JObject.Parse(json);
-
-            IList<JToken> results = o["torrents"].Children().ToList();
-
-            foreach (JToken result in results)
+            try
             {
-                TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
+                List<KeyValuePair<string, string>> args = new List<KeyValuePair<string, string>>();
 
-                l.Add(f);
+                args.Add(new KeyValuePair<string, string>("list", "1"));
+
+                string json = this._Get(args.ToArray());
+
+                JObject o = JObject.Parse(json);
+
+                IList<JToken> results = o["torrents"].Children().ToList();
+
+                foreach (JToken result in results)
+                {
+                    TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
+
+                    l.Add(f);
+                }
             }
+            catch { }
+
             return l;
         }
 
-        private string _Get(string url)
+        private string _Get(KeyValuePair<string, string>[] args)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this._Config.URI);
+            sb.Append("?");
 
-            string authInfo = this._Config.Username + ":" + this._Config.Password;
-            authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-            request.Headers["Authorization"] = "Basic" + authInfo;
+            foreach (KeyValuePair<string, string> kv in args)
+            {
+                sb.Append(kv.Key);
+                sb.Append("=");
+                sb.Append(kv.Value);
+                sb.Append("&");
+            }
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sb.ToString());
 
-            Stream resStream = response.GetResponseStream();
+                string authInfo = this._Config.Username + ":" + this._Config.Password;
+                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+                request.Headers["Authorization"] = "Basic" + authInfo;
+            
+            
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream resStream = response.GetResponseStream();
 
-            StreamReader reader = new StreamReader(resStream);
+                StreamReader reader = new StreamReader(resStream);
 
-            string json = reader.ReadToEnd();
+                string json = reader.ReadToEnd();
 
-            reader.Close();
-            resStream.Close();
-            response.Close();
+                reader.Close();
+                resStream.Close();
+                response.Close();
 
-            return json;
+                return json;
+            }
+            catch
+            {
+                if (LoginError != null)
+                    LoginError();
+                return "";
+            }
         }
 
         public Config Config
@@ -168,5 +193,9 @@ namespace uTorrentNotifier
             get { return this._Config; }
             set { this._Config = value; }
         }
+    }
+
+    public class LoginException : ApplicationException
+    {
     }
 }

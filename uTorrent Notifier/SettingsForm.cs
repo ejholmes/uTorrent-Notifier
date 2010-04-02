@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace uTorrentNotifier
     {
         private Config Config = new Config();
         private WebUIAPI utorrent;
+        private Prowl prowl;
 
         public SettingsForm()
         {
@@ -24,17 +26,48 @@ namespace uTorrentNotifier
             utorrent = new WebUIAPI(this.Config);
             utorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(utorrent_TorrentAdded);
             utorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(utorrent_DownloadComplete);
+            utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
             utorrent.Start();
+
+            prowl = new Prowl(this.Config.ProwlAPIKey);
+        }
+
+        void utorrent_LoginError()
+        {
+            this.systrayIcon.ShowBalloonTip(5000, "Login Error", "Either the credentials or the web ui url is not correct", ToolTipIcon.Error);
+            utorrent.Stop();
         }
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)
         {
-            MessageBox.Show("complete");
+            foreach (TorrentFile f in finished)
+            {
+                if (this.Config.ProwlEnable)
+                {
+                    this.prowl.Add("Download Complete", f.Name);
+                }
+
+                if (!this.Config.ProwlNotificationMode)
+                {
+                    this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
+                }
+            }
         }
 
         void utorrent_TorrentAdded(List<TorrentFile> added)
         {
-            MessageBox.Show(added[0].Name);
+            foreach (TorrentFile f in added)
+            {
+                if (this.Config.ProwlEnable)
+                {
+                    this.prowl.Add("Torrent Added", f.Name);
+                }
+
+                if (!this.Config.ProwlNotificationMode)
+                {
+                    this.systrayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
+                }
+            }
         }
 
         private void BackToSystray()
@@ -57,21 +90,30 @@ namespace uTorrentNotifier
 
         private void Settings_Shown(object sender, System.EventArgs e)
         {
-            this.tbPassword.Text = this.Config.Password;
-            this.tbUsername.Text = this.Config.Username;
-            this.tbWebUI_URL.Text = this.Config.URI;
-        }
-
-        void systrayIcon_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            
+            this.tbPassword.Text                = this.Config.Password;
+            this.tbUsername.Text                = this.Config.Username;
+            this.tbWebUI_URL.Text               = this.Config.URI;
+            this.tbProwlAPIKey.Text             = this.Config.ProwlAPIKey;
+            this.cbProwlEnable.Checked          = this.Config.ProwlEnable;
+            this.cbNotificationMode.Checked     = this.Config.ProwlNotificationMode;
+            this.cbRunOnStartup.Checked         = this.Config.RunOnStartup;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Config.URI         = this.tbWebUI_URL.Text;
-            this.Config.Username    = this.tbUsername.Text;
-            this.Config.Password    = this.tbPassword.Text;
+            this.Config.URI                     = this.tbWebUI_URL.Text;
+            this.Config.Username                = this.tbUsername.Text;
+            this.Config.Password                = this.tbPassword.Text;
+            this.Config.ProwlAPIKey             = this.tbProwlAPIKey.Text;
+            this.Config.ProwlEnable             = this.cbProwlEnable.Checked;
+            this.Config.ProwlNotificationMode   = this.cbNotificationMode.Checked;
+            this.Config.RunOnStartup            = this.cbRunOnStartup.Checked;
+
+            this.Config.Save();
+            this.BackToSystray();
+
+            if (this.utorrent.Stopped)
+                this.utorrent.Start();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

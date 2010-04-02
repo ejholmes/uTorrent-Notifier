@@ -44,9 +44,18 @@
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbNotificationMode = new System.Windows.Forms.CheckBox();
+            this.cbProwlEnable = new System.Windows.Forms.CheckBox();
+            this.tbProwlAPIKey = new System.Windows.Forms.TextBox();
+            this.lblProwlAPIKey = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.systrayMenuStrip.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -57,7 +66,7 @@
             this.groupBox1.Controls.Add(this.lblUserName);
             this.groupBox1.Location = new System.Drawing.Point(12, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 93);
+            this.groupBox1.Size = new System.Drawing.Size(244, 84);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
@@ -114,7 +123,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 173);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Location = new System.Drawing.Point(12, 305);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -124,7 +134,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(181, 173);
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(181, 305);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -138,7 +149,6 @@
             this.systrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
             this.systrayIcon.Text = "uTorrent Notifier";
             this.systrayIcon.Visible = true;
-            this.systrayIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseMove);
             this.systrayIcon.Click += new System.EventHandler(this.systrayIcon_Click);
             this.systrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseDoubleClick);
             // 
@@ -170,27 +180,102 @@
             this.tsmiClose.Text = "Exit";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
-            // Settings
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbNotificationMode);
+            this.groupBox3.Controls.Add(this.cbProwlEnable);
+            this.groupBox3.Controls.Add(this.tbProwlAPIKey);
+            this.groupBox3.Controls.Add(this.lblProwlAPIKey);
+            this.groupBox3.Location = new System.Drawing.Point(13, 157);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(243, 73);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Prowl";
+            // 
+            // cbNotificationMode
+            // 
+            this.cbNotificationMode.AutoSize = true;
+            this.cbNotificationMode.Location = new System.Drawing.Point(98, 20);
+            this.cbNotificationMode.Name = "cbNotificationMode";
+            this.cbNotificationMode.Size = new System.Drawing.Size(139, 17);
+            this.cbNotificationMode.TabIndex = 3;
+            this.cbNotificationMode.Text = "Run in Prowl Only mode";
+            this.cbNotificationMode.UseVisualStyleBackColor = true;
+            // 
+            // cbProwlEnable
+            // 
+            this.cbProwlEnable.AutoSize = true;
+            this.cbProwlEnable.Location = new System.Drawing.Point(9, 20);
+            this.cbProwlEnable.Name = "cbProwlEnable";
+            this.cbProwlEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbProwlEnable.TabIndex = 2;
+            this.cbProwlEnable.Text = "Enable";
+            this.cbProwlEnable.UseVisualStyleBackColor = true;
+            // 
+            // tbProwlAPIKey
+            // 
+            this.tbProwlAPIKey.Location = new System.Drawing.Point(66, 44);
+            this.tbProwlAPIKey.Name = "tbProwlAPIKey";
+            this.tbProwlAPIKey.Size = new System.Drawing.Size(171, 20);
+            this.tbProwlAPIKey.TabIndex = 1;
+            // 
+            // lblProwlAPIKey
+            // 
+            this.lblProwlAPIKey.AutoSize = true;
+            this.lblProwlAPIKey.Location = new System.Drawing.Point(6, 47);
+            this.lblProwlAPIKey.Name = "lblProwlAPIKey";
+            this.lblProwlAPIKey.Size = new System.Drawing.Size(45, 13);
+            this.lblProwlAPIKey.TabIndex = 0;
+            this.lblProwlAPIKey.Text = "API Key";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbRunOnStartup);
+            this.groupBox4.Location = new System.Drawing.Point(13, 236);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(118, 44);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Run On Startup";
+            // 
+            // cbRunOnStartup
+            // 
+            this.cbRunOnStartup.AutoSize = true;
+            this.cbRunOnStartup.Location = new System.Drawing.Point(9, 19);
+            this.cbRunOnStartup.Name = "cbRunOnStartup";
+            this.cbRunOnStartup.Size = new System.Drawing.Size(44, 17);
+            this.cbRunOnStartup.TabIndex = 0;
+            this.cbRunOnStartup.Text = "Yes";
+            this.cbRunOnStartup.UseVisualStyleBackColor = true;
+            // 
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 208);
+            this.ClientSize = new System.Drawing.Size(268, 340);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Settings";
+            this.Name = "SettingsForm";
+            this.ShowInTaskbar = false;
             this.Text = "uTorrent Notifier";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
-            this.ShowInTaskbar = false;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.systrayMenuStrip.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -211,6 +296,13 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiClose;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox tbProwlAPIKey;
+        private System.Windows.Forms.Label lblProwlAPIKey;
+        private System.Windows.Forms.CheckBox cbNotificationMode;
+        private System.Windows.Forms.CheckBox cbProwlEnable;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox cbRunOnStartup;
 
     }
 }

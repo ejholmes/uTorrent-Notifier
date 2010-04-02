@@ -58,5 +58,62 @@ namespace uTorrentNotifier.Properties {
                 this["URI"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string prowlapikey {
+            get {
+                return ((string)(this["prowlapikey"]));
+            }
+            set {
+                this["prowlapikey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool prowlenable {
+            get {
+                return ((bool)(this["prowlenable"]));
+            }
+            set {
+                this["prowlenable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool prowlnotificationmode {
+            get {
+                return ((bool)(this["prowlnotificationmode"]));
+            }
+            set {
+                this["prowlnotificationmode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("uTorrent Notifier")]
+        public string applicationName {
+            get {
+                return ((string)(this["applicationName"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunOnStartup {
+            get {
+                return ((bool)(this["RunOnStartup"]));
+            }
+            set {
+                this["RunOnStartup"] = value;
+            }
+        }
     }
 }
