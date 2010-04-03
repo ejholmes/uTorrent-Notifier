@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Security.Principal;
+using System.Diagnostics;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -146,6 +148,18 @@ namespace uTorrentNotifier
         private void tsmiStartAll_Click(object sender, EventArgs e)
         {
             this.utorrent.StartAll();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.UseShellExecute = true;
+            startInfo.WorkingDirectory = Environment.CurrentDirectory;
+            startInfo.FileName = "associations.cpp";
+            startInfo.Verb = "runas";
+
+            Process p = Process.Start(startInfo);
+            p.WaitForExit();
         }
     }
 }

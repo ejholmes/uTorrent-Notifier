@@ -17,7 +17,6 @@ namespace uTorrentNotifier
 
         public void ProcessArgs(string[] args)
         {
-            
         }
     }
 }

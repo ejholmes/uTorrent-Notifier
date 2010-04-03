@@ -41,13 +41,13 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.systrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.systrayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiStartAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPauseAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.systrayMenuStrip = new System.Windows.Forms.ContextMenu();
+            this.tsmiStartAll = new System.Windows.Forms.MenuItem();
+            this.tsmiPauseAll = new System.Windows.Forms.MenuItem();
+            //this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSettings = new System.Windows.Forms.MenuItem();
+            //this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiClose = new System.Windows.Forms.MenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbNotificationMode = new System.Windows.Forms.CheckBox();
             this.cbProwlEnable = new System.Windows.Forms.CheckBox();
@@ -55,9 +55,9 @@
             this.lblProwlAPIKey = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.systrayMenuStrip.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -139,7 +139,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(12, 301);
+            this.btnSave.Location = new System.Drawing.Point(12, 333);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -150,7 +150,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(170, 301);
+            this.btnCancel.Location = new System.Drawing.Point(170, 333);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -160,7 +160,7 @@
             // 
             // systrayIcon
             // 
-            this.systrayIcon.ContextMenuStrip = this.systrayMenuStrip;
+            this.systrayIcon.ContextMenu = this.systrayMenuStrip;
             this.systrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
             this.systrayIcon.Text = "uTorrent Notifier";
             this.systrayIcon.Visible = true;
@@ -168,51 +168,52 @@
             // 
             // systrayMenuStrip
             // 
-            this.systrayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            /*this.systrayMenuStrip.MenuItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiStartAll,
             this.tsmiPauseAll,
             this.toolStripSeparator2,
             this.tsmiSettings,
             this.toolStripSeparator1,
-            this.tsmiClose});
+            this.tsmiClose});*/
+            this.systrayMenuStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                this.tsmiStartAll,
+                this.tsmiPauseAll,
+                this.tsmiSettings,
+                this.tsmiClose
+            });
             this.systrayMenuStrip.Name = "systrayMenuStrip";
-            this.systrayMenuStrip.Size = new System.Drawing.Size(123, 104);
             // 
             // tsmiStartAll
             // 
             this.tsmiStartAll.Name = "tsmiStartAll";
-            this.tsmiStartAll.Size = new System.Drawing.Size(122, 22);
             this.tsmiStartAll.Text = "Start All";
             this.tsmiStartAll.Click += new System.EventHandler(this.tsmiStartAll_Click);
             // 
             // tsmiPauseAll
             // 
             this.tsmiPauseAll.Name = "tsmiPauseAll";
-            this.tsmiPauseAll.Size = new System.Drawing.Size(122, 22);
             this.tsmiPauseAll.Text = "Pause All";
             this.tsmiPauseAll.Click += new System.EventHandler(this.tsmiPauseAll_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(119, 6);
+            //this.toolStripSeparator2.Name = "toolStripSeparator2";
+            //this.toolStripSeparator2.Size = new System.Drawing.Size(119, 6);
             // 
             // tsmiSettings
             // 
             this.tsmiSettings.Name = "tsmiSettings";
-            this.tsmiSettings.Size = new System.Drawing.Size(122, 22);
             this.tsmiSettings.Text = "Settings";
             this.tsmiSettings.Click += new System.EventHandler(this.tsmiSettings_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
+            //this.toolStripSeparator1.Name = "toolStripSeparator1";
+            //this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(122, 22);
             this.tsmiClose.Text = "Exit";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
@@ -267,10 +268,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.cbRunOnStartup);
             this.groupBox4.Location = new System.Drawing.Point(7, 247);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(118, 44);
+            this.groupBox4.Size = new System.Drawing.Size(243, 77);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Windows";
@@ -285,11 +287,21 @@
             this.cbRunOnStartup.Text = "Run on startup";
             this.cbRunOnStartup.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(148, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Assocate with .torrent files";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 336);
+            this.ClientSize = new System.Drawing.Size(257, 368);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox4);
@@ -306,7 +318,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.systrayMenuStrip.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -327,10 +338,10 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.NotifyIcon systrayIcon;
-        private System.Windows.Forms.ContextMenuStrip systrayMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiClose;
+        private System.Windows.Forms.ContextMenu systrayMenuStrip;
+        private System.Windows.Forms.MenuItem tsmiSettings;
+        //private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.MenuItem tsmiClose;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbProwlAPIKey;
         private System.Windows.Forms.Label lblProwlAPIKey;
@@ -339,9 +350,10 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox cbRunOnStartup;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStartAll;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPauseAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.MenuItem tsmiStartAll;
+        private System.Windows.Forms.MenuItem tsmiPauseAll;
+        //private System.Windows.Forms.Separator toolStripSeparator2;
+        private System.Windows.Forms.Button button1;
 
     }
 }

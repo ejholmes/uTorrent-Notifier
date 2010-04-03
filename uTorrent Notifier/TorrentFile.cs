@@ -6,6 +6,8 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+using Microsoft.Win32;
+
 namespace uTorrentNotifier
 {
     public class TorrentFile
@@ -195,6 +197,32 @@ namespace uTorrentNotifier
         {
             get { return this._StatusString; }
             set { this._StatusString = value; }
+        }
+
+
+
+        public static void AssociateTorrentFiles()
+        {
+            string keyName;
+            string keyValue;
+
+            keyName = Properties.Settings.Default.applicationName;
+            keyValue = Properties.Settings.Default.applicationName;
+
+            RegistryKey key;
+
+            key = Registry.ClassesRoot.CreateSubKey(keyName);
+            key.SetValue("", keyValue);
+
+            key = key.CreateSubKey("shell");
+            key = key.CreateSubKey("open");
+            key = key.CreateSubKey("command");
+            key.SetValue("", System.Windows.Forms.Application.ExecutablePath + " %1");
+
+            keyName = ".torrent";
+            keyValue = Properties.Settings.Default.applicationName;
+            key = Registry.ClassesRoot.CreateSubKey(keyName);
+            key.SetValue("", keyValue);
         }
     }
 }

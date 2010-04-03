@@ -9,9 +9,6 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-/*using KeyVal = System.Collections.Generic.KeyValuePair<string, string>;
-using KeyValList = System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>;*/
-
 namespace uTorrentNotifier
 {
     public partial class WebUIAPI
