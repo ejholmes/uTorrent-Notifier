@@ -24,7 +24,7 @@ namespace uTorrentNotifier
                     hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
                 }
 
-                this._Get(Action.Pause, hashes.ToArray());
+                this.Send(Action.Pause, hashes.ToArray());
             }
             catch { }
         }
@@ -41,7 +41,7 @@ namespace uTorrentNotifier
                     hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
                 }
 
-                this._Get(Action.Start, hashes.ToArray());
+                this.Send(Action.Start, hashes.ToArray());
             }
             catch { }
         }

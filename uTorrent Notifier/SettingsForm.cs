@@ -35,11 +35,11 @@ namespace uTorrentNotifier
             this.prowl = new Prowl(this.Config.ProwlAPIKey);
         }
 
-        void utorrent_LoginError()
+        void utorrent_LoginError(string error)
         {
             if (this.notifiedCount >= 25)
             {
-                this.systrayIcon.ShowBalloonTip(5000, "Login Error", "Either the credentials or the WebUI URL is incorrect", ToolTipIcon.Error);
+                this.systrayIcon.ShowBalloonTip(5000, "Login Error", error, ToolTipIcon.Error);
                 this.notifiedCount = 0;
             }
             else

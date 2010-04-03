@@ -15,7 +15,7 @@ namespace uTorrentNotifier
     {
         public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
         public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
-        public delegate void LoginErrorEventHandler();
+        public delegate void LoginErrorEventHandler(string error);
 
         public event DownloadFinishedEventHandler DownloadComplete;
         public event TorrentAddedEventHandler TorrentAdded;
@@ -123,7 +123,7 @@ namespace uTorrentNotifier
 
                 args.Add(new KeyValuePair<string, string>("list", "1"));
 
-                string json = this._Get(args.ToArray());
+                string json = this.Send(args.ToArray());
 
                 JObject o = JObject.Parse(json);
 
@@ -139,6 +139,53 @@ namespace uTorrentNotifier
             catch { }
 
             return l;
+        }
+
+        private string Send(string action, KeyValuePair<string, string>[] args)
+        {
+            List<KeyValuePair<string, string>> l = new List<KeyValuePair<string, string>>();
+            l.Add(new KeyValuePair<string, string>("action", action));
+            l.AddRange(args);
+
+            return this.Send(l.ToArray());
+        }
+
+        private string Send(KeyValuePair<string, string>[] args)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this._Config.URI);
+            sb.Append("/?");
+
+            foreach (KeyValuePair<string, string> kv in args)
+            {
+                sb.Append(kv.Key);
+                sb.Append("=");
+                sb.Append(kv.Value);
+                sb.Append("&");
+            }
+
+            return this._Get(sb.ToString());
+        }
+
+        private string _Get(string get)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
+                request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+            
+                Stream resStream = request.GetResponse().GetResponseStream();
+                string html = new StreamReader(resStream).ReadToEnd();
+                resStream.Close();
+
+                return html;
+            }
+            catch (WebException webex)
+            {
+                if (LoginError != null)
+                    LoginError(webex.Message);
+                return "";
+            }
         }
 
         private void _Post(string action, string file)
@@ -173,67 +220,10 @@ namespace uTorrentNotifier
 
         }
 
-        private string _Get(string action, KeyValuePair<string, string>[] args)
-        {
-            List<KeyValuePair<string, string>> l = new List<KeyValuePair<string, string>>();
-            l.Add(new KeyValuePair<string, string>("action", action));
-            l.AddRange(args);
-
-            return this._Get(l.ToArray());
-        }
-
-        private string _Get(KeyValuePair<string, string>[] args)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(this._Config.URI);
-            sb.Append("/?");
-
-            foreach (KeyValuePair<string, string> kv in args)
-            {
-                sb.Append(kv.Key);
-                sb.Append("=");
-                sb.Append(kv.Value);
-                sb.Append("&");
-            }
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sb.ToString());
-
-                string authInfo = this._Config.Username + ":" + this._Config.Password;
-                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-                request.Headers["Authorization"] = "Basic" + authInfo;
-            
-            
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream resStream = response.GetResponseStream();
-
-                StreamReader reader = new StreamReader(resStream);
-
-                string json = reader.ReadToEnd();
-
-                reader.Close();
-                resStream.Close();
-                response.Close();
-
-                return json;
-            }
-            catch
-            {
-                if (LoginError != null)
-                    LoginError();
-                return "";
-            }
-        }
-
         public Config Config
         {
             get { return this._Config; }
             set { this._Config = value; }
         }
-    }
-
-    public class LoginException : ApplicationException
-    {
     }
 }
