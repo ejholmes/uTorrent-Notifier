@@ -24,13 +24,13 @@ namespace uTorrentNotifier
         {
             InitializeComponent();
 
-            utorrent = new WebUIAPI(this.Config);
-            utorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(utorrent_TorrentAdded);
-            utorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(utorrent_DownloadComplete);
-            utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
-            utorrent.Start();
+            this.utorrent = new WebUIAPI(this.Config);
+            this.utorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(utorrent_TorrentAdded);
+            this.utorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(utorrent_DownloadComplete);
+            this.utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
+            this.utorrent.Start();
 
-            prowl = new Prowl(this.Config.ProwlAPIKey);
+            this.prowl = new Prowl(this.Config.ProwlAPIKey);
         }
 
         void utorrent_LoginError()
@@ -90,12 +90,6 @@ namespace uTorrentNotifier
             this.ShowInTaskbar = true;
         }
 
-        private void MainWindow_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.BackToSystray();
-        }
-
         private void Settings_Shown(object sender, System.EventArgs e)
         {
             this.tbPassword.Text                = this.Config.Password;
@@ -144,9 +138,14 @@ namespace uTorrentNotifier
             this.RestoreFromSystray();
         }
 
-        private void systrayIcon_Click(object sender, System.EventArgs e)
+        private void tsmiPauseAll_Click(object sender, EventArgs e)
         {
-            
+            this.utorrent.PauseAll();
+        }
+
+        private void tsmiStartAll_Click(object sender, EventArgs e)
+        {
+            this.utorrent.StartAll();
         }
     }
 }

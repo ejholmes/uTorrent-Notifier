@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+/*using KeyVal = System.Collections.Generic.KeyValuePair<string, string>;
+using KeyValList = System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>;*/
+
 namespace uTorrentNotifier
 {
     public partial class WebUIAPI
@@ -26,12 +29,13 @@ namespace uTorrentNotifier
         private Config _Config;
 
         private List<TorrentFile> last = null;
+        private List<TorrentFile> current = null;
 
         public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = 5000;
+            timer.Interval = 10000;
         }
 
         public void Start()
@@ -51,13 +55,13 @@ namespace uTorrentNotifier
 
         void timer_Tick(object sender, EventArgs e)
         {
-            List<TorrentFile> current = new List<TorrentFile>();
-            current = this.List();
+            this.current = new List<TorrentFile>();
+            this.current = this.List();
 
             if (last != null)
             {
-                List<TorrentFile> completed = this.FindDone(current, last);
-                List<TorrentFile> added = this.FindNew(current, last);
+                List<TorrentFile> completed = this.FindDone(this.current, this.last);
+                List<TorrentFile> added = this.FindNew(this.current, this.last);
 
                 if ((completed.Count > 0) && (this.DownloadComplete != null))
                     this.DownloadComplete(completed);
@@ -66,18 +70,18 @@ namespace uTorrentNotifier
                     this.TorrentAdded(added);
             }
 
-            last = current;
+            this.last = this.current;
         }
 
-        public List<TorrentFile> FindDone(List<TorrentFile> current, List<TorrentFile> last)
+        private List<TorrentFile> FindDone(List<TorrentFile> current, List<TorrentFile> last)
         {
             List<TorrentFile> finishedTorrents = new List<TorrentFile>();
 
-            if (last.Count > 0)
+            if (this.last.Count > 0)
             {
-                foreach (TorrentFile currentTorrent in current)
+                foreach (TorrentFile currentTorrent in this.current)
                 {
-                    foreach (TorrentFile lastTorrent in last)
+                    foreach (TorrentFile lastTorrent in this.last)
                     {
                         if (currentTorrent.Hash == lastTorrent.Hash)
                         {
@@ -94,15 +98,15 @@ namespace uTorrentNotifier
             return finishedTorrents;
         }
 
-        public List<TorrentFile> FindNew(List<TorrentFile> current, List<TorrentFile> last)
+        private List<TorrentFile> FindNew(List<TorrentFile> current, List<TorrentFile> last)
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
             if (last.Count > 0)
             {
-                foreach (TorrentFile currentTorrent in current)
+                foreach (TorrentFile currentTorrent in this.current)
                 {
-                    TorrentFile result = last.Find(item => item.Hash == currentTorrent.Hash);
+                    TorrentFile result = this.last.Find(item => item.Hash == currentTorrent.Hash);
 
                     if (result == null)
                         newTorrents.Add(currentTorrent);
@@ -112,17 +116,7 @@ namespace uTorrentNotifier
             return newTorrents;
         }
 
-        public void PauseAll()
-        {
-
-        }
-
-        public void StartAll()
-        {
-
-        }
-
-        public List<TorrentFile> List()
+        private List<TorrentFile> List()
         {
             List<TorrentFile> l = new List<TorrentFile>();
 
@@ -150,12 +144,52 @@ namespace uTorrentNotifier
             return l;
         }
 
+        private void _Post(string action, string file)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this._Config.URI);
+            sb.Append("/?action=");
+            sb.Append(action);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sb.ToString());
+            byte[] data = null;
+
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(file)))
+            {
+                data = reader.ReadBytes((int)reader.BaseStream.Length);
+            }
+
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data";
+            request.SendChunked = true;
+            request.Timeout = 1000;
+            request.ContentLength = data.Length;
+            request.KeepAlive = true;
+
+            using (Stream s = request.GetRequestStream())
+            {
+                s.Write(data, 0, data.Length);
+                s.Close();
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+        }
+
+        private string _Get(string action, KeyValuePair<string, string>[] args)
+        {
+            List<KeyValuePair<string, string>> l = new List<KeyValuePair<string, string>>();
+            l.Add(new KeyValuePair<string, string>("action", action));
+            l.AddRange(args);
+
+            return this._Get(l.ToArray());
+        }
+
         private string _Get(KeyValuePair<string, string>[] args)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this._Config.URI);
-            sb.Append("/");
-            sb.Append("?");
+            sb.Append("/?");
 
             foreach (KeyValuePair<string, string> kv in args)
             {

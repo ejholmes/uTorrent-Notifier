@@ -36,11 +36,15 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tbWebUI_URL = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.systrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.systrayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiStartAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPauseAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiClose = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +55,6 @@
             this.lblProwlAPIKey = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.systrayMenuStrip.SuspendLayout();
@@ -116,6 +119,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WebUI URL";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(7, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "e.x. http://localhost/gui/";
+            // 
             // tbWebUI_URL
             // 
             this.tbWebUI_URL.Location = new System.Drawing.Point(6, 19);
@@ -151,34 +164,55 @@
             this.systrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
             this.systrayIcon.Text = "uTorrent Notifier";
             this.systrayIcon.Visible = true;
-            this.systrayIcon.Click += new System.EventHandler(this.systrayIcon_Click);
             this.systrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseDoubleClick);
             // 
             // systrayMenuStrip
             // 
             this.systrayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiStartAll,
+            this.tsmiPauseAll,
+            this.toolStripSeparator2,
             this.tsmiSettings,
             this.toolStripSeparator1,
             this.tsmiClose});
             this.systrayMenuStrip.Name = "systrayMenuStrip";
-            this.systrayMenuStrip.Size = new System.Drawing.Size(117, 54);
+            this.systrayMenuStrip.Size = new System.Drawing.Size(123, 104);
+            // 
+            // tsmiStartAll
+            // 
+            this.tsmiStartAll.Name = "tsmiStartAll";
+            this.tsmiStartAll.Size = new System.Drawing.Size(122, 22);
+            this.tsmiStartAll.Text = "Start All";
+            this.tsmiStartAll.Click += new System.EventHandler(this.tsmiStartAll_Click);
+            // 
+            // tsmiPauseAll
+            // 
+            this.tsmiPauseAll.Name = "tsmiPauseAll";
+            this.tsmiPauseAll.Size = new System.Drawing.Size(122, 22);
+            this.tsmiPauseAll.Text = "Pause All";
+            this.tsmiPauseAll.Click += new System.EventHandler(this.tsmiPauseAll_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(119, 6);
             // 
             // tsmiSettings
             // 
             this.tsmiSettings.Name = "tsmiSettings";
-            this.tsmiSettings.Size = new System.Drawing.Size(116, 22);
+            this.tsmiSettings.Size = new System.Drawing.Size(122, 22);
             this.tsmiSettings.Text = "Settings";
             this.tsmiSettings.Click += new System.EventHandler(this.tsmiSettings_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(113, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(116, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(122, 22);
             this.tsmiClose.Text = "Exit";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
@@ -198,7 +232,7 @@
             // cbNotificationMode
             // 
             this.cbNotificationMode.AutoSize = true;
-            this.cbNotificationMode.Location = new System.Drawing.Point(98, 20);
+            this.cbNotificationMode.Location = new System.Drawing.Point(74, 19);
             this.cbNotificationMode.Name = "cbNotificationMode";
             this.cbNotificationMode.Size = new System.Drawing.Size(139, 17);
             this.cbNotificationMode.TabIndex = 3;
@@ -217,15 +251,15 @@
             // 
             // tbProwlAPIKey
             // 
-            this.tbProwlAPIKey.Location = new System.Drawing.Point(66, 44);
+            this.tbProwlAPIKey.Location = new System.Drawing.Point(74, 44);
             this.tbProwlAPIKey.Name = "tbProwlAPIKey";
-            this.tbProwlAPIKey.Size = new System.Drawing.Size(171, 20);
+            this.tbProwlAPIKey.Size = new System.Drawing.Size(163, 20);
             this.tbProwlAPIKey.TabIndex = 1;
             // 
             // lblProwlAPIKey
             // 
             this.lblProwlAPIKey.AutoSize = true;
-            this.lblProwlAPIKey.Location = new System.Drawing.Point(6, 47);
+            this.lblProwlAPIKey.Location = new System.Drawing.Point(7, 47);
             this.lblProwlAPIKey.Name = "lblProwlAPIKey";
             this.lblProwlAPIKey.Size = new System.Drawing.Size(45, 13);
             this.lblProwlAPIKey.TabIndex = 0;
@@ -239,27 +273,17 @@
             this.groupBox4.Size = new System.Drawing.Size(118, 44);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Run On Startup";
+            this.groupBox4.Text = "Windows";
             // 
             // cbRunOnStartup
             // 
             this.cbRunOnStartup.AutoSize = true;
             this.cbRunOnStartup.Location = new System.Drawing.Point(9, 19);
             this.cbRunOnStartup.Name = "cbRunOnStartup";
-            this.cbRunOnStartup.Size = new System.Drawing.Size(44, 17);
+            this.cbRunOnStartup.Size = new System.Drawing.Size(96, 17);
             this.cbRunOnStartup.TabIndex = 0;
-            this.cbRunOnStartup.Text = "Yes";
+            this.cbRunOnStartup.Text = "Run on startup";
             this.cbRunOnStartup.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(7, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "e.x. http://localhost/gui/";
             // 
             // SettingsForm
             // 
@@ -278,7 +302,6 @@
             this.Text = "uTorrent Notifier";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Shown += new System.EventHandler(this.Settings_Shown);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -316,6 +339,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox cbRunOnStartup;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStartAll;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPauseAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 
     }
 }

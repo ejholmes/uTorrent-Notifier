@@ -53,11 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLine.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Prowl.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="WebUIAPI.Actions.cs" />
     <Compile Include="WebUIAPI.cs" />
-    <Compile Include="Codes.cs" />
+    <Compile Include="WebUIAPI.Codes.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="TorrentFile.cs" />
     <Compile Include="SettingsForm.cs">
