@@ -150,7 +150,7 @@ namespace uTorrentNotifier
             this.utorrent.StartAll();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.UseShellExecute = true;
@@ -160,6 +160,6 @@ namespace uTorrentNotifier
 
             Process p = Process.Start(startInfo);
             p.WaitForExit();
-        }
+        }*/
     }
 }
