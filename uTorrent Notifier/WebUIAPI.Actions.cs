@@ -15,35 +15,25 @@ namespace uTorrentNotifier
         public void PauseAll()
         {
             this.current = this.List();
-
-            try
+            List<KeyValuePair<string, string>> hashes = new List<KeyValuePair<string, string>>();
+            foreach (TorrentFile f in this.current)
             {
-                List<KeyValuePair<string, string>> hashes = new List<KeyValuePair<string, string>>();
-                foreach (TorrentFile f in this.current)
-                {
-                    hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
-                }
-
-                this.Send(Action.Pause, hashes.ToArray());
+                hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
             }
-            catch { }
+
+            this.Send(Action.Pause, hashes.ToArray());
         }
 
         public void StartAll()
         {
             this.current = this.List();
-
-            try
+            List<KeyValuePair<string, string>> hashes = new List<KeyValuePair<string, string>>();
+            foreach (TorrentFile f in this.current)
             {
-                List<KeyValuePair<string, string>> hashes = new List<KeyValuePair<string, string>>();
-                foreach (TorrentFile f in this.current)
-                {
-                    hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
-                }
-
-                this.Send(Action.Start, hashes.ToArray());
+                hashes.Add(new KeyValuePair<string, string>(WebUIAPI.Property.Hash, f.Hash));
             }
-            catch { }
+
+            this.Send(Action.Start, hashes.ToArray());
         }
     }
 }

@@ -28,6 +28,8 @@ namespace uTorrentNotifier
         private List<TorrentFile> last = null;
         private List<TorrentFile> current = null;
 
+        private string token = "";
+
         public WebUIAPI(Config cfg)
         {
             this._Config = cfg;
@@ -117,14 +119,15 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> l = new List<TorrentFile>();
 
-            try
+            List<KeyValuePair<string, string>> args = new List<KeyValuePair<string, string>>();
+
+            args.Add(new KeyValuePair<string, string>("list", "1"));
+            args.Add(new KeyValuePair<string, string>("token", this.token));
+
+            string json = this.Send(args.ToArray());
+
+            if (json != "")
             {
-                List<KeyValuePair<string, string>> args = new List<KeyValuePair<string, string>>();
-
-                args.Add(new KeyValuePair<string, string>("list", "1"));
-
-                string json = this.Send(args.ToArray());
-
                 JObject o = JObject.Parse(json);
 
                 IList<JToken> results = o["torrents"].Children().ToList();
@@ -136,7 +139,6 @@ namespace uTorrentNotifier
                     l.Add(f);
                 }
             }
-            catch { }
 
             return l;
         }
@@ -145,6 +147,7 @@ namespace uTorrentNotifier
         {
             List<KeyValuePair<string, string>> l = new List<KeyValuePair<string, string>>();
             l.Add(new KeyValuePair<string, string>("action", action));
+            l.Add(new KeyValuePair<string, string>("token", this.token));
             l.AddRange(args);
 
             return this.Send(l.ToArray());
@@ -167,6 +170,24 @@ namespace uTorrentNotifier
             return this._Get(sb.ToString());
         }
 
+        private void _Token()
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(this._Config.URI + "/token.html");
+                request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+
+                Stream resStream = request.GetResponse().GetResponseStream();
+                this.token = System.Text.RegularExpressions.Regex.Replace(new StreamReader(resStream).ReadToEnd(), @"<(.|\n)*?>", string.Empty);
+                resStream.Close();
+            }
+            catch (WebException webex)
+            {
+                if (LoginError != null)
+                    LoginError(webex.Message);
+            }
+        }
+
         private string _Get(string get)
         {
             try
@@ -180,10 +201,9 @@ namespace uTorrentNotifier
 
                 return html;
             }
-            catch (WebException webex)
+            catch
             {
-                if (LoginError != null)
-                    LoginError(webex.Message);
+                this._Token();
                 return "";
             }
         }
