@@ -20,7 +20,7 @@ namespace uTorrentNotifier
         private Config Config = new Config();
         private WebUIAPI utorrent;
         private Prowl prowl;
-        private int notifiedCount = 25;
+        private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         public SettingsForm()
         {
@@ -37,14 +37,14 @@ namespace uTorrentNotifier
 
         void utorrent_LoginError(string error)
         {
-            if (this.notifiedCount >= 25)
+            if (this.loginErrors >= 25)
             {
                 this.systrayIcon.ShowBalloonTip(5000, "Login Error", error, ToolTipIcon.Error);
-                this.notifiedCount = 0;
+                this.loginErrors = 0;
             }
             else
             {
-                this.notifiedCount++;
+                this.loginErrors++;
             }
         }
 

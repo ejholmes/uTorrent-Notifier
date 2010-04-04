@@ -29,6 +29,7 @@ namespace uTorrentNotifier
         private List<TorrentFile> current = null;
 
         private string token = "";
+        private CookieContainer cookies = new CookieContainer();
 
         public WebUIAPI(Config cfg)
         {
@@ -176,6 +177,7 @@ namespace uTorrentNotifier
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(this._Config.URI + "/token.html");
                 request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+                request.CookieContainer = cookies;
 
                 Stream resStream = request.GetResponse().GetResponseStream();
                 this.token = System.Text.RegularExpressions.Regex.Replace(new StreamReader(resStream).ReadToEnd(), @"<(.|\n)*?>", string.Empty);
@@ -194,6 +196,7 @@ namespace uTorrentNotifier
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
                 request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+                request.CookieContainer = cookies;
             
                 Stream resStream = request.GetResponse().GetResponseStream();
                 string html = new StreamReader(resStream).ReadToEnd();
