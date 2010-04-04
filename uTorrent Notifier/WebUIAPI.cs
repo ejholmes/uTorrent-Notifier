@@ -127,17 +127,24 @@ namespace uTorrentNotifier
 
             string json = this.Send(args.ToArray());
 
-            if (json != "")
+            if(json != "")
             {
-                JObject o = JObject.Parse(json);
-
-                IList<JToken> results = o["torrents"].Children().ToList();
-
-                foreach (JToken result in results)
+                try
                 {
-                    TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
+                    JObject o = JObject.Parse(json);
 
-                    l.Add(f);
+                    IList<JToken> results = o["torrents"].Children().ToList();
+
+                    foreach (JToken result in results)
+                    {
+                        TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
+
+                        l.Add(f);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
