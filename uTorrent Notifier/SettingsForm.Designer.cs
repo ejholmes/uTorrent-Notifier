@@ -58,10 +58,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.tbProwl = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cbTorrentNotification_DownloadComplete = new System.Windows.Forms.CheckBox();
-            this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
             this.tpNotifications = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
+            this.cbTorrentNotification_DownloadComplete = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -69,8 +69,8 @@
             this.tabControl1.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.tbProwl.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.tpNotifications.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -264,9 +264,9 @@
             this.cbShowBalloonTips.AutoSize = true;
             this.cbShowBalloonTips.Location = new System.Drawing.Point(111, 20);
             this.cbShowBalloonTips.Name = "cbShowBalloonTips";
-            this.cbShowBalloonTips.Size = new System.Drawing.Size(112, 17);
+            this.cbShowBalloonTips.Size = new System.Drawing.Size(114, 17);
             this.cbShowBalloonTips.TabIndex = 3;
-            this.cbShowBalloonTips.Text = "Show Baloon Tips";
+            this.cbShowBalloonTips.Text = "Show Balloon Tips";
             this.cbShowBalloonTips.UseVisualStyleBackColor = true;
             // 
             // groupBox4
@@ -328,6 +328,16 @@
             this.tbProwl.Text = "Prowl";
             this.tbProwl.UseVisualStyleBackColor = true;
             // 
+            // tpNotifications
+            // 
+            this.tpNotifications.Controls.Add(this.groupBox5);
+            this.tpNotifications.Location = new System.Drawing.Point(4, 22);
+            this.tpNotifications.Name = "tpNotifications";
+            this.tpNotifications.Size = new System.Drawing.Size(256, 215);
+            this.tpNotifications.TabIndex = 2;
+            this.tpNotifications.Text = "Notifications";
+            this.tpNotifications.UseVisualStyleBackColor = true;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.cbProwlNotification_TorentAdded);
@@ -339,16 +349,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Settings";
             // 
-            // cbTorrentNotification_DownloadComplete
-            // 
-            this.cbTorrentNotification_DownloadComplete.AutoSize = true;
-            this.cbTorrentNotification_DownloadComplete.Location = new System.Drawing.Point(9, 43);
-            this.cbTorrentNotification_DownloadComplete.Name = "cbTorrentNotification_DownloadComplete";
-            this.cbTorrentNotification_DownloadComplete.Size = new System.Drawing.Size(121, 17);
-            this.cbTorrentNotification_DownloadComplete.TabIndex = 5;
-            this.cbTorrentNotification_DownloadComplete.Text = "Download Complete";
-            this.cbTorrentNotification_DownloadComplete.UseVisualStyleBackColor = true;
-            // 
             // cbProwlNotification_TorentAdded
             // 
             this.cbProwlNotification_TorentAdded.AutoSize = true;
@@ -359,15 +359,15 @@
             this.cbProwlNotification_TorentAdded.Text = "Torrent Added";
             this.cbProwlNotification_TorentAdded.UseVisualStyleBackColor = true;
             // 
-            // tpNotifications
+            // cbTorrentNotification_DownloadComplete
             // 
-            this.tpNotifications.Controls.Add(this.groupBox5);
-            this.tpNotifications.Location = new System.Drawing.Point(4, 22);
-            this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(256, 215);
-            this.tpNotifications.TabIndex = 2;
-            this.tpNotifications.Text = "Notifications";
-            this.tpNotifications.UseVisualStyleBackColor = true;
+            this.cbTorrentNotification_DownloadComplete.AutoSize = true;
+            this.cbTorrentNotification_DownloadComplete.Location = new System.Drawing.Point(9, 43);
+            this.cbTorrentNotification_DownloadComplete.Name = "cbTorrentNotification_DownloadComplete";
+            this.cbTorrentNotification_DownloadComplete.Size = new System.Drawing.Size(121, 17);
+            this.cbTorrentNotification_DownloadComplete.TabIndex = 5;
+            this.cbTorrentNotification_DownloadComplete.Text = "Download Complete";
+            this.cbTorrentNotification_DownloadComplete.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -393,9 +393,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
             this.tbProwl.ResumeLayout(false);
+            this.tpNotifications.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.tpNotifications.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
