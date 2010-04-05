@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{1114CD5D-4221-49DD-893E-060F1C69CC70}
 AppName=uTorrent Notifier
-AppVerName=uTorrent Notifier 0.1.1
+AppVerName=uTorrent Notifier
 AppPublisher=Eric Holmes
 AppPublisherURL=http://ejholmes.github.com/uTorrent-Notifier/
 AppSupportURL=http://ejholmes.github.com/uTorrent-Notifier/
