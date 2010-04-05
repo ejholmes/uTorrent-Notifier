@@ -221,7 +221,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cbShowBalloonTips);
             this.groupBox3.Controls.Add(this.cbProwlEnable);
             this.groupBox3.Controls.Add(this.tbProwlAPIKey);
             this.groupBox3.Controls.Add(this.lblProwlAPIKey);
@@ -235,7 +234,7 @@
             // cbShowBalloonTips
             // 
             this.cbShowBalloonTips.AutoSize = true;
-            this.cbShowBalloonTips.Location = new System.Drawing.Point(74, 19);
+            this.cbShowBalloonTips.Location = new System.Drawing.Point(111, 20);
             this.cbShowBalloonTips.Name = "cbShowBalloonTips";
             this.cbShowBalloonTips.Size = new System.Drawing.Size(112, 17);
             this.cbShowBalloonTips.TabIndex = 3;
@@ -270,10 +269,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cbShowBalloonTips);
             this.groupBox4.Controls.Add(this.cbRunOnStartup);
             this.groupBox4.Location = new System.Drawing.Point(6, 162);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(130, 45);
+            this.groupBox4.Size = new System.Drawing.Size(244, 45);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Windows";
@@ -281,7 +281,7 @@
             // cbRunOnStartup
             // 
             this.cbRunOnStartup.AutoSize = true;
-            this.cbRunOnStartup.Location = new System.Drawing.Point(9, 19);
+            this.cbRunOnStartup.Location = new System.Drawing.Point(9, 20);
             this.cbRunOnStartup.Name = "cbRunOnStartup";
             this.cbRunOnStartup.Size = new System.Drawing.Size(96, 17);
             this.cbRunOnStartup.TabIndex = 0;
