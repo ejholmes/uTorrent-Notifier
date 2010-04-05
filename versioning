@@ -1,0 +1,8 @@
+1) update assembly version
+2) build
+3) compile setup.exe
+4) commit
+5) tag
+6) push
+7) upload setup.exe
+8) update website
