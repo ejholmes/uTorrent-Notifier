@@ -26,10 +26,10 @@
     <Setting Name="RunOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ProwlNotification_TorrentAdded" Type="System.Boolean" Scope="User">
+    <Setting Name="Notification_TorrentAdded" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ProwlNotification_DownloadComplete" Type="System.Boolean" Scope="User">
+    <Setting Name="Notification_DownloadComplete" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">

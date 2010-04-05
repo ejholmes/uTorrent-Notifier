@@ -119,24 +119,24 @@ namespace uTorrentNotifier.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ProwlNotification_TorrentAdded {
+        public bool Notification_TorrentAdded {
             get {
-                return ((bool)(this["ProwlNotification_TorrentAdded"]));
+                return ((bool)(this["Notification_TorrentAdded"]));
             }
             set {
-                this["ProwlNotification_TorrentAdded"] = value;
+                this["Notification_TorrentAdded"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ProwlNotification_DownloadComplete {
+        public bool Notification_DownloadComplete {
             get {
-                return ((bool)(this["ProwlNotification_DownloadComplete"]));
+                return ((bool)(this["Notification_DownloadComplete"]));
             }
             set {
-                this["ProwlNotification_DownloadComplete"] = value;
+                this["Notification_DownloadComplete"] = value;
             }
         }
         

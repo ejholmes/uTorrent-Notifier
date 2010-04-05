@@ -56,19 +56,21 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.tbProwl = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbTorrentNotification_DownloadComplete = new System.Windows.Forms.CheckBox();
             this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
+            this.tpNotifications = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpGeneral.SuspendLayout();
+            this.tbProwl.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tpNotifications.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -226,7 +228,7 @@
             this.groupBox3.Controls.Add(this.lblProwlAPIKey);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(243, 70);
+            this.groupBox3.Size = new System.Drawing.Size(244, 70);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
@@ -293,49 +295,49 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tpGeneral);
+            this.tabControl1.Controls.Add(this.tbProwl);
+            this.tabControl1.Controls.Add(this.tpNotifications);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(264, 241);
             this.tabControl1.TabIndex = 7;
             // 
-            // tabPage1
+            // tpGeneral
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(256, 215);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "General";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpGeneral.Controls.Add(this.groupBox2);
+            this.tpGeneral.Controls.Add(this.groupBox1);
+            this.tpGeneral.Controls.Add(this.groupBox4);
+            this.tpGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpGeneral.Name = "tpGeneral";
+            this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGeneral.Size = new System.Drawing.Size(256, 215);
+            this.tpGeneral.TabIndex = 0;
+            this.tpGeneral.Text = "General";
+            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tbProwl
             // 
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(256, 215);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Prowl";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tbProwl.Controls.Add(this.groupBox3);
+            this.tbProwl.Location = new System.Drawing.Point(4, 22);
+            this.tbProwl.Name = "tbProwl";
+            this.tbProwl.Padding = new System.Windows.Forms.Padding(3);
+            this.tbProwl.Size = new System.Drawing.Size(256, 215);
+            this.tbProwl.TabIndex = 1;
+            this.tbProwl.Text = "Prowl";
+            this.tbProwl.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.cbTorrentNotification_DownloadComplete);
             this.groupBox5.Controls.Add(this.cbProwlNotification_TorentAdded);
-            this.groupBox5.Location = new System.Drawing.Point(6, 82);
+            this.groupBox5.Controls.Add(this.cbTorrentNotification_DownloadComplete);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(243, 127);
+            this.groupBox5.Size = new System.Drawing.Size(244, 206);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Notifications";
+            this.groupBox5.Text = "Settings";
             // 
             // cbTorrentNotification_DownloadComplete
             // 
@@ -356,6 +358,16 @@
             this.cbProwlNotification_TorentAdded.TabIndex = 4;
             this.cbProwlNotification_TorentAdded.Text = "Torrent Added";
             this.cbProwlNotification_TorentAdded.UseVisualStyleBackColor = true;
+            // 
+            // tpNotifications
+            // 
+            this.tpNotifications.Controls.Add(this.groupBox5);
+            this.tpNotifications.Location = new System.Drawing.Point(4, 22);
+            this.tpNotifications.Name = "tpNotifications";
+            this.tpNotifications.Size = new System.Drawing.Size(256, 215);
+            this.tpNotifications.TabIndex = 2;
+            this.tpNotifications.Text = "Notifications";
+            this.tpNotifications.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -379,10 +391,11 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tpGeneral.ResumeLayout(false);
+            this.tbProwl.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tpNotifications.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -415,11 +428,12 @@
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpGeneral;
+        private System.Windows.Forms.TabPage tbProwl;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox cbTorrentNotification_DownloadComplete;
         private System.Windows.Forms.CheckBox cbProwlNotification_TorentAdded;
+        private System.Windows.Forms.TabPage tpNotifications;
 
     }
 }

@@ -15,6 +15,7 @@ namespace uTorrentNotifier
         private bool _ShowBalloonTips   = true;
 
         public ProwlConfig Prowl = new ProwlConfig();
+        public NotificationsConfig Notifications = new NotificationsConfig();
 
         public Config()
         {

@@ -32,8 +32,11 @@ namespace uTorrentNotifier
             this.utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
             this.utorrent.Start();
 
-            this.prowl = new Prowl(this.Config.Prowl);
-            this.prowl.ProwlError += new Prowl.ProwlErrorHandler(prowl_ProwlError);
+            if (this.Config.Prowl.Enable)
+            {
+                this.prowl = new Prowl(this.Config.Prowl);
+                this.prowl.ProwlError += new Prowl.ProwlErrorHandler(prowl_ProwlError);
+            }
         }
 
         void prowl_ProwlError(object sender, Exception e)
@@ -55,32 +58,38 @@ namespace uTorrentNotifier
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)
         {
-            foreach (TorrentFile f in finished)
+            if (this.Config.Notifications.DownloadComplete)
             {
-                if (this.Config.Prowl.Enable && this.Config.Prowl.Notification_DownloadComplete)
+                foreach (TorrentFile f in finished)
                 {
-                    this.prowl.Add("Download Complete", f.Name);
-                }
+                    if (this.Config.Prowl.Enable)
+                    {
+                        this.prowl.Add("Download Complete", f.Name);
+                    }
 
-                if (this.Config.ShowBalloonTips)
-                {
-                    this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
+                    if (this.Config.ShowBalloonTips)
+                    {
+                        this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
+                    }
                 }
             }
         }
 
         void utorrent_TorrentAdded(List<TorrentFile> added)
         {
-            foreach (TorrentFile f in added)
+            if (this.Config.Notifications.TorrentAdded)
             {
-                if (this.Config.Prowl.Enable && this.Config.Prowl.Notification_TorrentAdded)
+                foreach (TorrentFile f in added)
                 {
-                    this.prowl.Add("Torrent Added", f.Name);
-                }
+                    if (this.Config.Prowl.Enable)
+                    {
+                        this.prowl.Add("Torrent Added", f.Name);
+                    }
 
-                if (this.Config.ShowBalloonTips)
-                {
-                    this.systrayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
+                    if (this.Config.ShowBalloonTips)
+                    {
+                        this.systrayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
+                    }
                 }
             }
         }
@@ -121,8 +130,9 @@ namespace uTorrentNotifier
 
             this.tbProwlAPIKey.Text                             = this.Config.Prowl.APIKey;
             this.cbProwlEnable.Checked                          = this.Config.Prowl.Enable;
-            this.cbProwlNotification_TorentAdded.Checked        = this.Config.Prowl.Notification_TorrentAdded;
-            this.cbTorrentNotification_DownloadComplete.Checked = this.Config.Prowl.Notification_DownloadComplete;
+
+            this.cbProwlNotification_TorentAdded.Checked        = this.Config.Notifications.TorrentAdded;
+            this.cbTorrentNotification_DownloadComplete.Checked = this.Config.Notifications.DownloadComplete;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -135,8 +145,9 @@ namespace uTorrentNotifier
 
             this.Config.Prowl.APIKey                        = this.tbProwlAPIKey.Text;
             this.Config.Prowl.Enable                        = this.cbProwlEnable.Checked;
-            this.Config.Prowl.Notification_TorrentAdded     = this.cbProwlNotification_TorentAdded.Checked;
-            this.Config.Prowl.Notification_DownloadComplete = this.cbTorrentNotification_DownloadComplete.Checked;
+
+            this.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
+            this.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;
 
             this.Config.Save();
             this.BackToSystray();
