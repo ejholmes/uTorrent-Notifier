@@ -12,6 +12,9 @@ namespace uTorrentNotifier
 {
     class Prowl
     {
+        public delegate void ProwlErrorHandler(object sender, Exception e);
+        public event ProwlErrorHandler ProwlError;
+
         public enum Priority
         {
             VeryLow = -2,
@@ -27,11 +30,13 @@ namespace uTorrentNotifier
 
         private Priority _priority = Priority.Normal;
 
+        private Config.ProwlConfig ProwlConfig;
+
         List<KeyValuePair<string, string>> defaults = new List<KeyValuePair<string,string>>();
 
-        public Prowl(string apikey)
+        public Prowl(Config.ProwlConfig prowlConfig)
         {
-            defaults.Add(new KeyValuePair<string, string>("apikey", apikey));
+            this.ProwlConfig = prowlConfig;
             defaults.Add(new KeyValuePair<string, string>("providerkey", this._providerKey));
             defaults.Add(new KeyValuePair<string, string>("priority", this._priority.ToString()));
             defaults.Add(new KeyValuePair<string, string>("application", this._application));
@@ -40,6 +45,8 @@ namespace uTorrentNotifier
 
         public void Add(string message, List<KeyValuePair<string, string>> options)
         {
+            defaults.Add(new KeyValuePair<string, string>("apikey", this.ProwlConfig.APIKey));
+
             List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
 
             data.AddRange(options);
@@ -76,14 +83,22 @@ namespace uTorrentNotifier
                 sb.Append(HttpUtility.UrlEncode(kv.Value));
             }
 
-            string url = this._uri + method + "?" + sb.ToString(); 
+            string url = this._uri + method + "?" + sb.ToString();
 
-            WebRequest request = WebRequest.Create(url);
-            ((HttpWebRequest)request).UserAgent = "uTorrent Notifier";
-            request.ContentType = "appication/x-www-form-urlencoded";
-            request.Method = "POST";
+            try
+            {
+                WebRequest request = WebRequest.Create(url);
+                ((HttpWebRequest)request).UserAgent = "uTorrent Notifier";
+                request.ContentType = "appication/x-www-form-urlencoded";
+                request.Method = "POST";
 
-            request.GetResponse();
+                request.GetResponse();
+            }
+            catch (Exception ex)
+            {
+                if (this.ProwlError != null)
+                    this.ProwlError(this, ex);
+            }
         }
     }
 }

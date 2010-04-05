@@ -60,9 +60,18 @@ namespace uTorrentNotifier
             f.Availability          = double.Parse(file[16]);
             f.TorrentQueueOrder     = Int32.Parse(file[17]);
             f.Remaining             = double.Parse(file[18]);
-            f.TorrentSource         = file[19];
-            f.RssFeed               = file[20];
-            f.StatusString          = file[21];
+            try
+            {
+                f.TorrentSource = file[19];
+                f.RssFeed = file[20];
+                f.StatusString = file[21];
+            }
+            catch
+            {
+                f.TorrentSource = "";
+                f.RssFeed = "";
+                f.StatusString = "";
+            }
 
             return f;
         }
@@ -206,8 +215,8 @@ namespace uTorrentNotifier
             string keyName;
             string keyValue;
 
-            keyName = Properties.Settings.Default.applicationName;
-            keyValue = Properties.Settings.Default.applicationName;
+            keyName = Properties.Settings.Default.ApplicationName;
+            keyValue = Properties.Settings.Default.ApplicationName;
 
             RegistryKey key;
 
@@ -220,7 +229,7 @@ namespace uTorrentNotifier
             key.SetValue("", System.Windows.Forms.Application.ExecutablePath + " %1");
 
             keyName = ".torrent";
-            keyValue = Properties.Settings.Default.applicationName;
+            keyValue = Properties.Settings.Default.ApplicationName;
             key = Registry.ClassesRoot.CreateSubKey(keyName);
             key.SetValue("", keyValue);
         }

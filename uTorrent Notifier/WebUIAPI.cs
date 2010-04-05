@@ -15,7 +15,7 @@ namespace uTorrentNotifier
     {
         public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
         public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
-        public delegate void LoginErrorEventHandler(string error);
+        public delegate void LoginErrorEventHandler(object sender, Exception e);
 
         public event DownloadFinishedEventHandler DownloadComplete;
         public event TorrentAddedEventHandler TorrentAdded;
@@ -102,15 +102,12 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
-            if (last.Count > 0)
+            foreach (TorrentFile currentTorrent in this.current)
             {
-                foreach (TorrentFile currentTorrent in this.current)
-                {
-                    TorrentFile result = this.last.Find(item => item.Hash == currentTorrent.Hash);
+                TorrentFile result = this.last.Find(item => item.Hash == currentTorrent.Hash);
 
-                    if (result == null)
-                        newTorrents.Add(currentTorrent);
-                }
+                if (result == null)
+                    newTorrents.Add(currentTorrent);
             }
 
             return newTorrents;
@@ -193,7 +190,10 @@ namespace uTorrentNotifier
             catch (WebException webex)
             {
                 if (LoginError != null)
-                    LoginError(webex.Message);
+                    LoginError(this, webex);
+            }
+            catch
+            {
             }
         }
 

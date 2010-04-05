@@ -5,16 +5,16 @@ using System.Text;
 
 namespace uTorrentNotifier
 {
-    public class Config
+    public partial class Config
     {
         private string _URI             = "";
         private string _Username        = "";
         private string _Password        = "";
-        private string _ProwlAPIKey     = "";
 
-        private bool _ProwlEnable               = false;
-        private bool _ProwlNotificationMode     = false;
-        private bool _RunOnStartup              = false;
+        private bool _RunOnStartup      = false;
+        private bool _ShowBalloonTips   = true;
+
+        public ProwlConfig Prowl = new ProwlConfig();
 
         public Config()
         {
@@ -26,37 +26,25 @@ namespace uTorrentNotifier
 
             try
             {
-                this._Username = Properties.Settings.Default.username;
+                this._Username = Properties.Settings.Default.Username;
             }
             catch { }
 
             try
             {
-                this._Password = Properties.Settings.Default.password;
-            }
-            catch { }
-
-            try
-            {
-                this._ProwlAPIKey = Properties.Settings.Default.prowlapikey;
-            }
-            catch { }
-
-            try
-            {
-                this._ProwlEnable = Properties.Settings.Default.prowlenable;
-            }
-            catch { }
-
-            try
-            {
-                this._ProwlNotificationMode = Properties.Settings.Default.prowlnotificationmode;
+                this._Password = Properties.Settings.Default.Password;
             }
             catch { }
 
             try
             {
                 this._RunOnStartup = Properties.Settings.Default.RunOnStartup;
+            }
+            catch { }
+
+            try
+            {
+                this._ShowBalloonTips = Properties.Settings.Default.ShowBalloonTips;
             }
             catch { }
         }
@@ -82,7 +70,7 @@ namespace uTorrentNotifier
             get { return this._Username; }
             set 
             {
-                Properties.Settings.Default.username = value;
+                Properties.Settings.Default.Username = value;
                 this._Username = value; 
             }
         }
@@ -91,38 +79,8 @@ namespace uTorrentNotifier
             get { return this._Password; }
             set 
             {
-                Properties.Settings.Default.password = value;
+                Properties.Settings.Default.Password = value;
                 this._Password = value; 
-            }
-        }
-
-        public string ProwlAPIKey
-        {
-            get { return this._ProwlAPIKey; }
-            set 
-            {
-                Properties.Settings.Default.prowlapikey = value;
-                this._ProwlAPIKey = value; 
-            }
-        }
-
-        public bool ProwlEnable
-        {
-            get { return this._ProwlEnable; }
-            set 
-            {
-                Properties.Settings.Default.prowlenable = value;
-                this._ProwlEnable = value; 
-            }
-        }
-
-        public bool ProwlNotificationMode
-        {
-            get { return this._ProwlNotificationMode; }
-            set 
-            {
-                Properties.Settings.Default.prowlnotificationmode = value;
-                this._ProwlNotificationMode = value; 
             }
         }
 
@@ -135,12 +93,22 @@ namespace uTorrentNotifier
                     Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
                 if (value)
-                    key.SetValue(Properties.Settings.Default.applicationName, System.Windows.Forms.Application.ExecutablePath.ToString());
+                    key.SetValue(Properties.Settings.Default.ApplicationName, System.Windows.Forms.Application.ExecutablePath.ToString());
                 else
-                    key.DeleteValue(Properties.Settings.Default.applicationName, false);
+                    key.DeleteValue(Properties.Settings.Default.ApplicationName, false);
 
                 Properties.Settings.Default.RunOnStartup = value;
                 this._RunOnStartup = value;
+            }
+        }
+
+        public bool ShowBalloonTips
+        {
+            get { return this._ShowBalloonTips; }
+            set
+            {
+                Properties.Settings.Default.ShowBalloonTips = value;
+                this._ShowBalloonTips = value;
             }
         }
     }

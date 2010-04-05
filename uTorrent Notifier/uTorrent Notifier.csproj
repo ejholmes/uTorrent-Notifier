@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandLine.cs" />
+    <Compile Include="Config.Prowl.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Prowl.cs" />
     <Compile Include="Settings.cs" />

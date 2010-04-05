@@ -26,24 +26,24 @@ namespace uTorrentNotifier.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string username {
+        public string Username {
             get {
-                return ((string)(this["username"]));
+                return ((string)(this["Username"]));
             }
             set {
-                this["username"] = value;
+                this["Username"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string password {
+        public string Password {
             get {
-                return ((string)(this["password"]));
+                return ((string)(this["Password"]));
             }
             set {
-                this["password"] = value;
+                this["Password"] = value;
             }
         }
         
@@ -62,45 +62,45 @@ namespace uTorrentNotifier.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string prowlapikey {
+        public string ProwlAPIKey {
             get {
-                return ((string)(this["prowlapikey"]));
+                return ((string)(this["ProwlAPIKey"]));
             }
             set {
-                this["prowlapikey"] = value;
+                this["ProwlAPIKey"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool prowlenable {
+        public bool ProwlEnable {
             get {
-                return ((bool)(this["prowlenable"]));
+                return ((bool)(this["ProwlEnable"]));
             }
             set {
-                this["prowlenable"] = value;
+                this["ProwlEnable"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool prowlnotificationmode {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowBalloonTips {
             get {
-                return ((bool)(this["prowlnotificationmode"]));
+                return ((bool)(this["ShowBalloonTips"]));
             }
             set {
-                this["prowlnotificationmode"] = value;
+                this["ShowBalloonTips"] = value;
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("uTorrent Notifier")]
-        public string applicationName {
+        public string ApplicationName {
             get {
-                return ((string)(this["applicationName"]));
+                return ((string)(this["ApplicationName"]));
             }
         }
         
@@ -113,6 +113,42 @@ namespace uTorrentNotifier.Properties {
             }
             set {
                 this["RunOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ProwlNotification_TorrentAdded {
+            get {
+                return ((bool)(this["ProwlNotification_TorrentAdded"]));
+            }
+            set {
+                this["ProwlNotification_TorrentAdded"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ProwlNotification_DownloadComplete {
+            get {
+                return ((bool)(this["ProwlNotification_DownloadComplete"]));
+            }
+            set {
+                this["ProwlNotification_DownloadComplete"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstRun {
+            get {
+                return ((bool)(this["FirstRun"]));
+            }
+            set {
+                this["FirstRun"] = value;
             }
         }
     }

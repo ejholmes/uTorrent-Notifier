@@ -32,14 +32,19 @@ namespace uTorrentNotifier
             this.utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
             this.utorrent.Start();
 
-            this.prowl = new Prowl(this.Config.ProwlAPIKey);
+            this.prowl = new Prowl(this.Config.Prowl);
+            this.prowl.ProwlError += new Prowl.ProwlErrorHandler(prowl_ProwlError);
         }
 
-        void utorrent_LoginError(string error)
+        void prowl_ProwlError(object sender, Exception e)
+        {
+        }
+
+        void utorrent_LoginError(object sender, Exception e)
         {
             if (this.loginErrors >= 25)
             {
-                this.systrayIcon.ShowBalloonTip(5000, "Login Error", error, ToolTipIcon.Error);
+                this.systrayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
                 this.loginErrors = 0;
             }
             else
@@ -52,12 +57,12 @@ namespace uTorrentNotifier
         {
             foreach (TorrentFile f in finished)
             {
-                if (this.Config.ProwlEnable)
+                if (this.Config.Prowl.Enable && this.Config.Prowl.Notification_DownloadComplete)
                 {
                     this.prowl.Add("Download Complete", f.Name);
                 }
 
-                if (!this.Config.ProwlNotificationMode)
+                if (this.Config.ShowBalloonTips)
                 {
                     this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
                 }
@@ -68,12 +73,12 @@ namespace uTorrentNotifier
         {
             foreach (TorrentFile f in added)
             {
-                if (this.Config.ProwlEnable)
+                if (this.Config.Prowl.Enable && this.Config.Prowl.Notification_TorrentAdded)
                 {
                     this.prowl.Add("Torrent Added", f.Name);
                 }
 
-                if (!this.Config.ProwlNotificationMode)
+                if (this.Config.ShowBalloonTips)
                 {
                     this.systrayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
                 }
@@ -94,24 +99,44 @@ namespace uTorrentNotifier
 
         private void Settings_Shown(object sender, System.EventArgs e)
         {
-            this.tbPassword.Text                = this.Config.Password;
-            this.tbUsername.Text                = this.Config.Username;
-            this.tbWebUI_URL.Text               = this.Config.URI;
-            this.tbProwlAPIKey.Text             = this.Config.ProwlAPIKey;
-            this.cbProwlEnable.Checked          = this.Config.ProwlEnable;
-            this.cbNotificationMode.Checked     = this.Config.ProwlNotificationMode;
-            this.cbRunOnStartup.Checked         = this.Config.RunOnStartup;
+            if (Properties.Settings.Default.FirstRun)
+            {
+                this.RestoreFromSystray();
+                Properties.Settings.Default.FirstRun = false;
+            }
+            else
+            {
+                this.BackToSystray();
+            }
+            this.SetConfig();
+        }
+
+        private void SetConfig()
+        {
+            this.tbPassword.Text                                = this.Config.Password;
+            this.tbUsername.Text                                = this.Config.Username;
+            this.tbWebUI_URL.Text                               = this.Config.URI;
+            this.cbRunOnStartup.Checked                         = this.Config.RunOnStartup;
+            this.cbShowBalloonTips.Checked                      = this.Config.ShowBalloonTips;
+
+            this.tbProwlAPIKey.Text                             = this.Config.Prowl.APIKey;
+            this.cbProwlEnable.Checked                          = this.Config.Prowl.Enable;
+            this.cbProwlNotification_TorentAdded.Checked        = this.Config.Prowl.Notification_TorrentAdded;
+            this.cbTorrentNotification_DownloadComplete.Checked = this.Config.Prowl.Notification_DownloadComplete;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Config.URI                     = this.tbWebUI_URL.Text;
-            this.Config.Username                = this.tbUsername.Text;
-            this.Config.Password                = this.tbPassword.Text;
-            this.Config.ProwlAPIKey             = this.tbProwlAPIKey.Text;
-            this.Config.ProwlEnable             = this.cbProwlEnable.Checked;
-            this.Config.ProwlNotificationMode   = this.cbNotificationMode.Checked;
-            this.Config.RunOnStartup            = this.cbRunOnStartup.Checked;
+            this.Config.URI                                 = this.tbWebUI_URL.Text;
+            this.Config.Username                            = this.tbUsername.Text;
+            this.Config.Password                            = this.tbPassword.Text;
+            this.Config.RunOnStartup                        = this.cbRunOnStartup.Checked;
+            this.Config.ShowBalloonTips                     = this.cbShowBalloonTips.Checked;
+
+            this.Config.Prowl.APIKey                        = this.tbProwlAPIKey.Text;
+            this.Config.Prowl.Enable                        = this.cbProwlEnable.Checked;
+            this.Config.Prowl.Notification_TorrentAdded     = this.cbProwlNotification_TorentAdded.Checked;
+            this.Config.Prowl.Notification_DownloadComplete = this.cbTorrentNotification_DownloadComplete.Checked;
 
             this.Config.Save();
             this.BackToSystray();
