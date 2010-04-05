@@ -54,6 +54,7 @@
             this.lblProwlAPIKey = new System.Windows.Forms.Label();
             this.cbShowBalloonTips = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbCheckForUpdates = new System.Windows.Forms.CheckBox();
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
@@ -63,10 +64,9 @@
             this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
             this.cbTorrentNotification_DownloadComplete = new System.Windows.Forms.CheckBox();
             this.tbAbout = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.cbCheckForUpdates = new System.Windows.Forms.CheckBox();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -234,7 +234,7 @@
             this.groupBox3.Controls.Add(this.lblProwlAPIKey);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(244, 70);
+            this.groupBox3.Size = new System.Drawing.Size(244, 72);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
@@ -287,6 +287,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Windows";
             // 
+            // cbCheckForUpdates
+            // 
+            this.cbCheckForUpdates.AutoSize = true;
+            this.cbCheckForUpdates.Location = new System.Drawing.Point(9, 45);
+            this.cbCheckForUpdates.Name = "cbCheckForUpdates";
+            this.cbCheckForUpdates.Size = new System.Drawing.Size(113, 17);
+            this.cbCheckForUpdates.TabIndex = 4;
+            this.cbCheckForUpdates.Text = "Check for updates";
+            this.cbCheckForUpdates.UseVisualStyleBackColor = true;
+            // 
             // cbRunOnStartup
             // 
             this.cbRunOnStartup.AutoSize = true;
@@ -314,6 +324,7 @@
             // 
             // tpGeneral
             // 
+            this.tpGeneral.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tpGeneral.Controls.Add(this.groupBox2);
             this.tpGeneral.Controls.Add(this.groupBox1);
             this.tpGeneral.Controls.Add(this.groupBox4);
@@ -323,28 +334,27 @@
             this.tpGeneral.Size = new System.Drawing.Size(256, 240);
             this.tpGeneral.TabIndex = 0;
             this.tpGeneral.Text = "General";
-            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
             // tbProwl
             // 
+            this.tbProwl.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbProwl.Controls.Add(this.groupBox3);
             this.tbProwl.Location = new System.Drawing.Point(4, 22);
             this.tbProwl.Name = "tbProwl";
             this.tbProwl.Padding = new System.Windows.Forms.Padding(3);
-            this.tbProwl.Size = new System.Drawing.Size(256, 215);
+            this.tbProwl.Size = new System.Drawing.Size(256, 240);
             this.tbProwl.TabIndex = 1;
             this.tbProwl.Text = "Prowl";
-            this.tbProwl.UseVisualStyleBackColor = true;
             // 
             // tpNotifications
             // 
+            this.tpNotifications.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tpNotifications.Controls.Add(this.groupBox5);
             this.tpNotifications.Location = new System.Drawing.Point(4, 22);
             this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(256, 215);
+            this.tpNotifications.Size = new System.Drawing.Size(256, 240);
             this.tpNotifications.TabIndex = 2;
             this.tpNotifications.Text = "Notifications";
-            this.tpNotifications.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -352,7 +362,7 @@
             this.groupBox5.Controls.Add(this.cbTorrentNotification_DownloadComplete);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(244, 206);
+            this.groupBox5.Size = new System.Drawing.Size(244, 72);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Settings";
@@ -379,6 +389,7 @@
             // 
             // tbAbout
             // 
+            this.tbAbout.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbAbout.Controls.Add(this.linkLabel1);
             this.tbAbout.Controls.Add(this.lblVersion);
             this.tbAbout.Controls.Add(this.label2);
@@ -387,26 +398,6 @@
             this.tbAbout.Size = new System.Drawing.Size(256, 240);
             this.tbAbout.TabIndex = 3;
             this.tbAbout.Text = "About";
-            this.tbAbout.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "uTorrent Notifier";
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(14, 35);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(37, 13);
-            this.lblVersion.TabIndex = 1;
-            this.lblVersion.Text = "v0.4.1";
             // 
             // linkLabel1
             // 
@@ -419,15 +410,24 @@
             this.linkLabel1.Text = "Eric Holmes";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // cbCheckForUpdates
+            // lblVersion
             // 
-            this.cbCheckForUpdates.AutoSize = true;
-            this.cbCheckForUpdates.Location = new System.Drawing.Point(9, 45);
-            this.cbCheckForUpdates.Name = "cbCheckForUpdates";
-            this.cbCheckForUpdates.Size = new System.Drawing.Size(113, 17);
-            this.cbCheckForUpdates.TabIndex = 4;
-            this.cbCheckForUpdates.Text = "Check for updates";
-            this.cbCheckForUpdates.UseVisualStyleBackColor = true;
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(14, 35);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(37, 13);
+            this.lblVersion.TabIndex = 1;
+            this.lblVersion.Text = "v0.4.1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "uTorrent Notifier";
             // 
             // SettingsForm
             // 
@@ -441,8 +441,11 @@
             this.Icon = global::uTorrentNotifier.Properties.Resources.un_icon;
             this.Name = "SettingsForm";
             this.Text = "uTorrent Notifier";
+            this.MaximizeBox = false;
+            this.ControlBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Shown += new System.EventHandler(this.Settings_Shown);
+            this.Resize += new System.EventHandler(this.SettingsForm_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
