@@ -124,7 +124,7 @@ namespace uTorrentNotifier
 
             string json = this.Send(args.ToArray());
 
-            if(json != "")
+            if (json != "")
             {
                 try
                 {
@@ -143,6 +143,10 @@ namespace uTorrentNotifier
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+            else
+            {
+                return null;
             }
 
             return l;

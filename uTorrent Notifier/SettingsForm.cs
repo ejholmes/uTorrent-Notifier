@@ -22,8 +22,16 @@ namespace uTorrentNotifier
         private Prowl prowl;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
 
+        private Version _Version;
+
         public SettingsForm()
         {
+            this._Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            if (this.Config.CheckForUpdates)
+            {
+                this.CheckForUpdates();
+            }
+
             InitializeComponent();
 
             this.utorrent = new WebUIAPI(this.Config);
@@ -117,6 +125,7 @@ namespace uTorrentNotifier
             {
                 this.BackToSystray();
             }
+            this.lblVersion.Text = this._Version.ToString();
             this.SetConfig();
         }
 
@@ -127,6 +136,7 @@ namespace uTorrentNotifier
             this.tbWebUI_URL.Text                               = this.Config.URI;
             this.cbRunOnStartup.Checked                         = this.Config.RunOnStartup;
             this.cbShowBalloonTips.Checked                      = this.Config.ShowBalloonTips;
+            this.cbCheckForUpdates.Checked                      = this.Config.CheckForUpdates;
 
             this.tbProwlAPIKey.Text                             = this.Config.Prowl.APIKey;
             this.cbProwlEnable.Checked                          = this.Config.Prowl.Enable;
@@ -142,6 +152,7 @@ namespace uTorrentNotifier
             this.Config.Password                            = this.tbPassword.Text;
             this.Config.RunOnStartup                        = this.cbRunOnStartup.Checked;
             this.Config.ShowBalloonTips                     = this.cbShowBalloonTips.Checked;
+            this.Config.CheckForUpdates                     = this.cbCheckForUpdates.Checked;
 
             this.Config.Prowl.APIKey                        = this.tbProwlAPIKey.Text;
             this.Config.Prowl.Enable                        = this.cbProwlEnable.Checked;
@@ -186,16 +197,38 @@ namespace uTorrentNotifier
             this.utorrent.StartAll();
         }
 
-        /*private void button1_Click(object sender, EventArgs e)
+        private void CheckForUpdates()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.UseShellExecute = true;
-            startInfo.WorkingDirectory = Environment.CurrentDirectory;
-            startInfo.FileName = "associations.cpp";
-            startInfo.Verb = "runas";
+            System.Net.WebClient webclient = new System.Net.WebClient();
+            string latestVersion = webclient.DownloadString(Config.LatestVersion);
 
-            Process p = Process.Start(startInfo);
-            p.WaitForExit();
-        }*/
+            string[] components = latestVersion.Split(".".ToCharArray());
+            if (components.Length < 3)
+            {
+                components[2] = "0";
+            }
+
+            if ((this._Version.Major >= Int32.Parse(components[0])) &&
+                (this._Version.Minor >= Int32.Parse(components[1])) &&
+                (this._Version.Build >= Int32.Parse(components[2])))
+            {
+
+            }
+            else
+            {
+                if (MessageBox.Show("You are using version " + this._Version.ToString() + ". Would you like to download version " + latestVersion + "?",
+                    "New Version Available",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Process.Start(Config.LatestDownload);
+                }
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://ejholmes.github.com/uTorrent-Notifier/");
+        }
     }
 }

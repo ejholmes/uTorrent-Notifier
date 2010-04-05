@@ -7,12 +7,15 @@ namespace uTorrentNotifier
 {
     public partial class Config
     {
+        public static string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
+        public static string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
         private string _URI             = "";
         private string _Username        = "";
         private string _Password        = "";
 
         private bool _RunOnStartup      = false;
         private bool _ShowBalloonTips   = true;
+        private bool _CheckForUpdates   = false;
 
         public ProwlConfig Prowl = new ProwlConfig();
         public NotificationsConfig Notifications = new NotificationsConfig();
@@ -46,6 +49,12 @@ namespace uTorrentNotifier
             try
             {
                 this._ShowBalloonTips = Properties.Settings.Default.ShowBalloonTips;
+            }
+            catch { }
+
+            try
+            {
+                this._CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
             }
             catch { }
         }
@@ -110,6 +119,16 @@ namespace uTorrentNotifier
             {
                 Properties.Settings.Default.ShowBalloonTips = value;
                 this._ShowBalloonTips = value;
+            }
+        }
+
+        public bool CheckForUpdates
+        {
+            get { return this._CheckForUpdates; }
+            set
+            {
+                Properties.Settings.Default.CheckForUpdates = value;
+                this._CheckForUpdates = value;
             }
         }
     }
