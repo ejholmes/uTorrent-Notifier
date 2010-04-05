@@ -380,6 +380,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SettingsForm";
             this.Text = "uTorrent Notifier";
+            this.Icon = global::uTorrentNotifier.Properties.Resources.un_icon;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.groupBox1.ResumeLayout(false);

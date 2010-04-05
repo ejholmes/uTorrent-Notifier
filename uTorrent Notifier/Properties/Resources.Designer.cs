@@ -59,5 +59,12 @@ namespace uTorrentNotifier.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon un_icon {
+            get {
+                object obj = ResourceManager.GetObject("un_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
