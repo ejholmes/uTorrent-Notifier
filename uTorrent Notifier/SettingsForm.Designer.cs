@@ -178,7 +178,7 @@
             // systrayIcon
             // 
             this.systrayIcon.ContextMenu = this.systrayMenuStrip;
-            this.systrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
+            this.systrayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon; //((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
             this.systrayIcon.Text = "uTorrent Notifier";
             this.systrayIcon.Visible = true;
             this.systrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseDoubleClick);
@@ -443,9 +443,8 @@
             this.Text = "uTorrent Notifier";
             this.MaximizeBox = false;
             this.ControlBox = false;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Shown += new System.EventHandler(this.Settings_Shown);
-            this.Resize += new System.EventHandler(this.SettingsForm_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

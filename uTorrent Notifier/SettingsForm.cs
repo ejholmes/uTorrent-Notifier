@@ -105,13 +105,11 @@ namespace uTorrentNotifier
         private void BackToSystray()
         {
             this.Hide();
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void RestoreFromSystray()
         {
             this.Show();
-            this.WindowState = FormWindowState.Normal;
         }
 
         private void Settings_Shown(object sender, System.EventArgs e)
@@ -185,14 +183,6 @@ namespace uTorrentNotifier
         private void systrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.RestoreFromSystray();
-        }
-
-        void SettingsForm_Resize(object sender, System.EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-            }
         }
 
         private void tsmiPauseAll_Click(object sender, EventArgs e)
