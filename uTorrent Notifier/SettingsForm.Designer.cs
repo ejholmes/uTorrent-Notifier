@@ -178,7 +178,7 @@
             // systrayIcon
             // 
             this.systrayIcon.ContextMenu = this.systrayMenuStrip;
-            this.systrayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon; //((System.Drawing.Icon)(resources.GetObject("systrayIcon.Icon")));
+            this.systrayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
             this.systrayIcon.Text = "uTorrent Notifier";
             this.systrayIcon.Visible = true;
             this.systrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseDoubleClick);

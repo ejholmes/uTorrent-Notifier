@@ -66,5 +66,12 @@ namespace uTorrentNotifier.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        internal static System.Drawing.Icon un_icon_systray {
+            get {
+                object obj = ResourceManager.GetObject("un_icon_systray", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
