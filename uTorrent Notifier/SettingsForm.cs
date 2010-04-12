@@ -182,7 +182,10 @@ namespace uTorrentNotifier
 
         private void systrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.RestoreFromSystray();
+            if (e.Button == MouseButtons.Left)
+            {
+                this.RestoreFromSystray();
+            }
         }
 
         private void tsmiPauseAll_Click(object sender, EventArgs e)
