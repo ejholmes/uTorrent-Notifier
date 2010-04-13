@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -402,7 +401,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(14, 63);
+            this.linkLabel1.Location = new System.Drawing.Point(14, 213);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(63, 13);
             this.linkLabel1.TabIndex = 2;
@@ -434,16 +433,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(288, 319);
+            this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = global::uTorrentNotifier.Properties.Resources.un_icon;
+            this.MaximizeBox = false;
             this.Name = "SettingsForm";
             this.Text = "uTorrent Notifier";
-            this.MaximizeBox = false;
-            this.ControlBox = false;
-            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

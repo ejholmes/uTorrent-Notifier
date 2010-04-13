@@ -123,17 +123,4 @@
   <metadata name="systrayMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>129, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="systrayIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEACACzAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgEAAAAtfo36gAAAAlw
-        SFlzAAALEwAACxMBAJqcGAAAAWVJREFUKJFtkTFIW1EUhr/78mKNaNJQiNSqWxqhhQ66ZhVKx04ujh1S
-        qatkr+Di3kJRHCyhydS9gw7iVAOWUlIlhlQoFONDo+l7ufd3MFEEv7N9nHM4h9+IPtvLwXxrDNLHqY18
-        8UarV5VMKVSPUrg51vdGbC8Hc61JvBRZcoifHBKASzdSn/NFRKlzPVdXWVVV9UX1/qaOiL1Yi82IR4hf
-        dKnzlySWxzh+EPg7OVOOnvttDDFqvO7dVSFLRBvLQddT+wnjpBghQw2Ho8YoA7QISaO2L2CQOGfECdgH
-        Ik7oEO996AsQjgQTXOD4xyUj+BgsFuHbhIeIsEQYHF0eABBicNhBT1u7BAwRwyHAIcR/kngcoF3PvWq+
-        +fZ7D0MSH7CEDDFMnf2jk3d6aQSsZ7SowtTDp1iaGI5pnOujVhf+gOmH9emZipqbNqc0Oa/o/dvv197c
-        pgkfZrWkAa0Uvt66Ow33cQXTH7klHlj0vwAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

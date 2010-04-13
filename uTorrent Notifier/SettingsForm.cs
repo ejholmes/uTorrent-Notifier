@@ -29,7 +29,7 @@ namespace uTorrentNotifier
             this._Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             if (this.Config.CheckForUpdates)
             {
-                this.CheckForUpdates();
+                System.Threading.ThreadPool.QueueUserWorkItem(this.CheckForUpdates);
             }
 
             InitializeComponent();
@@ -198,7 +198,7 @@ namespace uTorrentNotifier
             this.utorrent.StartAll();
         }
 
-        private void CheckForUpdates()
+        private void CheckForUpdates(object sender)
         {
             System.Net.WebClient webclient = new System.Net.WebClient();
             string latestVersion = webclient.DownloadString(Config.LatestVersion);
