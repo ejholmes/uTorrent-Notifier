@@ -66,6 +66,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -389,6 +390,7 @@
             // tbAbout
             // 
             this.tbAbout.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbAbout.Controls.Add(this.richTextBox1);
             this.tbAbout.Controls.Add(this.linkLabel1);
             this.tbAbout.Controls.Add(this.lblVersion);
             this.tbAbout.Controls.Add(this.label2);
@@ -427,6 +429,16 @@
             this.label2.Size = new System.Drawing.Size(120, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "uTorrent Notifier";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(17, 69);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(220, 141);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "Special Thanks:\nhttp://www.famfamfam.com/ - System Tray Icon\nhttp://www.sxc.hu/ -" +
+                " Main Icon";
             // 
             // SettingsForm
             // 
@@ -502,6 +514,7 @@
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbCheckForUpdates;
+        private System.Windows.Forms.RichTextBox richTextBox1;
 
     }
 }
