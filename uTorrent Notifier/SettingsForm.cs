@@ -117,6 +117,8 @@ namespace uTorrentNotifier
             if (Properties.Settings.Default.FirstRun)
             {
                 this.RestoreFromSystray();
+                Properties.Settings.Default.Upgrade();
+                this.Config = new Config();
                 Properties.Settings.Default.FirstRun = false;
             }
             else
