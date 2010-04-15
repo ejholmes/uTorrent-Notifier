@@ -32,6 +32,7 @@ Source: "C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\uTorrent Notifi
 Source: "C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\uTorrent Notifier\uTorrent Notifier\bin\Release\Newtonsoft.Json.Net20.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\uTorrent Notifier\uTorrent Notifier\bin\Release\uTorrent Notifier.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\uTorrent Notifier\uTorrent Notifier\bin\Release\uTorrent Notifier.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ejholmes\Documents\Visual Studio 2008\Projects\uTorrent Notifier\uTorrent Notifier\bin\Release\LinqBridge.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
