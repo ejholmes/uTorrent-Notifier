@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uTorrent Notifier", "uTorrent Notifier\uTorrent Notifier.csproj", "{080211CB-A622-4BA3-8442-7A43F182155E}"
 EndProject
 Global
