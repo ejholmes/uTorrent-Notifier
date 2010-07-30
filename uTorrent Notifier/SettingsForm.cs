@@ -20,6 +20,7 @@ namespace uTorrentNotifier
         private Config Config = new Config();
         private WebUIAPI utorrent;
         private Prowl prowl;
+		private Growl growl;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         private Version _Version;
@@ -45,6 +46,11 @@ namespace uTorrentNotifier
                 this.prowl = new Prowl(this.Config.Prowl);
                 this.prowl.ProwlError += new Prowl.ProwlErrorHandler(prowl_ProwlError);
             }
+
+			if (this.Config.Growl.Enable)
+			{
+				this.growl = new Growl(this.Config.Growl);
+			}
         }
 
         void prowl_ProwlError(object sender, Exception e)
@@ -55,7 +61,11 @@ namespace uTorrentNotifier
         {
             if (this.loginErrors >= 25)
             {
-                this.systrayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
+				if (!this.Config.Growl.Enable)
+					this.systrayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
+				else
+					growl.Add(GrowlNotificationType.Error, e.Message);
+
                 this.loginErrors = 0;
             }
             else
@@ -75,6 +85,11 @@ namespace uTorrentNotifier
                         this.prowl.Add("Download Complete", f.Name);
                     }
 
+					if (this.Config.Growl.Enable)
+					{
+						this.growl.Add(GrowlNotificationType.InfoComplete, f.Name);
+					}
+
                     if (this.Config.ShowBalloonTips)
                     {
                         this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
@@ -93,6 +108,11 @@ namespace uTorrentNotifier
                     {
                         this.prowl.Add("Torrent Added", f.Name);
                     }
+
+					if (this.Config.Growl.Enable)
+					{
+						this.growl.Add(GrowlNotificationType.InfoAdded, f.Name);
+					}
 
                     if (this.Config.ShowBalloonTips)
                     {
@@ -141,6 +161,11 @@ namespace uTorrentNotifier
             this.tbProwlAPIKey.Text                             = this.Config.Prowl.APIKey;
             this.cbProwlEnable.Checked                          = this.Config.Prowl.Enable;
 
+			this.cbGrowlEnable.Checked							= this.Config.Growl.Enable;
+			this.tbGrowlPassword.Text							= this.Config.Growl.Password;
+			this.tbGrowlHost.Text								= this.Config.Growl.Host;
+			this.tbGrowlPort.Text								= this.Config.Growl.Port;
+
             this.cbProwlNotification_TorentAdded.Checked        = this.Config.Notifications.TorrentAdded;
             this.cbTorrentNotification_DownloadComplete.Checked = this.Config.Notifications.DownloadComplete;
         }
@@ -156,6 +181,11 @@ namespace uTorrentNotifier
 
             this.Config.Prowl.APIKey                        = this.tbProwlAPIKey.Text;
             this.Config.Prowl.Enable                        = this.cbProwlEnable.Checked;
+
+			this.Config.Growl.Enable						= this.cbGrowlEnable.Checked;
+			this.Config.Growl.Password						= this.tbGrowlPassword.Text;
+			this.Config.Growl.Host							= this.tbGrowlHost.Text;
+			this.Config.Growl.Port							= this.tbGrowlPort.Text;
 
             this.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
             this.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;

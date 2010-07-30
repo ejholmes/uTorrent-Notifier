@@ -163,5 +163,53 @@ namespace uTorrentNotifier.Properties {
                 this["CheckForUpdates"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GrowlPassword {
+            get {
+                return ((string)(this["GrowlPassword"]));
+            }
+            set {
+                this["GrowlPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GrowlHost {
+            get {
+                return ((string)(this["GrowlHost"]));
+            }
+            set {
+                this["GrowlHost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("23053")]
+        public string GrowlPort {
+            get {
+                return ((string)(this["GrowlPort"]));
+            }
+            set {
+                this["GrowlPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GrowlEnable {
+            get {
+                return ((bool)(this["GrowlEnable"]));
+            }
+            set {
+                this["GrowlEnable"] = value;
+            }
+        }
     }
 }
