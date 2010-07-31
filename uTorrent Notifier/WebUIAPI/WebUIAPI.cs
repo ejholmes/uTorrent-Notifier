@@ -77,7 +77,7 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> finishedTorrents = new List<TorrentFile>();
 
-            if (this.last.Count > 0)
+            if (this.last.Count > 0 && this.current != null)
             {
                 foreach (TorrentFile currentTorrent in this.current)
                 {
@@ -188,7 +188,7 @@ namespace uTorrentNotifier
                 request.CookieContainer = cookies;
 
                 Stream resStream = request.GetResponse().GetResponseStream();
-                this.token = System.Text.RegularExpressions.Regex.Replace(new StreamReader(resStream).ReadToEnd(), @"<(.|\n)*?>", string.Empty);
+				this.token = System.Text.RegularExpressions.Regex.Replace(new StreamReader(resStream).ReadToEnd(), @"(<[^>]+>)", string.Empty);
                 resStream.Close();
             }
             catch (WebException webex)
