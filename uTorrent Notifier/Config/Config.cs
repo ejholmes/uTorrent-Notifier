@@ -18,6 +18,7 @@ namespace uTorrentNotifier
         private bool _CheckForUpdates   = false;
 
         public ProwlConfig Prowl = new ProwlConfig();
+		public GrowlConfig Growl = new GrowlConfig();
         public NotificationsConfig Notifications = new NotificationsConfig();
 
         public Config()

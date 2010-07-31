@@ -73,5 +73,33 @@ namespace uTorrentNotifier.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap utorrent_icon {
+            get {
+                object obj = ResourceManager.GetObject("utorrent_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap utorrent_icon_added {
+            get {
+                object obj = ResourceManager.GetObject("utorrent_icon_added", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap utorrent_icon_complete {
+            get {
+                object obj = ResourceManager.GetObject("utorrent_icon_complete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap utorrent_icon_error {
+            get {
+                object obj = ResourceManager.GetObject("utorrent_icon_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
