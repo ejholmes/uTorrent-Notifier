@@ -102,13 +102,16 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
-            foreach (TorrentFile currentTorrent in this.current)
-            {
-                TorrentFile result = this.last.Find(item => item.Hash == currentTorrent.Hash);
+			if (this.current != null)
+			{
+				foreach (TorrentFile currentTorrent in this.current)
+				{
+					TorrentFile result = this.last.Find(item => item.Hash == currentTorrent.Hash);
 
-                if (result == null)
-                    newTorrents.Add(currentTorrent);
-            }
+					if (result == null)
+						newTorrents.Add(currentTorrent);
+				}
+			}
 
             return newTorrents;
         }
