@@ -211,5 +211,71 @@ namespace uTorrentNotifier.Properties {
                 this["GrowlEnable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitterToken {
+            get {
+                return ((string)(this["TwitterToken"]));
+            }
+            set {
+                this["TwitterToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitterTokenSecret {
+            get {
+                return ((string)(this["TwitterTokenSecret"]));
+            }
+            set {
+                this["TwitterTokenSecret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BKb8qNTzpN8du51E4R7Enw")]
+        public string TwitterConsumerKey {
+            get {
+                return ((string)(this["TwitterConsumerKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zaA1h36ZHOD4GqrTFPyphf4WefrocvGRX6FydECmc")]
+        public string TwitterConsumerSecret {
+            get {
+                return ((string)(this["TwitterConsumerSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitterPIN {
+            get {
+                return ((string)(this["TwitterPIN"]));
+            }
+            set {
+                this["TwitterPIN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TwitterEnable {
+            get {
+                return ((bool)(this["TwitterEnable"]));
+            }
+            set {
+                this["TwitterEnable"] = value;
+            }
+        }
     }
 }
