@@ -83,7 +83,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boxcar\Boxcar.cs" />
     <Compile Include="CommandLine.cs" />
+    <Compile Include="Config\Config.Boxcar.cs" />
     <Compile Include="Config\Config.Notifications.cs" />
     <Compile Include="Config\Config.Prowl.cs" />
     <Compile Include="Config\Config.Growl.cs" />
@@ -136,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\utorrent_icon.png" />
-    <Content Include="un_icon.ico" />
     <None Include="Resources\utorrent_icon_complete.png" />
     <None Include="Resources\utorrent_icon_added.png" />
     <None Include="Resources\utorrent_icon_error.png" />

@@ -21,6 +21,7 @@ namespace uTorrentNotifier
         private WebUIAPI utorrent;
         private Prowl prowl;
 		private Growl growl;
+        private Boxcar boxcar;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         private Version _Version;
@@ -51,6 +52,11 @@ namespace uTorrentNotifier
 			{
 				this.growl = new Growl(this.Config.Growl);
 			}
+
+            if (this.Config.Boxcar.Enable)
+            {
+                this.boxcar = new Boxcar(this.Config.Boxcar);
+            }
         }
 
         void prowl_ProwlError(object sender, Exception e)
@@ -90,6 +96,11 @@ namespace uTorrentNotifier
 						this.growl.Add(GrowlNotificationType.InfoComplete, f.Name);
 					}
 
+                    if (this.Config.Boxcar.Enable)
+                    {
+                        this.boxcar.Add(f.Name);
+                    }
+
                     if (this.Config.ShowBalloonTips)
                     {
                         this.systrayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
@@ -113,6 +124,11 @@ namespace uTorrentNotifier
 					{
 						this.growl.Add(GrowlNotificationType.InfoAdded, f.Name);
 					}
+
+                    if (this.Config.Boxcar.Enable)
+                    {
+                        this.boxcar.Add(f.Name);
+                    }
 
                     if (this.Config.ShowBalloonTips)
                     {
