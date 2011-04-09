@@ -42,21 +42,16 @@ namespace uTorrentNotifier
             this.utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(utorrent_LoginError);
             this.utorrent.Start();
 
+            this.prowl = new Prowl(this.Config.Prowl);
+            this.growl = new Growl(this.Config.Growl);
+            this.boxcar = new Boxcar(this.Config.Boxcar);
+
             if (this.Config.Prowl.Enable)
             {
-                this.prowl = new Prowl(this.Config.Prowl);
                 this.prowl.ProwlError += new Prowl.ProwlErrorHandler(prowl_ProwlError);
             }
 
-			if (this.Config.Growl.Enable)
-			{
-				this.growl = new Growl(this.Config.Growl);
-			}
-
-            if (this.Config.Boxcar.Enable)
-            {
-                this.boxcar = new Boxcar(this.Config.Boxcar);
-            }
+            this.btnBoxcarInvite.Enabled = this.Config.Boxcar.Enable;
         }
 
         void prowl_ProwlError(object sender, Exception e)
@@ -182,6 +177,9 @@ namespace uTorrentNotifier
 			this.tbGrowlHost.Text								= this.Config.Growl.Host;
 			this.tbGrowlPort.Text								= this.Config.Growl.Port;
 
+            this.cbBoxcarEnable.Checked                         = this.Config.Boxcar.Enable;
+            this.tbBoxcarEmail.Text                             = this.Config.Boxcar.Email;
+
             this.cbProwlNotification_TorentAdded.Checked        = this.Config.Notifications.TorrentAdded;
             this.cbTorrentNotification_DownloadComplete.Checked = this.Config.Notifications.DownloadComplete;
         }
@@ -203,6 +201,9 @@ namespace uTorrentNotifier
 			this.Config.Growl.Host							= this.tbGrowlHost.Text;
 			this.Config.Growl.Port							= this.tbGrowlPort.Text;
 
+            this.Config.Boxcar.Enable                       = this.cbBoxcarEnable.Checked;
+            this.Config.Boxcar.Email                        = this.tbBoxcarEmail.Text;
+
             this.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
             this.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;
 
@@ -211,6 +212,20 @@ namespace uTorrentNotifier
 
             if (this.utorrent.Stopped)
                 this.utorrent.Start();
+        }
+
+        private void btnBoxcarInvite_Click(object sender, EventArgs e)
+        {
+            this.Config.Boxcar.Email = this.tbBoxcarEmail.Text;
+            this.boxcar.SendInvite();
+        }
+
+        private void cbBoxcarEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.cbBoxcarEnable.Checked)
+                this.btnBoxcarInvite.Enabled = true;
+            else
+                this.btnBoxcarInvite.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
