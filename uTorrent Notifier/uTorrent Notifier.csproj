@@ -51,6 +51,9 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>un_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Growl.Connector">
       <HintPath>Growl\Growl.Connector.dll</HintPath>
@@ -88,6 +91,11 @@
     <Compile Include="Growl\Growl.cs" />
     <Compile Include="Prowl\Prowl.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Config\Config.Twitter.cs" />
+    <Compile Include="Twitter\oAuth.cs" />
+    <Compile Include="Twitter\oAuthTwitter.cs" />
+    <Compile Include="Twitter\Twitter.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.Actions.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.Codes.cs" />
@@ -133,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\utorrent_icon.png" />
+    <Content Include="un_icon.ico" />
     <None Include="Resources\utorrent_icon_complete.png" />
     <None Include="Resources\utorrent_icon_added.png" />
     <None Include="Resources\utorrent_icon_error.png" />

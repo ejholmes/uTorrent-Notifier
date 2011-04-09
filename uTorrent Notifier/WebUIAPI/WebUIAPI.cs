@@ -206,6 +206,11 @@ namespace uTorrentNotifier
 
         private string _Get(string get)
         {
+            if (get.Contains("token=&"))
+            {
+                this._Token();
+                return "";
+            }
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
