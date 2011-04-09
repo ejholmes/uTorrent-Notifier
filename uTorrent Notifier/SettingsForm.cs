@@ -98,7 +98,7 @@ namespace uTorrentNotifier
 
                     if (this.Config.Boxcar.Enable)
                     {
-                        this.boxcar.Add(f.Name);
+                        this.boxcar.Add("Download Complete: " + f.Name);
                     }
 
                     if (this.Config.ShowBalloonTips)
@@ -127,7 +127,7 @@ namespace uTorrentNotifier
 
                     if (this.Config.Boxcar.Enable)
                     {
-                        this.boxcar.Add(f.Name);
+                        this.boxcar.Add("Torrent Added: " + f.Name);
                     }
 
                     if (this.Config.ShowBalloonTips)

@@ -29,7 +29,6 @@ namespace uTorrentNotifier
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print("Here");
             }
         }
     }
