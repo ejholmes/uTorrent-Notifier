@@ -68,6 +68,12 @@
             this.cbGrowlEnable = new System.Windows.Forms.CheckBox();
             this.tbGrowlPassword = new System.Windows.Forms.TextBox();
             this.lblGrowlPassword = new System.Windows.Forms.Label();
+            this.tbBoxcar = new System.Windows.Forms.TabPage();
+            this.btnBoxcarInvite = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
+            this.lblBoxcarEmail = new System.Windows.Forms.Label();
+            this.cbBoxcarEnable = new System.Windows.Forms.CheckBox();
             this.tpNotifications = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
@@ -77,12 +83,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbBoxcar = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.cbBoxcarEnable = new System.Windows.Forms.CheckBox();
-            this.lblBoxcarEmail = new System.Windows.Forms.Label();
-            this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
-            this.btnBoxcarInvite = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,11 +93,11 @@
             this.tpGrowl.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tbBoxcar.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.tpNotifications.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tbAbout.SuspendLayout();
-            this.tbBoxcar.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -466,6 +466,66 @@
             this.lblGrowlPassword.TabIndex = 0;
             this.lblGrowlPassword.Text = "Password";
             // 
+            // tbBoxcar
+            // 
+            this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
+            this.tbBoxcar.Controls.Add(this.groupBox8);
+            this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
+            this.tbBoxcar.Name = "tbBoxcar";
+            this.tbBoxcar.Size = new System.Drawing.Size(256, 240);
+            this.tbBoxcar.TabIndex = 5;
+            this.tbBoxcar.Text = "Boxcar";
+            this.tbBoxcar.UseVisualStyleBackColor = true;
+            // 
+            // btnBoxcarInvite
+            // 
+            this.btnBoxcarInvite.Location = new System.Drawing.Point(6, 85);
+            this.btnBoxcarInvite.Name = "btnBoxcarInvite";
+            this.btnBoxcarInvite.Size = new System.Drawing.Size(126, 23);
+            this.btnBoxcarInvite.TabIndex = 1;
+            this.btnBoxcarInvite.Text = "Send Boxcar Invitation";
+            this.btnBoxcarInvite.UseVisualStyleBackColor = true;
+            this.btnBoxcarInvite.Click += new System.EventHandler(this.btnBoxcarInvite_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.tbBoxcarEmail);
+            this.groupBox8.Controls.Add(this.lblBoxcarEmail);
+            this.groupBox8.Controls.Add(this.cbBoxcarEnable);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(244, 72);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Settings";
+            // 
+            // tbBoxcarEmail
+            // 
+            this.tbBoxcarEmail.Location = new System.Drawing.Point(48, 44);
+            this.tbBoxcarEmail.Name = "tbBoxcarEmail";
+            this.tbBoxcarEmail.Size = new System.Drawing.Size(189, 20);
+            this.tbBoxcarEmail.TabIndex = 2;
+            // 
+            // lblBoxcarEmail
+            // 
+            this.lblBoxcarEmail.AutoSize = true;
+            this.lblBoxcarEmail.Location = new System.Drawing.Point(7, 47);
+            this.lblBoxcarEmail.Name = "lblBoxcarEmail";
+            this.lblBoxcarEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblBoxcarEmail.TabIndex = 1;
+            this.lblBoxcarEmail.Text = "Email";
+            // 
+            // cbBoxcarEnable
+            // 
+            this.cbBoxcarEnable.AutoSize = true;
+            this.cbBoxcarEnable.Location = new System.Drawing.Point(9, 20);
+            this.cbBoxcarEnable.Name = "cbBoxcarEnable";
+            this.cbBoxcarEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbBoxcarEnable.TabIndex = 0;
+            this.cbBoxcarEnable.Text = "Enable";
+            this.cbBoxcarEnable.UseVisualStyleBackColor = true;
+            this.cbBoxcarEnable.CheckedChanged += new System.EventHandler(this.cbBoxcarEnable_CheckedChanged);
+            // 
             // tpNotifications
             // 
             this.tpNotifications.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -529,8 +589,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(220, 141);
             this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "Special Thanks:\nhttp://www.famfamfam.com/ - System Tray Icon\nhttp://www.sxc.hu/ -" +
-                " Main Icon";
+            this.richTextBox1.Text = "Special Thanks:\nRyan Farley\nDave Nicoll";
             // 
             // linkLabel1
             // 
@@ -561,66 +620,6 @@
             this.label2.Size = new System.Drawing.Size(120, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "uTorrent Notifier";
-            // 
-            // tbBoxcar
-            // 
-            this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
-            this.tbBoxcar.Controls.Add(this.groupBox8);
-            this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
-            this.tbBoxcar.Name = "tbBoxcar";
-            this.tbBoxcar.Size = new System.Drawing.Size(256, 240);
-            this.tbBoxcar.TabIndex = 5;
-            this.tbBoxcar.Text = "Boxcar";
-            this.tbBoxcar.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.tbBoxcarEmail);
-            this.groupBox8.Controls.Add(this.lblBoxcarEmail);
-            this.groupBox8.Controls.Add(this.cbBoxcarEnable);
-            this.groupBox8.Location = new System.Drawing.Point(6, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(244, 72);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Settings";
-            // 
-            // cbBoxcarEnable
-            // 
-            this.cbBoxcarEnable.AutoSize = true;
-            this.cbBoxcarEnable.Location = new System.Drawing.Point(9, 20);
-            this.cbBoxcarEnable.Name = "cbBoxcarEnable";
-            this.cbBoxcarEnable.Size = new System.Drawing.Size(59, 17);
-            this.cbBoxcarEnable.TabIndex = 0;
-            this.cbBoxcarEnable.Text = "Enable";
-            this.cbBoxcarEnable.UseVisualStyleBackColor = true;
-            this.cbBoxcarEnable.CheckedChanged += new System.EventHandler(this.cbBoxcarEnable_CheckedChanged);
-            // 
-            // lblBoxcarEmail
-            // 
-            this.lblBoxcarEmail.AutoSize = true;
-            this.lblBoxcarEmail.Location = new System.Drawing.Point(7, 47);
-            this.lblBoxcarEmail.Name = "lblBoxcarEmail";
-            this.lblBoxcarEmail.Size = new System.Drawing.Size(32, 13);
-            this.lblBoxcarEmail.TabIndex = 1;
-            this.lblBoxcarEmail.Text = "Email";
-            // 
-            // tbBoxcarEmail
-            // 
-            this.tbBoxcarEmail.Location = new System.Drawing.Point(48, 44);
-            this.tbBoxcarEmail.Name = "tbBoxcarEmail";
-            this.tbBoxcarEmail.Size = new System.Drawing.Size(189, 20);
-            this.tbBoxcarEmail.TabIndex = 2;
-            // 
-            // btnBoxcarInvite
-            // 
-            this.btnBoxcarInvite.Location = new System.Drawing.Point(6, 85);
-            this.btnBoxcarInvite.Name = "btnBoxcarInvite";
-            this.btnBoxcarInvite.Size = new System.Drawing.Size(126, 23);
-            this.btnBoxcarInvite.TabIndex = 1;
-            this.btnBoxcarInvite.Text = "Send Boxcar Invitation";
-            this.btnBoxcarInvite.UseVisualStyleBackColor = true;
-            this.btnBoxcarInvite.Click += new System.EventHandler(this.btnBoxcarInvite_Click);
             // 
             // SettingsForm
             // 
@@ -653,14 +652,14 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tbBoxcar.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.tpNotifications.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tbAbout.ResumeLayout(false);
             this.tbAbout.PerformLayout();
-            this.tbBoxcar.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
