@@ -386,6 +386,7 @@
             // 
             // tpGrowl
             // 
+            this.tpGrowl.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tpGrowl.Controls.Add(this.groupBox7);
             this.tpGrowl.Controls.Add(this.groupBox6);
             this.tpGrowl.Location = new System.Drawing.Point(4, 22);
@@ -394,7 +395,6 @@
             this.tpGrowl.Size = new System.Drawing.Size(300, 240);
             this.tpGrowl.TabIndex = 4;
             this.tpGrowl.Text = "Growl";
-            this.tpGrowl.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -481,6 +481,7 @@
             // 
             // tpTwitter
             // 
+            this.tpTwitter.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tpTwitter.Controls.Add(this.btnSendTestTweet);
             this.tpTwitter.Controls.Add(this.groupBox9);
             this.tpTwitter.Controls.Add(this.groupBox8);
@@ -490,7 +491,6 @@
             this.tpTwitter.Size = new System.Drawing.Size(300, 240);
             this.tpTwitter.TabIndex = 5;
             this.tpTwitter.Text = "Twitter";
-            this.tpTwitter.UseVisualStyleBackColor = true;
             // 
             // btnSendTestTweet
             // 
@@ -594,6 +594,7 @@
             // 
             // tbBoxcar
             // 
+            this.tbBoxcar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
             this.tbBoxcar.Controls.Add(this.groupBox10);
             this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
@@ -601,7 +602,6 @@
             this.tbBoxcar.Size = new System.Drawing.Size(300, 240);
             this.tbBoxcar.TabIndex = 5;
             this.tbBoxcar.Text = "Boxcar";
-            this.tbBoxcar.UseVisualStyleBackColor = true;
             // 
             // btnBoxcarInvite
             // 
