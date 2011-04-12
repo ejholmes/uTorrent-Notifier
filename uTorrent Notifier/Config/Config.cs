@@ -20,6 +20,7 @@ namespace uTorrentNotifier
         public ProwlConfig Prowl = new ProwlConfig();
 		public GrowlConfig Growl = new GrowlConfig();
         public TwitterConfig Twitter = new TwitterConfig();
+        public BoxcarConfig Boxcar = new BoxcarConfig();
         public NotificationsConfig Notifications = new NotificationsConfig();
 
         public Config()

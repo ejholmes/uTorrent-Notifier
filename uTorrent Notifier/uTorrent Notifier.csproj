@@ -83,7 +83,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boxcar\Boxcar.cs" />
     <Compile Include="CommandLine.cs" />
+    <Compile Include="Config\Config.Boxcar.cs" />
     <Compile Include="Config\Config.Notifications.cs" />
     <Compile Include="Config\Config.Prowl.cs" />
     <Compile Include="Config\Config.Growl.cs" />
