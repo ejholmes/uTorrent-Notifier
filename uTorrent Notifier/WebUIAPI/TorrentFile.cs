@@ -60,17 +60,21 @@ namespace uTorrentNotifier
             f.Availability          = double.Parse(file[16]);
             f.TorrentQueueOrder     = Int32.Parse(file[17]);
             f.Remaining             = double.Parse(file[18]);
-            try
+
+            if (file.Length > 19)
             {
-                f.TorrentSource = file[19];
-                f.RssFeed = file[20];
-                f.StatusString = file[21];
-            }
-            catch
-            {
-                f.TorrentSource = "";
-                f.RssFeed = "";
-                f.StatusString = "";
+                try
+                {
+                    f.TorrentSource = file[19];
+                    f.RssFeed = file[20];
+                    f.StatusString = file[21];
+                }
+                catch
+                {
+                    f.TorrentSource = "";
+                    f.RssFeed = "";
+                    f.StatusString = "";
+                }
             }
 
             return f;

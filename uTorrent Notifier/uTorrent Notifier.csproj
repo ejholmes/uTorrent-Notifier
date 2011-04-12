@@ -52,7 +52,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\un_icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Growl.Connector">
@@ -93,6 +94,11 @@
     <Compile Include="Growl\Growl.cs" />
     <Compile Include="Prowl\Prowl.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Config\Config.Twitter.cs" />
+    <Compile Include="Twitter\oAuth.cs" />
+    <Compile Include="Twitter\oAuthTwitter.cs" />
+    <Compile Include="Twitter\Twitter.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.Actions.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.Codes.cs" />

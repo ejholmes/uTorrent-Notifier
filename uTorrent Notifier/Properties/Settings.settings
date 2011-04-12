@@ -50,6 +50,24 @@
     <Setting Name="GrowlEnable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="TwitterToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TwitterTokenSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TwitterConsumerKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BKb8qNTzpN8du51E4R7Enw</Value>
+    </Setting>
+    <Setting Name="TwitterConsumerSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">zaA1h36ZHOD4GqrTFPyphf4WefrocvGRX6FydECmc</Value>
+    </Setting>
+    <Setting Name="TwitterPIN" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TwitterEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="BoxcarEnable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

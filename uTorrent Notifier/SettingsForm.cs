@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Principal;
 using System.Diagnostics;
+using System.Threading;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,8 +22,10 @@ namespace uTorrentNotifier
         private WebUIAPI utorrent;
         private Prowl prowl;
 		private Growl growl;
+        private Twitter twitter;
         private Boxcar boxcar;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
+        private oAuthTwitter oAuth;
 
         private Version _Version;
 
@@ -44,6 +47,7 @@ namespace uTorrentNotifier
 
             this.prowl = new Prowl(this.Config.Prowl);
             this.growl = new Growl(this.Config.Growl);
+            this.twitter = new Twitter(this.Config.Twitter);
             this.boxcar = new Boxcar(this.Config.Boxcar);
 
             if (this.Config.Prowl.Enable)
@@ -60,7 +64,7 @@ namespace uTorrentNotifier
 
         void utorrent_LoginError(object sender, Exception e)
         {
-            if (this.loginErrors >= 25)
+            if (this.loginErrors >= 5)
             {
 				if (!this.Config.Growl.Enable)
 					this.systrayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
@@ -91,6 +95,11 @@ namespace uTorrentNotifier
 						this.growl.Add(GrowlNotificationType.InfoComplete, f.Name);
 					}
 
+                    if (this.Config.Twitter.Enable)
+                    {
+                        this.twitter.Update("Downloaded " + f.Name);
+                    }
+
                     if (this.Config.Boxcar.Enable)
                     {
                         this.boxcar.Add("Download Complete: " + f.Name);
@@ -119,6 +128,11 @@ namespace uTorrentNotifier
 					{
 						this.growl.Add(GrowlNotificationType.InfoAdded, f.Name);
 					}
+
+                    if (this.Config.Twitter.Enable)
+                    {
+                        this.twitter.Update("Added " + f.Name + " | " + Utilities.FormatBytes((long)f.Size));
+                    }
 
                     if (this.Config.Boxcar.Enable)
                     {
@@ -177,6 +191,9 @@ namespace uTorrentNotifier
 			this.tbGrowlHost.Text								= this.Config.Growl.Host;
 			this.tbGrowlPort.Text								= this.Config.Growl.Port;
 
+            this.tbTwitterPIN.Text                              = this.Config.Twitter.PIN;
+            this.cbTwitterEnable.Checked                        = this.Config.Twitter.Enable;
+
             this.cbBoxcarEnable.Checked                         = this.Config.Boxcar.Enable;
             this.tbBoxcarEmail.Text                             = this.Config.Boxcar.Email;
 
@@ -200,6 +217,8 @@ namespace uTorrentNotifier
 			this.Config.Growl.Password						= this.tbGrowlPassword.Text;
 			this.Config.Growl.Host							= this.tbGrowlHost.Text;
 			this.Config.Growl.Port							= this.tbGrowlPort.Text;
+
+            this.Config.Twitter.Enable                      = this.cbTwitterEnable.Checked;
 
             this.Config.Boxcar.Enable                       = this.cbBoxcarEnable.Checked;
             this.Config.Boxcar.Email                        = this.tbBoxcarEmail.Text;
@@ -293,6 +312,86 @@ namespace uTorrentNotifier
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://ejholmes.github.com/uTorrent-Notifier/");
+        }
+
+        private void btnStartAuthorization_Click(object sender, EventArgs e)
+        {
+            oAuth = new oAuthTwitter();
+            oAuth.ConsumerKey = this.Config.Twitter.ConsumerKey;
+            oAuth.ConsumerSecret = this.Config.Twitter.ConsumerSecret;
+
+            this.Config.Twitter.PIN = String.Empty;
+            this.Config.Twitter.Token = String.Empty;
+            this.Config.Twitter.TokenSecret = String.Empty;
+
+            string oAuthLink = oAuth.AuthorizationLinkGet();
+            try
+            {
+                Process.Start(oAuthLink);
+                tbTwitterPIN.Text = String.Empty;
+                tbTwitterPIN.Enabled = true;
+                lblTwitterPIN.Enabled = true;
+                btnTwitterAuthorize.Enabled = true;
+            }
+            catch
+            {
+                tbTwitterPIN.Text = String.Empty;
+                lblTwitterPIN.Enabled = false;
+                tbTwitterPIN.Enabled = false;
+                btnTwitterAuthorize.Enabled = false;
+                MessageBox.Show("An error occurred trying to authenticate. Check your network settings and browser config, and try again.", "uTorrent Notifier - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTwitterAuthorize_Click(object sender, EventArgs e)
+        {
+            string PIN = tbTwitterPIN.Text;
+            if (!string.IsNullOrEmpty(PIN))
+            {
+                PIN = PIN.Trim();
+            }
+            else
+            {
+                MessageBox.Show("Copy and paste the authentication PIN code from Twitter", "uTorrent Notifier - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                oAuth.AccessTokenGet(oAuth.OAuthToken, PIN);
+                this.Config.Twitter.Token = oAuth.Token;
+                this.Config.Twitter.TokenSecret = oAuth.TokenSecret;
+                this.Config.Twitter.PIN = PIN;
+                tbTwitterPIN.Enabled = false;
+                btnTwitterAuthorize.Enabled = false;
+                MessageBox.Show("Successfully authenticated with Twitter", "uTorrent Notifier - Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                this.Config.Twitter.PIN = String.Empty;
+                tbTwitterPIN.Text = String.Empty;
+                lblTwitterPIN.Enabled = false;
+                tbTwitterPIN.Enabled = false;
+                btnTwitterAuthorize.Enabled = false;
+                MessageBox.Show("An error occurred trying to authenticate. Check your network settings and browser config, and try again.", "uTorrent Notifier - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSendTestTweet_Click(object sender, EventArgs e)
+        {
+            bool bCanSend=true;
+            if(this.twitter==null) bCanSend=false;
+            if(!this.cbTwitterEnable.Checked) bCanSend=false;
+
+            if(bCanSend)
+            {
+                this.twitter.Update("Congratulations! Twitter notifications from uTorrent Notifier are working correctly :)");
+                MessageBox.Show("A test tweet has been sent...", "uTorrent Notifier - Test sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("uTorrent Notifier must be authenticated and enabled before testing. Please check your settings, and try again.", "uTorrent Notifier - Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
