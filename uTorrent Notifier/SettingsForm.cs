@@ -291,13 +291,9 @@ namespace uTorrentNotifier
                 components[2] = "0";
             }
 
-            if ((this._Version.Major >= Int32.Parse(components[0])) &&
-                (this._Version.Minor >= Int32.Parse(components[1])) &&
-                (this._Version.Build >= Int32.Parse(components[2])))
-            {
-
-            }
-            else
+            if(Int32.Parse(components[0]) > this._Version.Major || 
+                (Int32.Parse(components[0]) == this._Version.Major && Int32.Parse(components[1]) > this._Version.Minor) ||
+                (Int32.Parse(components[0]) == this._Version.Major && Int32.Parse(components[1]) == this._Version.Minor && Int32.Parse(components[2]) > this._Version.Build ))
             {
                 if (MessageBox.Show("You are using version " + this._Version.ToString() + ". Would you like to download version " + latestVersion + "?",
                     "New Version Available",
