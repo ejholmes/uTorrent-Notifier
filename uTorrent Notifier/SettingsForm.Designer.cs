@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -39,14 +38,6 @@
             this.tbWebUI_URL = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.systrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.systrayMenuStrip = new System.Windows.Forms.ContextMenu();
-            this.tsmiStartAll = new System.Windows.Forms.MenuItem();
-            this.tsmiPauseAll = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.tsmiSettings = new System.Windows.Forms.MenuItem();
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.tsmiClose = new System.Windows.Forms.MenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbProwlEnable = new System.Windows.Forms.CheckBox();
             this.tbProwlAPIKey = new System.Windows.Forms.TextBox();
@@ -57,7 +48,7 @@
             this.cbRunOnStartup = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
-            this.tbProwl = new System.Windows.Forms.TabPage();
+            this.tpProwl = new System.Windows.Forms.TabPage();
             this.tpGrowl = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tbGrowlPort = new System.Windows.Forms.TextBox();
@@ -79,7 +70,7 @@
             this.tbTwitterPIN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTwitterPIN = new System.Windows.Forms.Label();
-            this.tbBoxcar = new System.Windows.Forms.TabPage();
+            this.tpBoxcar = new System.Windows.Forms.TabPage();
             this.btnBoxcarInvite = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
@@ -100,14 +91,14 @@
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpGeneral.SuspendLayout();
-            this.tbProwl.SuspendLayout();
+            this.tpProwl.SuspendLayout();
             this.tpGrowl.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tpTwitter.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.tbBoxcar.SuspendLayout();
+            this.tpBoxcar.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.tpNotifications.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -210,58 +201,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // systrayIcon
-            // 
-            this.systrayIcon.ContextMenu = this.systrayMenuStrip;
-            this.systrayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
-            this.systrayIcon.Text = "uTorrent Notifier";
-            this.systrayIcon.Visible = true;
-            this.systrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systrayIcon_MouseDoubleClick);
-            // 
-            // systrayMenuStrip
-            // 
-            this.systrayMenuStrip.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.tsmiStartAll,
-            this.tsmiPauseAll,
-            this.menuItem2,
-            this.tsmiSettings,
-            this.menuItem1,
-            this.tsmiClose});
-            // 
-            // tsmiStartAll
-            // 
-            this.tsmiStartAll.Index = 0;
-            this.tsmiStartAll.Text = "Start All";
-            this.tsmiStartAll.Click += new System.EventHandler(this.tsmiStartAll_Click);
-            // 
-            // tsmiPauseAll
-            // 
-            this.tsmiPauseAll.Index = 1;
-            this.tsmiPauseAll.Text = "Pause All";
-            this.tsmiPauseAll.Click += new System.EventHandler(this.tsmiPauseAll_Click);
-            // 
-            // menuItem2
-            // 
-            this.menuItem2.Index = 2;
-            this.menuItem2.Text = "-";
-            // 
-            // tsmiSettings
-            // 
-            this.tsmiSettings.Index = 3;
-            this.tsmiSettings.Text = "Settings";
-            this.tsmiSettings.Click += new System.EventHandler(this.tsmiSettings_Click);
-            // 
-            // menuItem1
-            // 
-            this.menuItem1.Index = 4;
-            this.menuItem1.Text = "-";
-            // 
-            // tsmiClose
-            // 
-            this.tsmiClose.Index = 5;
-            this.tsmiClose.Text = "Exit";
-            this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cbProwlEnable);
@@ -348,10 +287,10 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tpGeneral);
-            this.tabControl1.Controls.Add(this.tbProwl);
+            this.tabControl1.Controls.Add(this.tpProwl);
             this.tabControl1.Controls.Add(this.tpGrowl);
             this.tabControl1.Controls.Add(this.tpTwitter);
-            this.tabControl1.Controls.Add(this.tbBoxcar);
+            this.tabControl1.Controls.Add(this.tpBoxcar);
             this.tabControl1.Controls.Add(this.tpNotifications);
             this.tabControl1.Controls.Add(this.tbAbout);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
@@ -372,17 +311,19 @@
             this.tpGeneral.Size = new System.Drawing.Size(300, 240);
             this.tpGeneral.TabIndex = 0;
             this.tpGeneral.Text = "General";
+            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
-            // tbProwl
+            // tpProwl
             // 
-            this.tbProwl.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbProwl.Controls.Add(this.groupBox3);
-            this.tbProwl.Location = new System.Drawing.Point(4, 22);
-            this.tbProwl.Name = "tbProwl";
-            this.tbProwl.Padding = new System.Windows.Forms.Padding(3);
-            this.tbProwl.Size = new System.Drawing.Size(300, 240);
-            this.tbProwl.TabIndex = 1;
-            this.tbProwl.Text = "Prowl";
+            this.tpProwl.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tpProwl.Controls.Add(this.groupBox3);
+            this.tpProwl.Location = new System.Drawing.Point(4, 22);
+            this.tpProwl.Name = "tpProwl";
+            this.tpProwl.Padding = new System.Windows.Forms.Padding(3);
+            this.tpProwl.Size = new System.Drawing.Size(300, 240);
+            this.tpProwl.TabIndex = 1;
+            this.tpProwl.Text = "Prowl";
+            this.tpProwl.UseVisualStyleBackColor = true;
             // 
             // tpGrowl
             // 
@@ -395,6 +336,7 @@
             this.tpGrowl.Size = new System.Drawing.Size(300, 240);
             this.tpGrowl.TabIndex = 4;
             this.tpGrowl.Text = "Growl";
+            this.tpGrowl.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -491,6 +433,7 @@
             this.tpTwitter.Size = new System.Drawing.Size(300, 240);
             this.tpTwitter.TabIndex = 5;
             this.tpTwitter.Text = "Twitter";
+            this.tpTwitter.UseVisualStyleBackColor = true;
             // 
             // btnSendTestTweet
             // 
@@ -592,16 +535,17 @@
             this.lblTwitterPIN.TabIndex = 0;
             this.lblTwitterPIN.Text = "PIN";
             // 
-            // tbBoxcar
+            // tpBoxcar
             // 
-            this.tbBoxcar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
-            this.tbBoxcar.Controls.Add(this.groupBox10);
-            this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
-            this.tbBoxcar.Name = "tbBoxcar";
-            this.tbBoxcar.Size = new System.Drawing.Size(300, 240);
-            this.tbBoxcar.TabIndex = 5;
-            this.tbBoxcar.Text = "Boxcar";
+            this.tpBoxcar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tpBoxcar.Controls.Add(this.btnBoxcarInvite);
+            this.tpBoxcar.Controls.Add(this.groupBox10);
+            this.tpBoxcar.Location = new System.Drawing.Point(4, 22);
+            this.tpBoxcar.Name = "tpBoxcar";
+            this.tpBoxcar.Size = new System.Drawing.Size(300, 240);
+            this.tpBoxcar.TabIndex = 5;
+            this.tpBoxcar.Text = "Boxcar";
+            this.tpBoxcar.UseVisualStyleBackColor = true;
             // 
             // btnBoxcarInvite
             // 
@@ -661,6 +605,7 @@
             this.tpNotifications.Size = new System.Drawing.Size(300, 240);
             this.tpNotifications.TabIndex = 2;
             this.tpNotifications.Text = "Notifications";
+            this.tpNotifications.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -705,6 +650,7 @@
             this.tbAbout.Size = new System.Drawing.Size(300, 240);
             this.tbAbout.TabIndex = 3;
             this.tbAbout.Text = "About";
+            this.tbAbout.UseVisualStyleBackColor = true;
             // 
             // richTextBox1
             // 
@@ -760,7 +706,7 @@
             this.MaximizeBox = false;
             this.Name = "SettingsForm";
             this.Text = "uTorrent Notifier";
-            this.Shown += new System.EventHandler(this.Settings_Shown);
+            this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -771,7 +717,7 @@
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
-            this.tbProwl.ResumeLayout(false);
+            this.tpProwl.ResumeLayout(false);
             this.tpGrowl.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -782,7 +728,7 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.tbBoxcar.ResumeLayout(false);
+            this.tpBoxcar.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.tpNotifications.ResumeLayout(false);
@@ -805,10 +751,6 @@
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.NotifyIcon systrayIcon;
-        private System.Windows.Forms.ContextMenu systrayMenuStrip;
-        private System.Windows.Forms.MenuItem tsmiSettings;
-        private System.Windows.Forms.MenuItem tsmiClose;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbProwlAPIKey;
         private System.Windows.Forms.Label lblProwlAPIKey;
@@ -817,13 +759,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox cbRunOnStartup;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuItem tsmiStartAll;
-        private System.Windows.Forms.MenuItem tsmiPauseAll;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpGeneral;
-        private System.Windows.Forms.TabPage tbProwl;
+        private System.Windows.Forms.TabPage tpProwl;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox cbTorrentNotification_DownloadComplete;
         private System.Windows.Forms.CheckBox cbProwlNotification_TorentAdded;
@@ -855,7 +793,7 @@
         private System.Windows.Forms.Button btnTwitterAuthorize;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSendTestTweet;
-        private System.Windows.Forms.TabPage tbBoxcar;
+        private System.Windows.Forms.TabPage tpBoxcar;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox tbBoxcarEmail;
         private System.Windows.Forms.Label lblBoxcarEmail;

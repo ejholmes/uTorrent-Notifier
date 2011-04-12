@@ -13,7 +13,7 @@ namespace uTorrentNotifier
 		Error
 	}
 
-    class Growl
+    public class Growl
     {
 		private Config.GrowlConfig GrowlConfig;
 

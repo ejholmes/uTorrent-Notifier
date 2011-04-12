@@ -10,7 +10,7 @@ using ExtensionMethods;
 
 namespace uTorrentNotifier
 {
-    class Prowl
+    public class Prowl
     {
         public delegate void ProwlErrorHandler(object sender, Exception e);
         public event ProwlErrorHandler ProwlError;

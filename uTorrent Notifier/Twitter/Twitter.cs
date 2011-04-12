@@ -12,7 +12,7 @@ using ExtensionMethods;
 
 namespace uTorrentNotifier
 {
-    class Twitter
+    public class Twitter
     {
         private Config.TwitterConfig TwitterConfig;
         private oAuthTwitter oAuth;

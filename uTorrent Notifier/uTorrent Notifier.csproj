@@ -91,6 +91,7 @@
     <Compile Include="Config\Config.Prowl.cs" />
     <Compile Include="Config\Config.Growl.cs" />
     <Compile Include="Growl\Growl.cs" />
+    <Compile Include="ClassRegistry.cs" />
     <Compile Include="Prowl\Prowl.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Config\Config.Twitter.cs" />
@@ -109,7 +110,9 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

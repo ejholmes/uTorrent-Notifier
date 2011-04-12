@@ -8,7 +8,7 @@ using System.Web;
 
 namespace uTorrentNotifier
 {
-    class Boxcar
+    public class Boxcar
     {
         private string _uri = "http://boxcar.io";
         private Config.BoxcarConfig BoxcarConfig;
