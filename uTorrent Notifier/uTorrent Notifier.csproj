@@ -90,7 +90,6 @@
     <Compile Include="Config\Config.Notifications.cs" />
     <Compile Include="Config\Config.Prowl.cs" />
     <Compile Include="Config\Config.Growl.cs" />
-    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Growl\Growl.cs" />
     <Compile Include="Prowl\Prowl.cs" />
     <Compile Include="Settings.cs" />

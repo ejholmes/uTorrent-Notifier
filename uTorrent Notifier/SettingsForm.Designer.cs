@@ -68,9 +68,20 @@
             this.cbGrowlEnable = new System.Windows.Forms.CheckBox();
             this.tbGrowlPassword = new System.Windows.Forms.TextBox();
             this.lblGrowlPassword = new System.Windows.Forms.Label();
+            this.tpTwitter = new System.Windows.Forms.TabPage();
+            this.btnSendTestTweet = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cbTwitterEnable = new System.Windows.Forms.CheckBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnTwitterAuthorize = new System.Windows.Forms.Button();
+            this.btnStartAuthorization = new System.Windows.Forms.Button();
+            this.tbTwitterPIN = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblTwitterPIN = new System.Windows.Forms.Label();
             this.tbBoxcar = new System.Windows.Forms.TabPage();
             this.btnBoxcarInvite = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
             this.lblBoxcarEmail = new System.Windows.Forms.Label();
             this.cbBoxcarEnable = new System.Windows.Forms.CheckBox();
@@ -93,8 +104,11 @@
             this.tpGrowl.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.tbBoxcar.SuspendLayout();
+            this.tpTwitter.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tbBoxcar.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.tpNotifications.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tbAbout.SuspendLayout();
@@ -108,7 +122,7 @@
             this.groupBox1.Controls.Add(this.lblUserName);
             this.groupBox1.Location = new System.Drawing.Point(6, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 84);
+            this.groupBox1.Size = new System.Drawing.Size(288, 84);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
@@ -152,7 +166,7 @@
             this.groupBox2.Controls.Add(this.tbWebUI_URL);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(244, 60);
+            this.groupBox2.Size = new System.Drawing.Size(288, 60);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WebUI URL";
@@ -171,7 +185,7 @@
             // 
             this.tbWebUI_URL.Location = new System.Drawing.Point(6, 19);
             this.tbWebUI_URL.Name = "tbWebUI_URL";
-            this.tbWebUI_URL.Size = new System.Drawing.Size(232, 20);
+            this.tbWebUI_URL.Size = new System.Drawing.Size(276, 20);
             this.tbWebUI_URL.TabIndex = 0;
             // 
             // btnSave
@@ -188,7 +202,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(201, 284);
+            this.btnCancel.Location = new System.Drawing.Point(245, 284);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -255,7 +269,7 @@
             this.groupBox3.Controls.Add(this.lblProwlAPIKey);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(244, 72);
+            this.groupBox3.Size = new System.Drawing.Size(288, 72);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
@@ -303,7 +317,7 @@
             this.groupBox4.Controls.Add(this.cbRunOnStartup);
             this.groupBox4.Location = new System.Drawing.Point(6, 162);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(244, 72);
+            this.groupBox4.Size = new System.Drawing.Size(288, 72);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Windows";
@@ -336,13 +350,14 @@
             this.tabControl1.Controls.Add(this.tpGeneral);
             this.tabControl1.Controls.Add(this.tbProwl);
             this.tabControl1.Controls.Add(this.tpGrowl);
+            this.tabControl1.Controls.Add(this.tpTwitter);
             this.tabControl1.Controls.Add(this.tbBoxcar);
             this.tabControl1.Controls.Add(this.tpNotifications);
             this.tabControl1.Controls.Add(this.tbAbout);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(264, 266);
+            this.tabControl1.Size = new System.Drawing.Size(308, 266);
             this.tabControl1.TabIndex = 7;
             // 
             // tpGeneral
@@ -354,10 +369,9 @@
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tpGeneral.Name = "tpGeneral";
             this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpGeneral.Size = new System.Drawing.Size(256, 240);
+            this.tpGeneral.Size = new System.Drawing.Size(300, 240);
             this.tpGeneral.TabIndex = 0;
             this.tpGeneral.Text = "General";
-            this.tpGeneral.UseVisualStyleBackColor = true;
             // 
             // tbProwl
             // 
@@ -366,10 +380,9 @@
             this.tbProwl.Location = new System.Drawing.Point(4, 22);
             this.tbProwl.Name = "tbProwl";
             this.tbProwl.Padding = new System.Windows.Forms.Padding(3);
-            this.tbProwl.Size = new System.Drawing.Size(256, 240);
+            this.tbProwl.Size = new System.Drawing.Size(300, 240);
             this.tbProwl.TabIndex = 1;
             this.tbProwl.Text = "Prowl";
-            this.tbProwl.UseVisualStyleBackColor = true;
             // 
             // tpGrowl
             // 
@@ -378,7 +391,7 @@
             this.tpGrowl.Location = new System.Drawing.Point(4, 22);
             this.tpGrowl.Name = "tpGrowl";
             this.tpGrowl.Padding = new System.Windows.Forms.Padding(3);
-            this.tpGrowl.Size = new System.Drawing.Size(256, 240);
+            this.tpGrowl.Size = new System.Drawing.Size(300, 240);
             this.tpGrowl.TabIndex = 4;
             this.tpGrowl.Text = "Growl";
             this.tpGrowl.UseVisualStyleBackColor = true;
@@ -391,7 +404,7 @@
             this.groupBox7.Controls.Add(this.lblGrowlHost);
             this.groupBox7.Location = new System.Drawing.Point(6, 83);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(244, 73);
+            this.groupBox7.Size = new System.Drawing.Size(288, 73);
             this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Optional Host";
@@ -435,7 +448,7 @@
             this.groupBox6.Controls.Add(this.lblGrowlPassword);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(244, 72);
+            this.groupBox6.Size = new System.Drawing.Size(288, 72);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Settings";
@@ -466,13 +479,126 @@
             this.lblGrowlPassword.TabIndex = 0;
             this.lblGrowlPassword.Text = "Password";
             // 
+            // tpTwitter
+            // 
+            this.tpTwitter.Controls.Add(this.btnSendTestTweet);
+            this.tpTwitter.Controls.Add(this.groupBox9);
+            this.tpTwitter.Controls.Add(this.groupBox8);
+            this.tpTwitter.Location = new System.Drawing.Point(4, 22);
+            this.tpTwitter.Name = "tpTwitter";
+            this.tpTwitter.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTwitter.Size = new System.Drawing.Size(300, 240);
+            this.tpTwitter.TabIndex = 5;
+            this.tpTwitter.Text = "Twitter";
+            this.tpTwitter.UseVisualStyleBackColor = true;
+            // 
+            // btnSendTestTweet
+            // 
+            this.btnSendTestTweet.Location = new System.Drawing.Point(168, 206);
+            this.btnSendTestTweet.Name = "btnSendTestTweet";
+            this.btnSendTestTweet.Size = new System.Drawing.Size(125, 23);
+            this.btnSendTestTweet.TabIndex = 8;
+            this.btnSendTestTweet.Text = "Send test Tweet";
+            this.btnSendTestTweet.UseVisualStyleBackColor = true;
+            this.btnSendTestTweet.Click += new System.EventHandler(this.btnSendTestTweet_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.cbTwitterEnable);
+            this.groupBox9.Location = new System.Drawing.Point(6, 150);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(288, 50);
+            this.groupBox9.TabIndex = 7;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Settings";
+            // 
+            // cbTwitterEnable
+            // 
+            this.cbTwitterEnable.AutoSize = true;
+            this.cbTwitterEnable.Location = new System.Drawing.Point(9, 20);
+            this.cbTwitterEnable.Name = "cbTwitterEnable";
+            this.cbTwitterEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbTwitterEnable.TabIndex = 1;
+            this.cbTwitterEnable.Text = "Enable";
+            this.cbTwitterEnable.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label5);
+            this.groupBox8.Controls.Add(this.btnTwitterAuthorize);
+            this.groupBox8.Controls.Add(this.btnStartAuthorization);
+            this.groupBox8.Controls.Add(this.tbTwitterPIN);
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Controls.Add(this.lblTwitterPIN);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(288, 139);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Authorization";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(7, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(274, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Like any Twitter client, uTorrent Notifier must be authorized to send tweets if y" +
+                "ou wish to use this feature.";
+            // 
+            // btnTwitterAuthorize
+            // 
+            this.btnTwitterAuthorize.Enabled = false;
+            this.btnTwitterAuthorize.Location = new System.Drawing.Point(127, 101);
+            this.btnTwitterAuthorize.Name = "btnTwitterAuthorize";
+            this.btnTwitterAuthorize.Size = new System.Drawing.Size(75, 23);
+            this.btnTwitterAuthorize.TabIndex = 6;
+            this.btnTwitterAuthorize.Text = "Authorize";
+            this.btnTwitterAuthorize.UseVisualStyleBackColor = true;
+            this.btnTwitterAuthorize.Click += new System.EventHandler(this.btnTwitterAuthorize_Click);
+            // 
+            // btnStartAuthorization
+            // 
+            this.btnStartAuthorization.Location = new System.Drawing.Point(6, 59);
+            this.btnStartAuthorization.Name = "btnStartAuthorization";
+            this.btnStartAuthorization.Size = new System.Drawing.Size(128, 23);
+            this.btnStartAuthorization.TabIndex = 5;
+            this.btnStartAuthorization.Text = "Start authorization";
+            this.btnStartAuthorization.UseVisualStyleBackColor = true;
+            this.btnStartAuthorization.Click += new System.EventHandler(this.btnStartAuthorization_Click);
+            // 
+            // tbTwitterPIN
+            // 
+            this.tbTwitterPIN.Enabled = false;
+            this.tbTwitterPIN.Location = new System.Drawing.Point(34, 103);
+            this.tbTwitterPIN.Name = "tbTwitterPIN";
+            this.tbTwitterPIN.Size = new System.Drawing.Size(87, 20);
+            this.tbTwitterPIN.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 1;
+            // 
+            // lblTwitterPIN
+            // 
+            this.lblTwitterPIN.AutoSize = true;
+            this.lblTwitterPIN.Location = new System.Drawing.Point(6, 106);
+            this.lblTwitterPIN.Name = "lblTwitterPIN";
+            this.lblTwitterPIN.Size = new System.Drawing.Size(25, 13);
+            this.lblTwitterPIN.TabIndex = 0;
+            this.lblTwitterPIN.Text = "PIN";
+            // 
             // tbBoxcar
             // 
             this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
-            this.tbBoxcar.Controls.Add(this.groupBox8);
+            this.tbBoxcar.Controls.Add(this.groupBox10);
             this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
             this.tbBoxcar.Name = "tbBoxcar";
-            this.tbBoxcar.Size = new System.Drawing.Size(256, 240);
+            this.tbBoxcar.Size = new System.Drawing.Size(300, 240);
             this.tbBoxcar.TabIndex = 5;
             this.tbBoxcar.Text = "Boxcar";
             this.tbBoxcar.UseVisualStyleBackColor = true;
@@ -487,17 +613,17 @@
             this.btnBoxcarInvite.UseVisualStyleBackColor = true;
             this.btnBoxcarInvite.Click += new System.EventHandler(this.btnBoxcarInvite_Click);
             // 
-            // groupBox8
+            // groupBox10
             // 
-            this.groupBox8.Controls.Add(this.tbBoxcarEmail);
-            this.groupBox8.Controls.Add(this.lblBoxcarEmail);
-            this.groupBox8.Controls.Add(this.cbBoxcarEnable);
-            this.groupBox8.Location = new System.Drawing.Point(6, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(244, 72);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Settings";
+            this.groupBox10.Controls.Add(this.tbBoxcarEmail);
+            this.groupBox10.Controls.Add(this.lblBoxcarEmail);
+            this.groupBox10.Controls.Add(this.cbBoxcarEnable);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(288, 72);
+            this.groupBox10.TabIndex = 0;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Settings";
             // 
             // tbBoxcarEmail
             // 
@@ -532,10 +658,9 @@
             this.tpNotifications.Controls.Add(this.groupBox5);
             this.tpNotifications.Location = new System.Drawing.Point(4, 22);
             this.tpNotifications.Name = "tpNotifications";
-            this.tpNotifications.Size = new System.Drawing.Size(256, 240);
+            this.tpNotifications.Size = new System.Drawing.Size(300, 240);
             this.tpNotifications.TabIndex = 2;
             this.tpNotifications.Text = "Notifications";
-            this.tpNotifications.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -543,7 +668,7 @@
             this.groupBox5.Controls.Add(this.cbTorrentNotification_DownloadComplete);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(244, 72);
+            this.groupBox5.Size = new System.Drawing.Size(287, 72);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Settings";
@@ -577,19 +702,19 @@
             this.tbAbout.Controls.Add(this.label2);
             this.tbAbout.Location = new System.Drawing.Point(4, 22);
             this.tbAbout.Name = "tbAbout";
-            this.tbAbout.Size = new System.Drawing.Size(256, 240);
+            this.tbAbout.Size = new System.Drawing.Size(300, 240);
             this.tbAbout.TabIndex = 3;
             this.tbAbout.Text = "About";
-            this.tbAbout.UseVisualStyleBackColor = true;
             // 
             // richTextBox1
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Location = new System.Drawing.Point(17, 69);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(220, 141);
+            this.richTextBox1.Size = new System.Drawing.Size(267, 141);
             this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "Special Thanks:\nRyan Farley\nDave Nicoll";
+            this.richTextBox1.Text = "Special Thanks:\nGrowl notifications by Ryan Farley\nhttps://github.com/RyanFarley\n" +
+                "\nTwitter notifications by Dave Nicoll\nhttp://davenicoll.com/";
             // 
             // linkLabel1
             // 
@@ -607,9 +732,9 @@
             this.lblVersion.AutoSize = true;
             this.lblVersion.Location = new System.Drawing.Point(14, 35);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(37, 13);
+            this.lblVersion.Size = new System.Drawing.Size(34, 13);
             this.lblVersion.TabIndex = 1;
-            this.lblVersion.Text = "v0.4.1";
+            this.lblVersion.Text = "vx.x.x";
             // 
             // label2
             // 
@@ -625,7 +750,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 319);
+            this.ClientSize = new System.Drawing.Size(332, 319);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
@@ -652,9 +777,14 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.tbBoxcar.ResumeLayout(false);
+            this.tpTwitter.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tbBoxcar.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.tpNotifications.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -704,18 +834,29 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbCheckForUpdates;
         private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.TabPage tpGrowl;
-		private System.Windows.Forms.GroupBox groupBox7;
-		private System.Windows.Forms.TextBox tbGrowlPort;
-		private System.Windows.Forms.Label lblGrowlPort;
-		private System.Windows.Forms.TextBox tbGrowlHost;
-		private System.Windows.Forms.Label lblGrowlHost;
-		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.CheckBox cbGrowlEnable;
-		private System.Windows.Forms.TextBox tbGrowlPassword;
-		private System.Windows.Forms.Label lblGrowlPassword;
-        private System.Windows.Forms.TabPage tbBoxcar;
+        private System.Windows.Forms.TabPage tpGrowl;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox tbGrowlPort;
+        private System.Windows.Forms.Label lblGrowlPort;
+        private System.Windows.Forms.TextBox tbGrowlHost;
+        private System.Windows.Forms.Label lblGrowlHost;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox cbGrowlEnable;
+        private System.Windows.Forms.TextBox tbGrowlPassword;
+        private System.Windows.Forms.Label lblGrowlPassword;
+        private System.Windows.Forms.TabPage tpTwitter;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox tbTwitterPIN;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTwitterPIN;
+        private System.Windows.Forms.Button btnStartAuthorization;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox cbTwitterEnable;
+        private System.Windows.Forms.Button btnTwitterAuthorize;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSendTestTweet;
+        private System.Windows.Forms.TabPage tbBoxcar;
+        private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox tbBoxcarEmail;
         private System.Windows.Forms.Label lblBoxcarEmail;
         private System.Windows.Forms.CheckBox cbBoxcarEnable;
@@ -723,4 +864,3 @@
 
     }
 }
-
