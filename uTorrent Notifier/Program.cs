@@ -53,6 +53,7 @@ namespace uTorrentNotifier
             this.ClassRegistry.uTorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
             this.ClassRegistry.uTorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
             this.ClassRegistry.uTorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(this.utorrent_LoginError);
+            this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(uTorrent_UpdatedList);
             this.ClassRegistry.uTorrent.Start();
 
             this.settingsForm = new SettingsForm(this.ClassRegistry);
@@ -153,6 +154,21 @@ namespace uTorrentNotifier
                         this._trayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
                     }
                 }
+            }
+        }
+
+        void uTorrent_UpdatedList(List<TorrentFile> torrents)
+        {
+            int downloading = torrents.Count(n => n.StatusString == WebUIAPI.StatusString.Downloading);
+            if (downloading == 1)
+            {
+                this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name + "\n" +
+                    downloading.ToString() + " torrent downloading\n";
+            }
+            else
+            {
+                this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name + "\n" +
+                    downloading.ToString() + " torrents downloading\n";
             }
         }
 
@@ -257,7 +273,7 @@ namespace uTorrentNotifier
             // standard system icon for simplicity, but you
             // can of course use your own custom icon too.
             this._trayIcon = new NotifyIcon();
-            this._trayIcon.Text = "uTorrentNotifier";
+            this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name;
             this._trayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
 
             // Add menu to tray icon and show it.

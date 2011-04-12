@@ -16,10 +16,12 @@ namespace uTorrentNotifier
         public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
         public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
         public delegate void LoginErrorEventHandler(object sender, Exception e);
+        public delegate void UpdatedListEventHandler(List<TorrentFile> torrents);
 
         public event DownloadFinishedEventHandler DownloadComplete;
         public event TorrentAddedEventHandler TorrentAdded;
         public event LoginErrorEventHandler LoginError;
+        public event UpdatedListEventHandler UpdatedList;
 
         private Timer timer = new Timer();
 
@@ -41,6 +43,7 @@ namespace uTorrentNotifier
         public void Start()
         {
             timer.Start();
+            this.timer_Tick(null, null);
         }
 
         public void Stop()
@@ -151,6 +154,8 @@ namespace uTorrentNotifier
             {
                 return null;
             }
+
+            this.UpdatedList(l);
 
             return l;
         }
