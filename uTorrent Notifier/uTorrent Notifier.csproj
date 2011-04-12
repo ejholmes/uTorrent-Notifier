@@ -84,20 +84,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boxcar\Boxcar.cs" />
+    <Compile Include="Notifications\Boxcar\Boxcar.cs" />
     <Compile Include="CommandLine.cs" />
     <Compile Include="Config\Config.Boxcar.cs" />
     <Compile Include="Config\Config.Notifications.cs" />
     <Compile Include="Config\Config.Prowl.cs" />
     <Compile Include="Config\Config.Growl.cs" />
-    <Compile Include="Growl\Growl.cs" />
+    <Compile Include="Notifications\Growl\Growl.cs" />
     <Compile Include="ClassRegistry.cs" />
-    <Compile Include="Prowl\Prowl.cs" />
+    <Compile Include="Notifications\Prowl\Prowl.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Config\Config.Twitter.cs" />
-    <Compile Include="Twitter\oAuth.cs" />
-    <Compile Include="Twitter\oAuthTwitter.cs" />
-    <Compile Include="Twitter\Twitter.cs" />
+    <Compile Include="Notifications\Twitter\oAuth.cs" />
+    <Compile Include="Notifications\Twitter\oAuthTwitter.cs" />
+    <Compile Include="Notifications\Twitter\Twitter.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.Actions.cs" />
     <Compile Include="WebUIAPI\WebUIAPI.cs" />
