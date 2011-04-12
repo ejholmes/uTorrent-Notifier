@@ -47,6 +47,7 @@ namespace uTorrentNotifier
 
             this.prowl = new Prowl(this.Config.Prowl);
             this.growl = new Growl(this.Config.Growl);
+            this.twitter = new Twitter(this.Config.Twitter);
             this.boxcar = new Boxcar(this.Config.Boxcar);
 
             if (this.Config.Prowl.Enable)
@@ -55,11 +56,6 @@ namespace uTorrentNotifier
             }
 
             this.btnBoxcarInvite.Enabled = this.Config.Boxcar.Enable;
-
-            if (this.Config.Twitter.Enable)
-            { 
-                this.twitter = new Twitter(this.Config.Twitter);
-            }
         }
 
         void prowl_ProwlError(object sender, Exception e)

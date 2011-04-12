@@ -79,6 +79,12 @@
             this.tbTwitterPIN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTwitterPIN = new System.Windows.Forms.Label();
+            this.tbBoxcar = new System.Windows.Forms.TabPage();
+            this.btnBoxcarInvite = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
+            this.lblBoxcarEmail = new System.Windows.Forms.Label();
+            this.cbBoxcarEnable = new System.Windows.Forms.CheckBox();
             this.tpNotifications = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbProwlNotification_TorentAdded = new System.Windows.Forms.CheckBox();
@@ -101,6 +107,8 @@
             this.tpTwitter.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tbBoxcar.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.tpNotifications.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tbAbout.SuspendLayout();
@@ -343,6 +351,7 @@
             this.tabControl1.Controls.Add(this.tbProwl);
             this.tabControl1.Controls.Add(this.tpGrowl);
             this.tabControl1.Controls.Add(this.tpTwitter);
+            this.tabControl1.Controls.Add(this.tbBoxcar);
             this.tabControl1.Controls.Add(this.tpNotifications);
             this.tabControl1.Controls.Add(this.tbAbout);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
@@ -498,7 +507,7 @@
             this.groupBox9.Controls.Add(this.cbTwitterEnable);
             this.groupBox9.Location = new System.Drawing.Point(6, 150);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(287, 50);
+            this.groupBox9.Size = new System.Drawing.Size(288, 50);
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Settings";
@@ -523,7 +532,7 @@
             this.groupBox8.Controls.Add(this.lblTwitterPIN);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(287, 138);
+            this.groupBox8.Size = new System.Drawing.Size(288, 139);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Authorization";
@@ -582,6 +591,66 @@
             this.lblTwitterPIN.Size = new System.Drawing.Size(25, 13);
             this.lblTwitterPIN.TabIndex = 0;
             this.lblTwitterPIN.Text = "PIN";
+            // 
+            // tbBoxcar
+            // 
+            this.tbBoxcar.Controls.Add(this.btnBoxcarInvite);
+            this.tbBoxcar.Controls.Add(this.groupBox10);
+            this.tbBoxcar.Location = new System.Drawing.Point(4, 22);
+            this.tbBoxcar.Name = "tbBoxcar";
+            this.tbBoxcar.Size = new System.Drawing.Size(300, 240);
+            this.tbBoxcar.TabIndex = 5;
+            this.tbBoxcar.Text = "Boxcar";
+            this.tbBoxcar.UseVisualStyleBackColor = true;
+            // 
+            // btnBoxcarInvite
+            // 
+            this.btnBoxcarInvite.Location = new System.Drawing.Point(6, 85);
+            this.btnBoxcarInvite.Name = "btnBoxcarInvite";
+            this.btnBoxcarInvite.Size = new System.Drawing.Size(126, 23);
+            this.btnBoxcarInvite.TabIndex = 1;
+            this.btnBoxcarInvite.Text = "Send Boxcar Invitation";
+            this.btnBoxcarInvite.UseVisualStyleBackColor = true;
+            this.btnBoxcarInvite.Click += new System.EventHandler(this.btnBoxcarInvite_Click);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.tbBoxcarEmail);
+            this.groupBox10.Controls.Add(this.lblBoxcarEmail);
+            this.groupBox10.Controls.Add(this.cbBoxcarEnable);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(288, 72);
+            this.groupBox10.TabIndex = 0;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Settings";
+            // 
+            // tbBoxcarEmail
+            // 
+            this.tbBoxcarEmail.Location = new System.Drawing.Point(48, 44);
+            this.tbBoxcarEmail.Name = "tbBoxcarEmail";
+            this.tbBoxcarEmail.Size = new System.Drawing.Size(189, 20);
+            this.tbBoxcarEmail.TabIndex = 2;
+            // 
+            // lblBoxcarEmail
+            // 
+            this.lblBoxcarEmail.AutoSize = true;
+            this.lblBoxcarEmail.Location = new System.Drawing.Point(7, 47);
+            this.lblBoxcarEmail.Name = "lblBoxcarEmail";
+            this.lblBoxcarEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblBoxcarEmail.TabIndex = 1;
+            this.lblBoxcarEmail.Text = "Email";
+            // 
+            // cbBoxcarEnable
+            // 
+            this.cbBoxcarEnable.AutoSize = true;
+            this.cbBoxcarEnable.Location = new System.Drawing.Point(9, 20);
+            this.cbBoxcarEnable.Name = "cbBoxcarEnable";
+            this.cbBoxcarEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbBoxcarEnable.TabIndex = 0;
+            this.cbBoxcarEnable.Text = "Enable";
+            this.cbBoxcarEnable.UseVisualStyleBackColor = true;
+            this.cbBoxcarEnable.CheckedChanged += new System.EventHandler(this.cbBoxcarEnable_CheckedChanged);
             // 
             // tpNotifications
             // 
@@ -644,8 +713,8 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(267, 141);
             this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "Special Thanks:\nhttp://www.famfamfam.com/ - System Tray Icon\nhttp://www.sxc.hu/ -" +
-                " Main Icon\n\nTwitter notifications by Dave Nicoll\nhttp://davenicoll.com/";
+            this.richTextBox1.Text = "Special Thanks:\nGrowl notifications by Ryan Farley\nhttps://github.com/RyanFarley\n" +
+                "\nTwitter notifications by Dave Nicoll\nhttp://davenicoll.com/";
             // 
             // linkLabel1
             // 
@@ -713,6 +782,9 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tbBoxcar.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.tpNotifications.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -783,6 +855,12 @@
         private System.Windows.Forms.Button btnTwitterAuthorize;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSendTestTweet;
+        private System.Windows.Forms.TabPage tbBoxcar;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox tbBoxcarEmail;
+        private System.Windows.Forms.Label lblBoxcarEmail;
+        private System.Windows.Forms.CheckBox cbBoxcarEnable;
+        private System.Windows.Forms.Button btnBoxcarInvite;
 
     }
 }

@@ -52,7 +52,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>un_icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Growl.Connector">
@@ -143,7 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\utorrent_icon.png" />
-    <Content Include="un_icon.ico" />
     <None Include="Resources\utorrent_icon_complete.png" />
     <None Include="Resources\utorrent_icon_added.png" />
     <None Include="Resources\utorrent_icon_error.png" />
