@@ -11,6 +11,6 @@ Eric Holmes (eric@ejholmes.net)
 
 Contributors
 --
-Ryan Farley
+Ryan Farley ([http://ryanfarley.com][http://ryanfarley.com])
 
-Dave Nicoll
+Dave Nicoll ([http://davenicoll.com][http://davenicoll.com])
