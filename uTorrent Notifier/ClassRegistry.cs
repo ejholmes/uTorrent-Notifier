@@ -28,6 +28,7 @@ namespace uTorrentNotifier
         public Config Config
         {
             get { return this._config; }
+            set { this._config = value; }
         }
         public WebUIAPI uTorrent
         {

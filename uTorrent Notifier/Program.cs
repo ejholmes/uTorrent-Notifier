@@ -37,17 +37,16 @@ namespace uTorrentNotifier
 
         private SettingsForm settingsForm;
 
-        public Config Config = new Config();
         private ClassRegistry ClassRegistry;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         public Program()
         {
-            this.ClassRegistry = new ClassRegistry(this.Config);
+            this.ClassRegistry = new ClassRegistry(this.ClassRegistry.Config);
 
             InitializeComponent();
 
-            if (this.Config.CheckForUpdates)
+            if (this.ClassRegistry.Config.CheckForUpdates)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(this.CheckForUpdates);
             }
@@ -68,7 +67,7 @@ namespace uTorrentNotifier
             {
                 this.settingsForm.Show();
                 Properties.Settings.Default.Upgrade();
-                this.Config = new Config();
+                this.ClassRegistry.Config = new Config();
                 Properties.Settings.Default.FirstRun = false;
             }
         }
@@ -77,7 +76,7 @@ namespace uTorrentNotifier
         {
             if (this.loginErrors >= 5)
             {
-                if (!this.Config.Growl.Enable)
+                if (!this.ClassRegistry.Config.Growl.Enable)
                     this._trayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
                 else
                     this.ClassRegistry.Growl.Add(GrowlNotificationType.Error, e.Message);
@@ -92,31 +91,31 @@ namespace uTorrentNotifier
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)
         {
-            if (this.Config.Notifications.DownloadComplete)
+            if (this.ClassRegistry.Config.Notifications.DownloadComplete)
             {
                 foreach (TorrentFile f in finished)
                 {
-                    if (this.Config.Prowl.Enable)
+                    if (this.ClassRegistry.Config.Prowl.Enable)
                     {
                         this.ClassRegistry.Prowl.Add("Download Complete", f.Name);
                     }
 
-                    if (this.Config.Growl.Enable)
+                    if (this.ClassRegistry.Config.Growl.Enable)
                     {
                         this.ClassRegistry.Growl.Add(GrowlNotificationType.InfoComplete, f.Name);
                     }
 
-                    if (this.Config.Twitter.Enable)
+                    if (this.ClassRegistry.Config.Twitter.Enable)
                     {
                         this.ClassRegistry.Twitter.Update("Downloaded " + f.Name);
                     }
 
-                    if (this.Config.Boxcar.Enable)
+                    if (this.ClassRegistry.Config.Boxcar.Enable)
                     {
                         this.ClassRegistry.Boxcar.Add("Download Complete: " + f.Name);
                     }
 
-                    if (this.Config.ShowBalloonTips)
+                    if (this.ClassRegistry.Config.ShowBalloonTips)
                     {
                         this._trayIcon.ShowBalloonTip(5000, "Download Complete", f.Name, ToolTipIcon.Info);
                     }
@@ -126,31 +125,31 @@ namespace uTorrentNotifier
 
         void utorrent_TorrentAdded(List<TorrentFile> added)
         {
-            if (this.Config.Notifications.TorrentAdded)
+            if (this.ClassRegistry.Config.Notifications.TorrentAdded)
             {
                 foreach (TorrentFile f in added)
                 {
-                    if (this.Config.Prowl.Enable)
+                    if (this.ClassRegistry.Config.Prowl.Enable)
                     {
                         this.ClassRegistry.Prowl.Add("Torrent Added", f.Name);
                     }
 
-                    if (this.Config.Growl.Enable)
+                    if (this.ClassRegistry.Config.Growl.Enable)
                     {
                         this.ClassRegistry.Growl.Add(GrowlNotificationType.InfoAdded, f.Name);
                     }
 
-                    if (this.Config.Twitter.Enable)
+                    if (this.ClassRegistry.Config.Twitter.Enable)
                     {
                         this.ClassRegistry.Twitter.Update("Added " + f.Name + " | " + Utilities.FormatBytes((long)f.Size));
                     }
 
-                    if (this.Config.Boxcar.Enable)
+                    if (this.ClassRegistry.Config.Boxcar.Enable)
                     {
                         this.ClassRegistry.Boxcar.Add("Torrent Added: " + f.Name);
                     }
 
-                    if (this.Config.ShowBalloonTips)
+                    if (this.ClassRegistry.Config.ShowBalloonTips)
                     {
                         this._trayIcon.ShowBalloonTip(5000, "Torrent Added", f.Name, ToolTipIcon.Info);
                     }
