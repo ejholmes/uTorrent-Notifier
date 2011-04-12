@@ -12,8 +12,6 @@ namespace uTorrentNotifier
 {
     public class Prowl
     {
-        public delegate void ProwlErrorHandler(object sender, Exception e);
-        public event ProwlErrorHandler ProwlError;
 
         public enum Priority
         {
@@ -94,10 +92,8 @@ namespace uTorrentNotifier
 
                 request.GetResponse();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                if (this.ProwlError != null)
-                    this.ProwlError(this, ex);
             }
         }
     }

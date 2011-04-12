@@ -21,6 +21,7 @@ namespace uTorrentNotifier
         [STAThread]
         public static void Main()
         {
+            Application.EnableVisualStyles();
             Application.Run(new Program());
         }
 
@@ -36,75 +37,14 @@ namespace uTorrentNotifier
         private SettingsForm settingsForm;
 
         public Config Config = new Config();
-        public WebUIAPI utorrent;
         private ClassRegistry ClassRegistry;
         private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         public Program()
         {
             this.ClassRegistry = new ClassRegistry(this.Config);
-            
-            // 
-            // StartAll
-            // 
-            this._miStartAll = new System.Windows.Forms.MenuItem();
-            this._miStartAll.Index = 0;
-            this._miStartAll.Text = "Start All";
-            this._miStartAll.Click += new System.EventHandler(this.StartAll_Click);
-            // 
-            // PauseAll
-            // 
-            this._miPauseAll = new System.Windows.Forms.MenuItem();
-            this._miPauseAll.Index = 1;
-            this._miPauseAll.Text = "Pause All";
-            this._miPauseAll.Click += new System.EventHandler(this.PauseAll_Click);
-            // 
-            // menuItem2
-            // 
-            this._menuItem2 = new System.Windows.Forms.MenuItem();
-            this._menuItem2.Index = 2;
-            this._menuItem2.Text = "-";
-            // 
-            // Settings
-            // 
-            this._miSettings = new System.Windows.Forms.MenuItem();
-            this._miSettings.Index = 3;
-            this._miSettings.Text = "Settings";
-            this._miSettings.Click += new System.EventHandler(this.Settings_Click);
-            // 
-            // menuItem1
-            // 
-            this._menuItem1 = new System.Windows.Forms.MenuItem();
-            this._menuItem1.Index = 4;
-            this._menuItem1.Text = "-";
-            // 
-            // Close
-            // 
-            this._miClose = new System.Windows.Forms.MenuItem();
-            this._miClose.Index = 5;
-            this._miClose.Text = "Exit";
-            this._miClose.Click += new System.EventHandler(this.Close_Click);
-            // Create a simple tray menu with only one item.
-            this._trayMenu = new ContextMenu();
-            this._trayMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                this._miStartAll,
-                this._miPauseAll,
-                this._menuItem2,
-                this._miSettings,
-                this._menuItem1,
-                this._miClose});
 
-            // Create a tray icon. In this example we use a
-            // standard system icon for simplicity, but you
-            // can of course use your own custom icon too.
-            this._trayIcon = new NotifyIcon();
-            this._trayIcon.Text = "uTorrentNotifier";
-            this._trayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
-
-            // Add menu to tray icon and show it.
-            this._trayIcon.ContextMenu = this._trayMenu;
-            this._trayIcon.Visible = true;
-
+            InitializeComponent();
 
             this.ClassRegistry.Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
@@ -112,17 +52,10 @@ namespace uTorrentNotifier
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(this.CheckForUpdates);
             }
-
-            this.utorrent = new WebUIAPI(this.Config);
-            this.utorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
-            this.utorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
-            this.utorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(this.utorrent_LoginError);
-            this.utorrent.Start();
-
-            if (this.Config.Prowl.Enable)
-            {
-                this.ClassRegistry.Prowl.ProwlError += new Prowl.ProwlErrorHandler(this.prowl_ProwlError);
-            }
+            this.ClassRegistry.uTorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
+            this.ClassRegistry.uTorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
+            this.ClassRegistry.uTorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(this.utorrent_LoginError);
+            this.ClassRegistry.uTorrent.Start();
 
             this.settingsForm = new SettingsForm(this.ClassRegistry);
 
@@ -138,10 +71,6 @@ namespace uTorrentNotifier
                 this.Config = new Config();
                 Properties.Settings.Default.FirstRun = false;
             }
-        }
-
-        void prowl_ProwlError(object sender, Exception e)
-        {
         }
 
         void utorrent_LoginError(object sender, Exception e)
@@ -241,12 +170,12 @@ namespace uTorrentNotifier
 
         private void PauseAll_Click(object sender, EventArgs e)
         {
-            this.utorrent.PauseAll();
+            this.ClassRegistry.uTorrent.PauseAll();
         }
 
         private void StartAll_Click(object sender, EventArgs e)
         {
-            this.utorrent.StartAll();
+            this.ClassRegistry.uTorrent.StartAll();
         }
 
         private void CheckForUpdates(object sender)
@@ -272,6 +201,70 @@ namespace uTorrentNotifier
                     Process.Start(Config.LatestDownload);
                 }
             }
+        }
+
+        private void InitializeComponent()
+        {
+            // 
+            // StartAll
+            // 
+            this._miStartAll = new System.Windows.Forms.MenuItem();
+            this._miStartAll.Index = 0;
+            this._miStartAll.Text = "Start All";
+            this._miStartAll.Click += new System.EventHandler(this.StartAll_Click);
+            // 
+            // PauseAll
+            // 
+            this._miPauseAll = new System.Windows.Forms.MenuItem();
+            this._miPauseAll.Index = 1;
+            this._miPauseAll.Text = "Pause All";
+            this._miPauseAll.Click += new System.EventHandler(this.PauseAll_Click);
+            // 
+            // menuItem2
+            // 
+            this._menuItem2 = new System.Windows.Forms.MenuItem();
+            this._menuItem2.Index = 2;
+            this._menuItem2.Text = "-";
+            // 
+            // Settings
+            // 
+            this._miSettings = new System.Windows.Forms.MenuItem();
+            this._miSettings.Index = 3;
+            this._miSettings.Text = "Settings";
+            this._miSettings.Click += new System.EventHandler(this.Settings_Click);
+            // 
+            // menuItem1
+            // 
+            this._menuItem1 = new System.Windows.Forms.MenuItem();
+            this._menuItem1.Index = 4;
+            this._menuItem1.Text = "-";
+            // 
+            // Close
+            // 
+            this._miClose = new System.Windows.Forms.MenuItem();
+            this._miClose.Index = 5;
+            this._miClose.Text = "Exit";
+            this._miClose.Click += new System.EventHandler(this.Close_Click);
+            // Create a simple tray menu with only one item.
+            this._trayMenu = new ContextMenu();
+            this._trayMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                this._miStartAll,
+                this._miPauseAll,
+                this._menuItem2,
+                this._miSettings,
+                this._menuItem1,
+                this._miClose});
+
+            // Create a tray icon. In this example we use a
+            // standard system icon for simplicity, but you
+            // can of course use your own custom icon too.
+            this._trayIcon = new NotifyIcon();
+            this._trayIcon.Text = "uTorrentNotifier";
+            this._trayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
+
+            // Add menu to tray icon and show it.
+            this._trayIcon.ContextMenu = this._trayMenu;
+            this._trayIcon.Visible = true;
         }
 
         protected override void OnLoad(EventArgs e)
