@@ -42,7 +42,7 @@ namespace uTorrentNotifier
 
         public Program()
         {
-            this.ClassRegistry = new ClassRegistry(this.ClassRegistry.Config);
+            this.ClassRegistry = new ClassRegistry();
 
             InitializeComponent();
 
@@ -259,7 +259,7 @@ namespace uTorrentNotifier
             this._miClose.Index = 5;
             this._miClose.Text = "Exit";
             this._miClose.Click += new System.EventHandler(this.Close_Click);
-            // Create a simple tray menu with only one item.
+
             this._trayMenu = new ContextMenu();
             this._trayMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
                 this._miStartAll,
@@ -269,9 +269,6 @@ namespace uTorrentNotifier
                 this._menuItem1,
                 this._miClose});
 
-            // Create a tray icon. In this example we use a
-            // standard system icon for simplicity, but you
-            // can of course use your own custom icon too.
             this._trayIcon = new NotifyIcon();
             this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name;
             this._trayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
