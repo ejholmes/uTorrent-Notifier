@@ -14,10 +14,9 @@ namespace uTorrentNotifier
         private Twitter _twitter;
         private Boxcar _boxcar;
 
-        public ClassRegistry(Config c)
+        public ClassRegistry()
         {
-            this._config      = c;
-
+            this._config      = new Config();
             this._webuiapi    = new WebUIAPI(this._config);
             this._prowl       = new Prowl(this._config.Prowl);
             this._growl       = new Growl(this._config.Growl);
