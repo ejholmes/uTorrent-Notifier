@@ -14,6 +14,7 @@ AppSupportURL=http://ejholmes.github.com/uTorrent-Notifier/
 AppUpdatesURL=http://ejholmes.github.com/uTorrent-Notifier/
 DefaultDirName={pf}\uTorrent Notifier
 DefaultGroupName=uTorrent Notifier
+InfoBeforeFile=Changelog
 AllowNoIcons=yes
 OutputBaseFilename=setup
 Compression=lzma

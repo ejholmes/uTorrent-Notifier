@@ -1,0 +1,12 @@
+v0.5
+-----------------
+* Added Growl, Twitter and Boxcar notifications
+* New icon
+* Fixed bug where listing torrents returned null
+
+
+v0.4.7
+-----------------
+* Changed systray icon
+* Settings are now upgrade from the last version when a user upgrades
+
