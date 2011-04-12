@@ -46,8 +46,6 @@ namespace uTorrentNotifier
 
             InitializeComponent();
 
-            this.ClassRegistry.Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-
             if (this.Config.CheckForUpdates)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(this.CheckForUpdates);

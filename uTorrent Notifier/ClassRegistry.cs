@@ -13,7 +13,6 @@ namespace uTorrentNotifier
         private Growl _growl;
         private Twitter _twitter;
         private Boxcar _boxcar;
-        private Version _version;
 
         public ClassRegistry(Config c)
         {
@@ -57,8 +56,7 @@ namespace uTorrentNotifier
 
         public Version Version
         {
-            get { return this._version; }
-            set { this._version = value; }
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version; }
         }
 
     }
