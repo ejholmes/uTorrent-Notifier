@@ -265,6 +265,7 @@ namespace uTorrentNotifier
             this._trayIcon = new NotifyIcon();
             this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name;
             this._trayIcon.Icon = global::uTorrentNotifier.Properties.Resources.un_icon_systray;
+            this.Icon = global::uTorrentNotifier.Properties.Resources.un_icon;
 
             // Add menu to tray icon and show it.
             this._trayIcon.ContextMenu = this._trayMenu;
