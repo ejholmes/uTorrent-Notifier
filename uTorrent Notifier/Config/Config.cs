@@ -7,8 +7,8 @@ namespace uTorrentNotifier
 {
     public partial class Config
     {
-        public static string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
-        public static string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
+        public const string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
+        public const string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
         private string _Uri             = "";
         private string _UserName        = "";
         private string _Password        = "";
