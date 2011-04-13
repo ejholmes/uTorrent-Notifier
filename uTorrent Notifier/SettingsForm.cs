@@ -31,7 +31,7 @@ namespace uTorrentNotifier
 
         private void SettingsForm_Shown(object sender, System.EventArgs e)
         {
-            this.lblVersion.Text = this.ClassRegistry.Version.ToString();
+            this.lblVersion.Text = ClassRegistry.Version.ToString();
             this.SetConfig();
         }
 
@@ -39,7 +39,7 @@ namespace uTorrentNotifier
         {
             this.tbPassword.Text                                = this.ClassRegistry.Config.Password;
             this.tbUsername.Text                                = this.ClassRegistry.Config.Username;
-            this.tbWebUI_URL.Text                               = this.ClassRegistry.Config.URI;
+            this.tbWebUI_URL.Text                               = this.ClassRegistry.Config.Uri;
             this.cbRunOnStartup.Checked                         = this.ClassRegistry.Config.RunOnStartup;
             this.cbShowBalloonTips.Checked                      = this.ClassRegistry.Config.ShowBalloonTips;
             this.cbCheckForUpdates.Checked                      = this.ClassRegistry.Config.CheckForUpdates;
@@ -66,7 +66,7 @@ namespace uTorrentNotifier
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.ClassRegistry.Config.URI                                 = this.tbWebUI_URL.Text;
+            this.ClassRegistry.Config.Uri                                 = this.tbWebUI_URL.Text;
             this.ClassRegistry.Config.Username                            = this.tbUsername.Text;
             this.ClassRegistry.Config.Password                            = this.tbPassword.Text;
             this.ClassRegistry.Config.RunOnStartup                        = this.cbRunOnStartup.Checked;
@@ -89,7 +89,7 @@ namespace uTorrentNotifier
             this.ClassRegistry.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
             this.ClassRegistry.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;
 
-            this.ClassRegistry.Config.Save();
+            Config.Save();
             this.Hide();
 
             if (this.ClassRegistry.uTorrent.Stopped)

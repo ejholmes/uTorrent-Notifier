@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -42,24 +43,24 @@ namespace uTorrentNotifier
             TorrentFile f = new TorrentFile();
 
             f.Hash                  = file[0];
-            f.Status                = Int32.Parse(file[1]);
+            f.Status                = Int32.Parse(file[1], CultureInfo.CurrentCulture);
             f.Name                  = file[2];
-            f.Size                  = double.Parse(file[3]);
-            f.PercentProgress       = Int32.Parse(file[4]);
-            f.Downloaded            = double.Parse(file[5]);
-            f.Uploaded              = double.Parse(file[6]);
-            f.Ratio                 = Int32.Parse(file[7]);
-            f.UploadSpeed           = Int32.Parse(file[8]);
-            f.DownloadSpeed         = Int32.Parse(file[9]);
-            f.ETA                   = Int32.Parse(file[10]);
+            f.Size                  = double.Parse(file[3], CultureInfo.CurrentCulture);
+            f.PercentProgress       = Int32.Parse(file[4], CultureInfo.CurrentCulture);
+            f.Downloaded            = double.Parse(file[5], CultureInfo.CurrentCulture);
+            f.Uploaded              = double.Parse(file[6], CultureInfo.CurrentCulture);
+            f.Ratio                 = Int32.Parse(file[7], CultureInfo.CurrentCulture);
+            f.UploadSpeed           = Int32.Parse(file[8], CultureInfo.CurrentCulture);
+            f.DownloadSpeed         = Int32.Parse(file[9], CultureInfo.CurrentCulture);
+            f.ETA                   = Int32.Parse(file[10], CultureInfo.CurrentCulture);
             f.Label                 = file[11];
-            f.PeersConnected        = Int32.Parse(file[12]);
-            f.PeersInSwarm          = Int32.Parse(file[13]);
-            f.SeedsConnected        = Int32.Parse(file[14]);
-            f.SeedsInSwarm          = Int32.Parse(file[15]);
-            f.Availability          = double.Parse(file[16]);
-            f.TorrentQueueOrder     = Int32.Parse(file[17]);
-            f.Remaining             = double.Parse(file[18]);
+            f.PeersConnected        = Int32.Parse(file[12], CultureInfo.CurrentCulture);
+            f.PeersInSwarm          = Int32.Parse(file[13], CultureInfo.CurrentCulture);
+            f.SeedsConnected        = Int32.Parse(file[14], CultureInfo.CurrentCulture);
+            f.SeedsInSwarm          = Int32.Parse(file[15], CultureInfo.CurrentCulture);
+            f.Availability          = double.Parse(file[16], CultureInfo.CurrentCulture);
+            f.TorrentQueueOrder     = Int32.Parse(file[17], CultureInfo.CurrentCulture);
+            f.Remaining             = double.Parse(file[18], CultureInfo.CurrentCulture);
 
             if (file.Length > 19)
             {
@@ -210,32 +211,6 @@ namespace uTorrentNotifier
         {
             get { return this._StatusString; }
             set { this._StatusString = value; }
-        }
-
-
-
-        public static void AssociateTorrentFiles()
-        {
-            string keyName;
-            string keyValue;
-
-            keyName = Properties.Settings.Default.ApplicationName;
-            keyValue = Properties.Settings.Default.ApplicationName;
-
-            RegistryKey key;
-
-            key = Registry.ClassesRoot.CreateSubKey(keyName);
-            key.SetValue("", keyValue);
-
-            key = key.CreateSubKey("shell");
-            key = key.CreateSubKey("open");
-            key = key.CreateSubKey("command");
-            key.SetValue("", System.Windows.Forms.Application.ExecutablePath + " %1");
-
-            keyName = ".torrent";
-            keyValue = Properties.Settings.Default.ApplicationName;
-            key = Registry.ClassesRoot.CreateSubKey(keyName);
-            key.SetValue("", keyValue);
         }
     }
 }

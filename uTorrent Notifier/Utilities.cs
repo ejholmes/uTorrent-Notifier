@@ -8,6 +8,10 @@ namespace uTorrentNotifier
 {
     class Utilities
     {
+        private Utilities()
+        {
+        }
+
         public static string FormatBytes(long bytes)
         {
             const int scale = 1024;

@@ -9,13 +9,15 @@ namespace uTorrentNotifier
     {
         public static string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
         public static string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
-        private string _URI             = "";
+        private string _Uri             = "";
         private string _Username        = "";
         private string _Password        = "";
 
         private bool _RunOnStartup      = false;
         private bool _ShowBalloonTips   = true;
         private bool _CheckForUpdates   = false;
+
+        private int _LoginErrors        = 25;
 
         public ProwlConfig Prowl = new ProwlConfig();
 		public GrowlConfig Growl = new GrowlConfig();
@@ -27,7 +29,7 @@ namespace uTorrentNotifier
         {
             try
             {
-                this._URI = Properties.Settings.Default.URI;
+                this._Uri = Properties.Settings.Default.URI;
             }
             catch { }
 
@@ -62,20 +64,20 @@ namespace uTorrentNotifier
             catch { }
         }
 
-        public void Save()
+        public static void Save()
         {
             Properties.Settings.Default.Save();
         }
 
-        public string URI
+        public string Uri
         {
-            get { return this._URI; }
+            get { return this._Uri; }
             set 
             {
                 string uri = value.TrimEnd('/');
 
                 Properties.Settings.Default.URI = uri;
-                this._URI = uri; 
+                this._Uri = uri; 
             }
         }
         public string Username
@@ -133,6 +135,11 @@ namespace uTorrentNotifier
                 Properties.Settings.Default.CheckForUpdates = value;
                 this._CheckForUpdates = value;
             }
+        }
+
+        public int LoginErrors
+        {
+            get { return this._LoginErrors; }
         }
     }
 }

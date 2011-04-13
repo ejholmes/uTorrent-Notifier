@@ -11,18 +11,8 @@ using Newtonsoft.Json.Linq;
 
 namespace uTorrentNotifier
 {
-    public partial class WebUIAPI
+    public partial class WebUIAPI : IDisposable
     {
-        public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
-        public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
-        public delegate void LoginErrorEventHandler(object sender, Exception e);
-        public delegate void UpdatedListEventHandler(List<TorrentFile> torrents);
-
-        public event DownloadFinishedEventHandler DownloadComplete;
-        public event TorrentAddedEventHandler TorrentAdded;
-        public event LoginErrorEventHandler LoginError;
-        public event UpdatedListEventHandler UpdatedList;
-
         private Timer timer = new Timer();
 
         private Config _Config;
@@ -63,8 +53,8 @@ namespace uTorrentNotifier
 
             if (LastListing != null)
             {
-                List<TorrentFile> completed = this.FindDone(this.CurrentListing, this.LastListing);
-                List<TorrentFile> added = this.FindNew(this.CurrentListing, this.LastListing);
+                List<TorrentFile> completed = this.FindDone();
+                List<TorrentFile> added = this.FindNew();
 
                 if ((completed.Count > 0) && (this.DownloadComplete != null))
                     this.DownloadComplete(completed);
@@ -76,7 +66,7 @@ namespace uTorrentNotifier
             this.LastListing = this.CurrentListing;
         }
 
-        private List<TorrentFile> FindDone(List<TorrentFile> current, List<TorrentFile> last)
+        private List<TorrentFile> FindDone()
         {
             List<TorrentFile> finishedTorrents = new List<TorrentFile>();
 
@@ -101,7 +91,7 @@ namespace uTorrentNotifier
             return finishedTorrents;
         }
 
-        private List<TorrentFile> FindNew(List<TorrentFile> current, List<TorrentFile> last)
+        private List<TorrentFile> FindNew()
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
@@ -130,7 +120,7 @@ namespace uTorrentNotifier
 
             string json = this.Send(args.ToArray());
 
-            if (json != "")
+            if (!String.IsNullOrEmpty(json))
             {
                 try
                 {
@@ -173,7 +163,7 @@ namespace uTorrentNotifier
         private string Send(KeyValuePair<string, string>[] args)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(this._Config.URI);
+            sb.Append(this._Config.Uri);
             sb.Append("/?");
 
             foreach (KeyValuePair<string, string> kv in args)
@@ -191,7 +181,7 @@ namespace uTorrentNotifier
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(this._Config.URI + "/token.html");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(this._Config.Uri + "/token.html");
                 request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
                 request.CookieContainer = Cookies;
 
@@ -201,8 +191,8 @@ namespace uTorrentNotifier
             }
             catch (WebException webex)
             {
-                if (LoginError != null)
-                    LoginError(this, webex);
+                if (LogOnError != null)
+                    LogOnError(this, webex);
             }
             catch
             {
@@ -238,7 +228,7 @@ namespace uTorrentNotifier
         private void _Post(string action, string file)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(this._Config.URI);
+            sb.Append(this._Config.Uri);
             sb.Append("/?action=");
             sb.Append(action);
 
@@ -265,6 +255,20 @@ namespace uTorrentNotifier
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.timer.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         public Config Config

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace uTorrentNotifier
 {
-    public class ClassRegistry
+    public class ClassRegistry : IDisposable
     {
         private WebUIAPI _webuiapi;
         private Config _config;
@@ -54,9 +54,23 @@ namespace uTorrentNotifier
             get { return this._boxcar; }
         }
 
-        public Version Version
+        public static Version Version
         {
             get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version; }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this._webuiapi.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
     }

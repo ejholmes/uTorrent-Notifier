@@ -12,9 +12,9 @@ namespace uTorrentNotifier
     public class oAuthTwitter : OAuthBase
     {
         public enum Method { GET, POST };
-        public const string REQUEST_TOKEN = "http://twitter.com/oauth/request_token";
-        public const string AUTHORIZE = "http://twitter.com/oauth/authorize";
-        public const string ACCESS_TOKEN = "http://twitter.com/oauth/access_token";
+        public const string RequestToken = "http://twitter.com/oauth/request_token";
+        public const string Authorize = "http://twitter.com/oauth/authorize";
+        public const string AccessToken = "http://twitter.com/oauth/access_token";
 
         private string _consumerKey = "";
         private string _consumerSecret = "";
@@ -62,7 +62,7 @@ namespace uTorrentNotifier
             string ret = null;
 
             // First let's get a REQUEST token.
-            string response = oAuthWebRequest(Method.GET, REQUEST_TOKEN, String.Empty);
+            string response = oAuthWebRequest(Method.GET, RequestToken, String.Empty);
             if (response.Length > 0)
             {
                 //response contains token and token secret.  We only need the token.
@@ -70,7 +70,7 @@ namespace uTorrentNotifier
                 if (qs["oauth_token"] != null)
                 {
                     OAuthToken = qs["oauth_token"]; // tuck this away for later
-                    ret = AUTHORIZE + "?oauth_token=" + qs["oauth_token"];// +"&oauth_callback=oob";
+                    ret = Authorize + "?oauth_token=" + qs["oauth_token"];// +"&oauth_callback=oob";
                 }
             }
             return ret;
@@ -85,7 +85,7 @@ namespace uTorrentNotifier
             this.Token = authToken;
             this._pin = PIN; // JDevlin
 
-            string response = oAuthWebRequest(Method.GET, ACCESS_TOKEN, String.Empty);
+            string response = oAuthWebRequest(Method.GET, AccessToken, String.Empty);
 
             if (response.Length > 0)
             {

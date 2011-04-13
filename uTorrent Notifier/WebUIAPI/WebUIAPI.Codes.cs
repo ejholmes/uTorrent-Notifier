@@ -45,6 +45,7 @@ namespace uTorrentNotifier
 
         protected enum StatusCode
         {
+            None = 0,
             Started = 1,
             Checking = 2,
             StartAfterCheck = 4,
@@ -57,7 +58,7 @@ namespace uTorrentNotifier
 
         protected enum PriorityCode
         {
-            DontDownload = 0,
+            DoNotDownload = 0,
             LowPriority = 1,
             NormalPriority = 2,
             HighPriority = 3

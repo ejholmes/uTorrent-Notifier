@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using uTorrentNotifier.Properties;
 using Growl.Connector;
 using Growl.CoreLibrary;
@@ -51,7 +52,7 @@ namespace uTorrentNotifier
 			if (string.IsNullOrEmpty(GrowlConfig.Host))
 				growl = new GrowlConnector(GrowlConfig.Password);
 			else
-				growl = new GrowlConnector(GrowlConfig.Password, GrowlConfig.Host, int.Parse(GrowlConfig.Port));
+				growl = new GrowlConnector(GrowlConfig.Password, GrowlConfig.Host, int.Parse(GrowlConfig.Port, CultureInfo.CurrentCulture));
 
 			growl.EncryptionAlgorithm = Cryptography.SymmetricAlgorithmType.PlainText;
 
@@ -65,7 +66,7 @@ namespace uTorrentNotifier
 			growl.Register(application, new NotificationType[] { added, complete, error });
 		}
 
-		private BinaryData GetIconData(Bitmap Icon)
+		private static BinaryData GetIconData(Bitmap Icon)
 		{
 			return new BinaryData((byte[])System.ComponentModel.TypeDescriptor.GetConverter(Icon).ConvertTo(Icon, typeof(byte[])));
 		}

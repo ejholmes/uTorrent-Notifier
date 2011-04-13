@@ -10,10 +10,12 @@ using System.Windows.Forms;
 using System.Security.Principal;
 using System.Diagnostics;
 using System.Threading;
+using System.Globalization;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+[assembly:CLSCompliant(true)]
 namespace uTorrentNotifier
 {
     public class Program : Form
@@ -52,7 +54,7 @@ namespace uTorrentNotifier
             }
             this.ClassRegistry.uTorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
             this.ClassRegistry.uTorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
-            this.ClassRegistry.uTorrent.LoginError += new WebUIAPI.LoginErrorEventHandler(this.utorrent_LoginError);
+            this.ClassRegistry.uTorrent.LogOnError += new WebUIAPI.LogOnErrorEventHandler(this.utorrent_LoginError);
             this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(uTorrent_UpdatedList);
             this.ClassRegistry.uTorrent.Start();
 
@@ -163,12 +165,12 @@ namespace uTorrentNotifier
             if (downloading == 1)
             {
                 this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name + "\n" +
-                    downloading.ToString() + " torrent downloading\n";
+                    downloading.ToString(CultureInfo.CurrentCulture) + " torrent downloading\n";
             }
             else
             {
                 this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name + "\n" +
-                    downloading.ToString() + " torrents downloading\n";
+                    downloading.ToString(CultureInfo.CurrentCulture) + " torrents downloading\n";
             }
         }
 
@@ -203,14 +205,16 @@ namespace uTorrentNotifier
                 components[2] = "0";
             }
 
-            if (Int32.Parse(components[0]) > this.ClassRegistry.Version.Major ||
-                (Int32.Parse(components[0]) == this.ClassRegistry.Version.Major && Int32.Parse(components[1]) > this.ClassRegistry.Version.Minor) ||
-                (Int32.Parse(components[0]) == this.ClassRegistry.Version.Major && Int32.Parse(components[1]) == this.ClassRegistry.Version.Minor && Int32.Parse(components[2]) > this.ClassRegistry.Version.Build))
+            if (Int32.Parse(components[0], CultureInfo.InvariantCulture) > ClassRegistry.Version.Major ||
+                (Int32.Parse(components[0], CultureInfo.InvariantCulture) == ClassRegistry.Version.Major && Int32.Parse(components[1], CultureInfo.CurrentCulture) > ClassRegistry.Version.Minor) ||
+                (Int32.Parse(components[0], CultureInfo.InvariantCulture) == ClassRegistry.Version.Major && Int32.Parse(components[1], CultureInfo.CurrentCulture) == ClassRegistry.Version.Minor && Int32.Parse(components[2], CultureInfo.InvariantCulture) > ClassRegistry.Version.Build))
             {
-                if (MessageBox.Show("You are using version " + this.ClassRegistry.Version.ToString() + ". Would you like to download version " + latestVersion + "?",
+                if (MessageBox.Show("You are using version " + ClassRegistry.Version.ToString() + ". Would you like to download version " + latestVersion + "?",
                     "New Version Available",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes)
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
                 {
                     Process.Start(Config.LatestDownload);
                 }
@@ -291,15 +295,15 @@ namespace uTorrentNotifier
             Application.Exit();
         }
 
-        protected override void Dispose(bool isDisposing)
+        protected override void Dispose(bool disposing)
         {
-            if (isDisposing)
+            if (disposing)
             {
                 // Release the icon resource.
                 this._trayIcon.Dispose();
             }
 
-            base.Dispose(isDisposing);
+            base.Dispose(disposing);
         }
     }
 }
