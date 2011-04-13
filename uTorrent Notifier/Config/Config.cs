@@ -17,8 +17,6 @@ namespace uTorrentNotifier
         private bool _ShowBalloonTips   = true;
         private bool _CheckForUpdates   = false;
 
-        private int _LoginErrors        = 25;
-
         public ProwlConfig Prowl = new ProwlConfig();
 		public GrowlConfig Growl = new GrowlConfig();
         public TwitterConfig Twitter = new TwitterConfig();
@@ -106,11 +104,6 @@ namespace uTorrentNotifier
                 Properties.Settings.Default.CheckForUpdates = value;
                 this._CheckForUpdates = value;
             }
-        }
-
-        public int LoginErrors
-        {
-            get { return this._LoginErrors; }
         }
     }
 }

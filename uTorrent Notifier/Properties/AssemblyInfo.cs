@@ -9,7 +9,7 @@ using System.Resources;
 [assembly: AssemblyTitle("uTorrent Notifier")]
 [assembly: AssemblyDescription("uTorrent notification application")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Eric Holmes")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("uTorrent Notifier")]
 [assembly: AssemblyCopyright("Copyright ©  2010")]
 [assembly: AssemblyTrademark("")]

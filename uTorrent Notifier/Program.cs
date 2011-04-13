@@ -40,7 +40,6 @@ namespace uTorrentNotifier
         private SettingsForm settingsForm;
 
         private ClassRegistry ClassRegistry;
-        private int loginErrors = 25; //only show balloon tip every 25 attempts
 
         public Program()
         {
@@ -54,8 +53,8 @@ namespace uTorrentNotifier
             }
             this.ClassRegistry.uTorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
             this.ClassRegistry.uTorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
-            this.ClassRegistry.uTorrent.LogOnError += new WebUIAPI.LogOnErrorEventHandler(this.utorrent_LoginError);
-            this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(uTorrent_UpdatedList);
+            this.ClassRegistry.uTorrent.LogOnError += new WebUIAPI.LogOnErrorEventHandler(this.utorrent_LogOnError);
+            this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(this.uTorrent_UpdatedList);
             this.ClassRegistry.uTorrent.Start();
 
             this.settingsForm = new SettingsForm(this.ClassRegistry);
@@ -69,26 +68,19 @@ namespace uTorrentNotifier
             {
                 this.settingsForm.Show();
                 Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.Reload();
                 this.ClassRegistry.Config = new Config();
+                this.ClassRegistry.uTorrent.Config = this.ClassRegistry.Config;
                 Properties.Settings.Default.FirstRun = false;
             }
         }
 
-        void utorrent_LoginError(object sender, Exception e)
+        void utorrent_LogOnError(object sender, Exception e)
         {
-            if (this.loginErrors >= 5)
-            {
-                if (!this.ClassRegistry.Config.Growl.Enable)
-                    this._trayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
-                else
-                    this.ClassRegistry.Growl.Add(GrowlNotificationType.Error, e.Message);
-
-                this.loginErrors = 0;
-            }
+            if (!this.ClassRegistry.Config.Growl.Enable)
+                this._trayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
             else
-            {
-                this.loginErrors++;
-            }
+                this.ClassRegistry.Growl.Add(GrowlNotificationType.Error, e.Message);
         }
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)

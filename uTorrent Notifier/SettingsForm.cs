@@ -92,8 +92,9 @@ namespace uTorrentNotifier
             Config.Save();
             this.Hide();
 
-            if (this.ClassRegistry.uTorrent.Stopped)
-                this.ClassRegistry.uTorrent.Start();
+            if (!this.ClassRegistry.uTorrent.Stopped)
+                this.ClassRegistry.uTorrent.Stop();
+            this.ClassRegistry.uTorrent.Start();
         }
 
         private void btnBoxcarInvite_Click(object sender, EventArgs e)
