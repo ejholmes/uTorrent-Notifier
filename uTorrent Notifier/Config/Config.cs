@@ -10,7 +10,7 @@ namespace uTorrentNotifier
         public static string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
         public static string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
         private string _Uri             = "";
-        private string _Username        = "";
+        private string _UserName        = "";
         private string _Password        = "";
 
         private bool _RunOnStartup      = false;
@@ -27,41 +27,12 @@ namespace uTorrentNotifier
 
         public Config()
         {
-            try
-            {
-                this._Uri = Properties.Settings.Default.URI;
-            }
-            catch { }
-
-            try
-            {
-                this._Username = Properties.Settings.Default.Username;
-            }
-            catch { }
-
-            try
-            {
-                this._Password = Properties.Settings.Default.Password;
-            }
-            catch { }
-
-            try
-            {
-                this._RunOnStartup = Properties.Settings.Default.RunOnStartup;
-            }
-            catch { }
-
-            try
-            {
-                this._ShowBalloonTips = Properties.Settings.Default.ShowBalloonTips;
-            }
-            catch { }
-
-            try
-            {
-                this._CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
-            }
-            catch { }
+            this._Uri = Properties.Settings.Default.URI;
+            this._UserName = Properties.Settings.Default.UserName;
+            this._Password = Properties.Settings.Default.Password;
+            this._RunOnStartup = Properties.Settings.Default.RunOnStartup;
+            this._ShowBalloonTips = Properties.Settings.Default.ShowBalloonTips;
+            this._CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
         }
 
         public static void Save()
@@ -80,13 +51,13 @@ namespace uTorrentNotifier
                 this._Uri = uri; 
             }
         }
-        public string Username
+        public string UserName
         {
-            get { return this._Username; }
+            get { return this._UserName; }
             set 
             {
-                Properties.Settings.Default.Username = value;
-                this._Username = value; 
+                Properties.Settings.Default.UserName = value;
+                this._UserName = value; 
             }
         }
         public string Password

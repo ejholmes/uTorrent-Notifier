@@ -13,22 +13,18 @@ namespace uTorrentNotifier
             private string _ConsumerSecret = "";
             private string _Token = "";
             private string _TokenSecret = "";
-            private string _PIN = "";
+            private string _Pin = "";
 
             private bool _Enable = false;
 
             public TwitterConfig()
             {
-                try
-                {
-                    this._ConsumerKey = Properties.Settings.Default.TwitterConsumerKey;
-                    this._ConsumerSecret = Properties.Settings.Default.TwitterConsumerSecret;
-                    this._Token = Properties.Settings.Default.TwitterToken;
-                    this._TokenSecret = Properties.Settings.Default.TwitterTokenSecret;
-                    this._PIN = Properties.Settings.Default.TwitterPIN;
-                    this._Enable = Properties.Settings.Default.TwitterEnable;
-                }
-                catch { }
+                this._ConsumerKey = Properties.Settings.Default.TwitterConsumerKey;
+                this._ConsumerSecret = Properties.Settings.Default.TwitterConsumerSecret;
+                this._Token = Properties.Settings.Default.TwitterToken;
+                this._TokenSecret = Properties.Settings.Default.TwitterTokenSecret;
+                this._Pin = Properties.Settings.Default.TwitterPIN;
+                this._Enable = Properties.Settings.Default.TwitterEnable;
             }
 
             public string ConsumerKey
@@ -61,13 +57,13 @@ namespace uTorrentNotifier
                 }
             }
 
-            public string PIN
+            public string Pin
             {
-                get { return this._PIN; }
+                get { return this._Pin; }
                 set
                 {
                     Properties.Settings.Default.TwitterPIN = value;
-                    this._PIN = value;
+                    this._Pin = value;
                 }
             }
 

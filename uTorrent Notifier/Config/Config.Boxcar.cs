@@ -16,17 +16,8 @@ namespace uTorrentNotifier
 
             public BoxcarConfig()
             {
-                try
-                {
-                    this._Email = Properties.Settings.Default.BoxcarEmail;
-                }
-                catch { }
-
-                try
-                {
-                    this._Enable = Properties.Settings.Default.BoxcarEnable;
-                }
-                catch { }
+                this._Email = Properties.Settings.Default.BoxcarEmail;
+                this._Enable = Properties.Settings.Default.BoxcarEnable;
             }
 
             public bool Enable

@@ -15,7 +15,7 @@ namespace uTorrentNotifier
         public enum SignatureTypes
         {
             HMACSHA1,
-            PLAINTEXT,
+            Plaintext,
             RSASHA1
         }
 
@@ -85,7 +85,7 @@ namespace uTorrentNotifier
         protected const string OAuthVerifierKey = "oauth_verifier"; // JDevlin
 
         protected const string HMACSHA1SignatureType = "HMAC-SHA1";
-        protected const string PlainTextSignatureType = "PLAINTEXT";
+        protected const string PlaintextSignatureType = "PLAINTEXT";
         protected const string RSASHA1SignatureType = "RSA-SHA1";
 
         protected Random random = new Random();
@@ -212,7 +212,7 @@ namespace uTorrentNotifier
         /// <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
         /// <param name="signatureType">The signature type. To use the default values use <see cref="OAuthBase.SignatureTypes">OAuthBase.SignatureTypes</see>.</param>
         /// <returns>The signature base</returns>
-        public string GenerateSignatureBase(Uri url, string consumerKey, string token, string tokenSecret, string httpMethod, string timeStamp, string nonce, string PIN, string signatureType, out string normalizedUrl, out string normalizedRequestParameters)
+        public string GenerateSignatureBase(Uri url, string consumerKey, string token, string tokenSecret, string httpMethod, string timestamp, string nonce, string pin, string signatureType, out string normalizedUrl, out string normalizedRequestParameters)
         {
             if (token == null)
             {
@@ -245,7 +245,7 @@ namespace uTorrentNotifier
             List<QueryParameter> parameters = GetQueryParameters(url.Query);
             parameters.Add(new QueryParameter(OAuthVersionKey, OAuthVersion));
             parameters.Add(new QueryParameter(OAuthNonceKey, nonce));
-            parameters.Add(new QueryParameter(OAuthTimestampKey, timeStamp));
+            parameters.Add(new QueryParameter(OAuthTimestampKey, timestamp));
             parameters.Add(new QueryParameter(OAuthSignatureMethodKey, signatureType));
             parameters.Add(new QueryParameter(OAuthConsumerKeyKey, consumerKey));
 
@@ -255,9 +255,9 @@ namespace uTorrentNotifier
             }
 
             // JDevlin: support for PIN-based auth
-            if (!String.IsNullOrEmpty(PIN))
+            if (!String.IsNullOrEmpty(pin))
             {
-                parameters.Add(new QueryParameter(OAuthVerifierKey, PIN));
+                parameters.Add(new QueryParameter(OAuthVerifierKey, pin));
             }
 
             parameters.Sort(new QueryParameterComparer());
@@ -300,9 +300,9 @@ namespace uTorrentNotifier
         /// <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
         /// <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
         /// <returns>A base64 string of the hash value</returns>
-        public string GenerateSignature(Uri url, string consumerKey, string consumerSecret, string token, string tokenSecret, string httpMethod, string timeStamp, string nonce, /* JDevlin*/ string PIN, out string normalizedUrl, out string normalizedRequestParameters)
+        public string GenerateSignature(Uri url, string consumerKey, string consumerSecret, string token, string tokenSecret, string httpMethod, string timestamp, string nonce, /* JDevlin*/ string pin, out string normalizedUrl, out string normalizedRequestParameters)
         {
-            return GenerateSignature(url, consumerKey, consumerSecret, token, tokenSecret, httpMethod, timeStamp, nonce, PIN, SignatureTypes.HMACSHA1, out normalizedUrl, out normalizedRequestParameters);
+            return GenerateSignature(url, consumerKey, consumerSecret, token, tokenSecret, httpMethod, timestamp, nonce, pin, SignatureTypes.HMACSHA1, out normalizedUrl, out normalizedRequestParameters);
         }
 
         /// <summary>
@@ -316,17 +316,17 @@ namespace uTorrentNotifier
         /// <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
         /// <param name="signatureType">The type of signature to use</param>
         /// <returns>A base64 string of the hash value</returns>
-        public string GenerateSignature(Uri url, string consumerKey, string consumerSecret, string token, string tokenSecret, string httpMethod, string timeStamp, string nonce, string PIN /*JDevlin*/, SignatureTypes signatureType, out string normalizedUrl, out string normalizedRequestParameters)
+        public string GenerateSignature(Uri url, string consumerKey, string consumerSecret, string token, string tokenSecret, string httpMethod, string timestamp, string nonce, string pin /*JDevlin*/, SignatureTypes signatureType, out string normalizedUrl, out string normalizedRequestParameters)
         {
             normalizedUrl = null;
             normalizedRequestParameters = null;
 
             switch (signatureType)
             {
-                case SignatureTypes.PLAINTEXT:
+                case SignatureTypes.Plaintext:
                     return HttpUtility.UrlEncode(string.Format("{0}&{1}", consumerSecret, tokenSecret));
                 case SignatureTypes.HMACSHA1:
-                    string signatureBase = GenerateSignatureBase(url, consumerKey, token, tokenSecret, httpMethod, timeStamp, nonce, PIN, HMACSHA1SignatureType, out normalizedUrl, out normalizedRequestParameters);
+                    string signatureBase = GenerateSignatureBase(url, consumerKey, token, tokenSecret, httpMethod, timestamp, nonce, pin, HMACSHA1SignatureType, out normalizedUrl, out normalizedRequestParameters);
 
                     HMACSHA1 hmacsha1 = new HMACSHA1();
                     hmacsha1.Key = Encoding.ASCII.GetBytes(string.Format("{0}&{1}", UrlEncode(consumerSecret), string.IsNullOrEmpty(tokenSecret) ? "" : UrlEncode(tokenSecret)));
@@ -343,7 +343,7 @@ namespace uTorrentNotifier
         /// Generate the timestamp for the signature        
         /// </summary>
         /// <returns></returns>
-        public virtual string GenerateTimeStamp()
+        public virtual string GenerateTimestamp()
         {
             // Default implementation of UNIX time of the current UTC time
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);

@@ -26,12 +26,12 @@ namespace uTorrentNotifier.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Username {
+        public string UserName {
             get {
-                return ((string)(this["Username"]));
+                return ((string)(this["UserName"]));
             }
             set {
-                this["Username"] = value;
+                this["UserName"] = value;
             }
         }
         

@@ -43,7 +43,7 @@ namespace uTorrentNotifier
 
         public void Add(string message, List<KeyValuePair<string, string>> options)
         {
-            defaults.Add(new KeyValuePair<string, string>("apikey", this.ProwlConfig.APIKey));
+            defaults.Add(new KeyValuePair<string, string>("apikey", this.ProwlConfig.ApiKey));
 
             List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
 
@@ -83,18 +83,12 @@ namespace uTorrentNotifier
 
             string url = this._uri + method + "?" + sb.ToString();
 
-            try
-            {
-                WebRequest request = WebRequest.Create(url);
-                ((HttpWebRequest)request).UserAgent = "uTorrent Notifier";
-                request.ContentType = "appication/x-www-form-urlencoded";
-                request.Method = "POST";
+            WebRequest request = WebRequest.Create(url);
+            ((HttpWebRequest)request).UserAgent = "uTorrent Notifier";
+            request.ContentType = "appication/x-www-form-urlencoded";
+            request.Method = "POST";
 
-                request.GetResponse();
-            }
-            catch (Exception)
-            {
-            }
+            request.GetResponse();
         }
     }
 }

@@ -33,27 +33,21 @@ namespace uTorrentNotifier
 
         void bw_Update(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                oAuth = new oAuthTwitter();
-                oAuth.ConsumerKey = TwitterConfig.ConsumerKey;
-                oAuth.ConsumerSecret = TwitterConfig.ConsumerSecret;
-                oAuth.Token = TwitterConfig.Token;
-                oAuth.TokenSecret = TwitterConfig.TokenSecret;
+            oAuth = new oAuthTwitter();
+            oAuth.ConsumerKey = TwitterConfig.ConsumerKey;
+            oAuth.ConsumerSecret = TwitterConfig.ConsumerSecret;
+            oAuth.Token = TwitterConfig.Token;
+            oAuth.TokenSecret = TwitterConfig.TokenSecret;
 
-                string tweet = HttpUtility.UrlEncode(e.Argument.ToString());
+            string tweet = HttpUtility.UrlEncode(e.Argument.ToString());
 
-                if (tweet.Length > 140) tweet = tweet.Substring(0, 140);
+            if (tweet.Length > 140) tweet = tweet.Substring(0, 140);
 
-                string xml = oAuth.oAuthWebRequest(
-                    oAuthTwitter.Method.POST,
-                    "http://twitter.com/statuses/update.xml",
-                    "status=" + tweet
-                    );
-            }
-            catch
-            {
-            }
+            oAuth.oAuthWebRequest(
+                oAuthTwitter.Method.Post,
+                "http://twitter.com/statuses/update.xml",
+                "status=" + tweet
+                );
         }
     }
 }

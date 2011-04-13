@@ -23,9 +23,9 @@ namespace uTorrentNotifier
         private string Token = "";
         private CookieContainer Cookies = new CookieContainer();
 
-        public WebUIAPI(Config c)
+        public WebUIAPI(Config config)
         {
-            this._Config = c;
+            this._Config = config;
             this.timer.Tick += new EventHandler(timer_Tick);
             this.timer.Interval = 10000;
         }
@@ -111,7 +111,7 @@ namespace uTorrentNotifier
 
         private List<TorrentFile> List()
         {
-            List<TorrentFile> l = new List<TorrentFile>();
+            List<TorrentFile> torrents = new List<TorrentFile>();
 
             List<KeyValuePair<string, string>> args = new List<KeyValuePair<string, string>>();
 
@@ -122,22 +122,13 @@ namespace uTorrentNotifier
 
             if (!String.IsNullOrEmpty(json))
             {
-                try
+                JObject o = JObject.Parse(json);
+                IList<JToken> results = o["torrents"].Children().ToList();
+
+                foreach (JToken result in results)
                 {
-                    JObject o = JObject.Parse(json);
-
-                    IList<JToken> results = o["torrents"].Children().ToList();
-
-                    foreach (JToken result in results)
-                    {
-                        TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
-
-                        l.Add(f);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    TorrentFile f = TorrentFile.ConvertStringArray(JsonConvert.DeserializeObject<string[]>(result.ToString()));
+                    torrents.Add(f);
                 }
             }
             else
@@ -145,9 +136,9 @@ namespace uTorrentNotifier
                 return null;
             }
 
-            this.UpdatedList(l);
+            this.UpdatedList(torrents);
 
-            return l;
+            return torrents;
         }
 
         private string Send(string action, KeyValuePair<string, string>[] args)
@@ -182,7 +173,7 @@ namespace uTorrentNotifier
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(this._Config.Uri + "/token.html");
-                request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+                request.Credentials = new NetworkCredential(this._Config.UserName, this._Config.Password);
                 request.CookieContainer = Cookies;
 
                 Stream resStream = request.GetResponse().GetResponseStream();
@@ -193,9 +184,6 @@ namespace uTorrentNotifier
             {
                 if (LogOnError != null)
                     LogOnError(this, webex);
-            }
-            catch
-            {
             }
         }
 
@@ -209,7 +197,7 @@ namespace uTorrentNotifier
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
-                request.Credentials = new NetworkCredential(this._Config.Username, this._Config.Password);
+                request.Credentials = new NetworkCredential(this._Config.UserName, this._Config.Password);
                 request.CookieContainer = Cookies;
             
                 Stream resStream = request.GetResponse().GetResponseStream();
@@ -223,38 +211,6 @@ namespace uTorrentNotifier
                 this._Token();
                 return "";
             }
-        }
-
-        private void _Post(string action, string file)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(this._Config.Uri);
-            sb.Append("/?action=");
-            sb.Append(action);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sb.ToString());
-            byte[] data = null;
-
-            using (BinaryReader reader = new BinaryReader(File.OpenRead(file)))
-            {
-                data = reader.ReadBytes((int)reader.BaseStream.Length);
-            }
-
-            request.Method = "POST";
-            request.ContentType = "multipart/form-data";
-            request.SendChunked = true;
-            request.Timeout = 1000;
-            request.ContentLength = data.Length;
-            request.KeepAlive = true;
-
-            using (Stream s = request.GetRequestStream())
-            {
-                s.Write(data, 0, data.Length);
-                s.Close();
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
         }
 
         protected virtual void Dispose(bool disposing)

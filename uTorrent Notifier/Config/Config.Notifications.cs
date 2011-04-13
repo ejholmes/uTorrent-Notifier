@@ -14,17 +14,8 @@ namespace uTorrentNotifier
 
             public NotificationsConfig()
             {
-                try
-                {
-                    this._TorrentAdded = Properties.Settings.Default.Notification_TorrentAdded;
-                }
-                catch { }
-
-                try
-                {
-                    this._DownloadComplete = Properties.Settings.Default.Notification_DownloadComplete;
-                }
-                catch { }
+                this._TorrentAdded = Properties.Settings.Default.Notification_TorrentAdded;
+                this._DownloadComplete = Properties.Settings.Default.Notification_DownloadComplete;
             }
 
             public bool DownloadComplete

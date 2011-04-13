@@ -43,6 +43,7 @@ namespace uTorrentNotifier
             String = 2
         }
 
+        [FlagsAttribute]
         protected enum StatusCode
         {
             None = 0,

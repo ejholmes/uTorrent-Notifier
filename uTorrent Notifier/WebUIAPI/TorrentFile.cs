@@ -25,7 +25,7 @@ namespace uTorrentNotifier
         private int _Ratio;
         private int _UploadSpeed; // bytes per second
         private int _DownloadSpeed; // bytes per second
-        private int _ETA; // seconds
+        private int _Eta; // seconds
         private int _PeersConnected;
         private int _PeersInSwarm;
         private int _SeedsConnected;
@@ -40,45 +40,39 @@ namespace uTorrentNotifier
 
         public static TorrentFile ConvertStringArray(string[] file)
         {
-            TorrentFile f = new TorrentFile();
+            TorrentFile torrentFile = new TorrentFile();
 
-            f.Hash                  = file[0];
-            f.Status                = Int32.Parse(file[1], CultureInfo.CurrentCulture);
-            f.Name                  = file[2];
-            f.Size                  = double.Parse(file[3], CultureInfo.CurrentCulture);
-            f.PercentProgress       = Int32.Parse(file[4], CultureInfo.CurrentCulture);
-            f.Downloaded            = double.Parse(file[5], CultureInfo.CurrentCulture);
-            f.Uploaded              = double.Parse(file[6], CultureInfo.CurrentCulture);
-            f.Ratio                 = Int32.Parse(file[7], CultureInfo.CurrentCulture);
-            f.UploadSpeed           = Int32.Parse(file[8], CultureInfo.CurrentCulture);
-            f.DownloadSpeed         = Int32.Parse(file[9], CultureInfo.CurrentCulture);
-            f.ETA                   = Int32.Parse(file[10], CultureInfo.CurrentCulture);
-            f.Label                 = file[11];
-            f.PeersConnected        = Int32.Parse(file[12], CultureInfo.CurrentCulture);
-            f.PeersInSwarm          = Int32.Parse(file[13], CultureInfo.CurrentCulture);
-            f.SeedsConnected        = Int32.Parse(file[14], CultureInfo.CurrentCulture);
-            f.SeedsInSwarm          = Int32.Parse(file[15], CultureInfo.CurrentCulture);
-            f.Availability          = double.Parse(file[16], CultureInfo.CurrentCulture);
-            f.TorrentQueueOrder     = Int32.Parse(file[17], CultureInfo.CurrentCulture);
-            f.Remaining             = double.Parse(file[18], CultureInfo.CurrentCulture);
+            torrentFile.Hash                  = file[0];
+            torrentFile.Status                = Int32.Parse(file[1], CultureInfo.CurrentCulture);
+            torrentFile.Name                  = file[2];
+            torrentFile.Size                  = double.Parse(file[3], CultureInfo.CurrentCulture);
+            torrentFile.PercentProgress       = Int32.Parse(file[4], CultureInfo.CurrentCulture);
+            torrentFile.Downloaded            = double.Parse(file[5], CultureInfo.CurrentCulture);
+            torrentFile.Uploaded              = double.Parse(file[6], CultureInfo.CurrentCulture);
+            torrentFile.Ratio                 = Int32.Parse(file[7], CultureInfo.CurrentCulture);
+            torrentFile.UploadSpeed           = Int32.Parse(file[8], CultureInfo.CurrentCulture);
+            torrentFile.DownloadSpeed         = Int32.Parse(file[9], CultureInfo.CurrentCulture);
+            torrentFile.Eta                   = Int32.Parse(file[10], CultureInfo.CurrentCulture);
+            torrentFile.Label                 = file[11];
+            torrentFile.PeersConnected        = Int32.Parse(file[12], CultureInfo.CurrentCulture);
+            torrentFile.PeersInSwarm          = Int32.Parse(file[13], CultureInfo.CurrentCulture);
+            torrentFile.SeedsConnected        = Int32.Parse(file[14], CultureInfo.CurrentCulture);
+            torrentFile.SeedsInSwarm          = Int32.Parse(file[15], CultureInfo.CurrentCulture);
+            torrentFile.Availability          = double.Parse(file[16], CultureInfo.CurrentCulture);
+            torrentFile.TorrentQueueOrder     = Int32.Parse(file[17], CultureInfo.CurrentCulture);
+            torrentFile.Remaining             = double.Parse(file[18], CultureInfo.CurrentCulture);
+            torrentFile.TorrentSource         = "";
+            torrentFile.RssFeed               = "";
+            torrentFile.StatusString          = "";
 
             if (file.Length > 19)
             {
-                try
-                {
-                    f.TorrentSource = file[19];
-                    f.RssFeed = file[20];
-                    f.StatusString = file[21];
-                }
-                catch
-                {
-                    f.TorrentSource = "";
-                    f.RssFeed = "";
-                    f.StatusString = "";
-                }
+                torrentFile.TorrentSource = file[19];
+                torrentFile.RssFeed = file[20];
+                torrentFile.StatusString = file[21];
             }
 
-            return f;
+            return torrentFile;
         }
 
         public string Hash
@@ -147,10 +141,10 @@ namespace uTorrentNotifier
             set { this._DownloadSpeed = value; }
         }
 
-        public int ETA
+        public int Eta
         {
-            get { return this._ETA; }
-            set { this._ETA = value; }
+            get { return this._Eta; }
+            set { this._Eta = value; }
         }
 
         public int PeersConnected

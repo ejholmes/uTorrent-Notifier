@@ -7,11 +7,6 @@ namespace uTorrentNotifier
 {
     public partial class WebUIAPI
     {
-        public void AddFile(string filelocation)
-        {
-            this._Post(Action.AddFile, filelocation);
-        }
-
         public void PauseAll()
         {
             this.CurrentListing = this.List();

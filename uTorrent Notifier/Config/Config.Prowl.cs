@@ -9,32 +9,23 @@ namespace uTorrentNotifier
     {
         public class ProwlConfig
         {
-            private string _APIKey = "";
+            private string _ApiKey = "";
 
             private bool _Enable                        = false;
 
             public ProwlConfig()
             {
-                try
-                {
-                    this._APIKey = Properties.Settings.Default.ProwlAPIKey;
-                }
-                catch { }
-
-                try
-                {
-                    this._Enable = Properties.Settings.Default.ProwlEnable;
-                }
-                catch { }
+                this._ApiKey = Properties.Settings.Default.ProwlAPIKey;
+                this._Enable = Properties.Settings.Default.ProwlEnable;
             }
 
-            public string APIKey
+            public string ApiKey
             {
-                get { return this._APIKey; }
+                get { return this._ApiKey; }
                 set
                 {
                     Properties.Settings.Default.ProwlAPIKey = value;
-                    this._APIKey = value;
+                    this._ApiKey = value;
                 }
             }
 

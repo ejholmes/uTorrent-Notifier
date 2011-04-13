@@ -21,29 +21,19 @@ namespace uTorrentNotifier
         public void Add(string message)
         {
             string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications";
-            try
-            {
-                WebClient client = new WebClient();
-                client.Headers.Add("user-agent", "uTorrent Notifier");
-                client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email + "&notification[message]=" + message.Replace(" ", "+")));
-            }
-            catch (Exception)
-            {
-            }
+
+            WebClient client = new WebClient();
+            client.Headers.Add("user-agent", "uTorrent Notifier");
+            client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email + "&notification[message]=" + message.Replace(" ", "+")));
         }
 
         public void SendInvite()
         {
             string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications/subscribe";
-            try
-            {
-                WebClient client = new WebClient();
-                client.Headers.Add("user-agent", "uTorrent Notifier");
-                client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email));
-            }
-            catch (Exception)
-            {
-            }
+
+            WebClient client = new WebClient();
+            client.Headers.Add("user-agent", "uTorrent Notifier");
+            client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email));
         }
     }
 }

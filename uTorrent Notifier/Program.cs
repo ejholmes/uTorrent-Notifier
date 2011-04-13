@@ -301,6 +301,7 @@ namespace uTorrentNotifier
             {
                 // Release the icon resource.
                 this._trayIcon.Dispose();
+                this.ClassRegistry.Dispose();
             }
 
             base.Dispose(disposing);

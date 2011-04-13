@@ -17,19 +17,10 @@ namespace uTorrentNotifier
 
 			public GrowlConfig()
 			{
-				try
-				{
-					this._Password = Properties.Settings.Default.GrowlPassword;
-					this._Host = Properties.Settings.Default.GrowlHost;
-					this._Port = Properties.Settings.Default.GrowlPort;
-				}
-				catch { }
-
-				try
-				{
-					this._Enable = Properties.Settings.Default.GrowlEnable;
-				}
-				catch { }
+				this._Password = Properties.Settings.Default.GrowlPassword;
+				this._Host = Properties.Settings.Default.GrowlHost;
+				this._Port = Properties.Settings.Default.GrowlPort;
+				this._Enable = Properties.Settings.Default.GrowlEnable;
 			}
 
 			public string Password

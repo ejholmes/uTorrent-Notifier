@@ -11,7 +11,7 @@ namespace uTorrentNotifier
 {
     public class oAuthTwitter : OAuthBase
     {
-        public enum Method { GET, POST };
+        public enum Method { Get, Post };
         public const string RequestToken = "http://twitter.com/oauth/request_token";
         public const string Authorize = "http://twitter.com/oauth/authorize";
         public const string AccessToken = "http://twitter.com/oauth/access_token";
@@ -50,7 +50,7 @@ namespace uTorrentNotifier
 
         public string OAuthToken { get; set; }
         public string Token { get { return _token; } set { _token = value; } }
-        public string PIN { get { return _pin; } set { _pin = value; } }
+        public string Pin { get { return _pin; } set { _pin = value; } }
         public string TokenSecret { get { return _tokenSecret; } set { _tokenSecret = value; } }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace uTorrentNotifier
             string ret = null;
 
             // First let's get a REQUEST token.
-            string response = oAuthWebRequest(Method.GET, RequestToken, String.Empty);
+            string response = oAuthWebRequest(Method.Get, RequestToken, String.Empty);
             if (response.Length > 0)
             {
                 //response contains token and token secret.  We only need the token.
@@ -80,12 +80,12 @@ namespace uTorrentNotifier
         /// Exchange the request token for an access token.
         /// </summary>
         /// <param name="authToken">The oauth_token is supplied by Twitter's authorization page following the callback.</param>
-        public void AccessTokenGet(string authToken, string PIN)
+        public void AccessTokenGet(string authToken, string pin)
         {
             this.Token = authToken;
-            this._pin = PIN; // JDevlin
+            this._pin = pin; // JDevlin
 
-            string response = oAuthWebRequest(Method.GET, AccessToken, String.Empty);
+            string response = oAuthWebRequest(Method.Get, AccessToken, String.Empty);
 
             if (response.Length > 0)
             {
@@ -118,7 +118,7 @@ namespace uTorrentNotifier
 
             //Setup postData for signing.
             //Add the postData to the querystring.
-            if (method == Method.POST)
+            if (method == Method.Post)
             {
                 if (postData.Length > 0)
                 {
@@ -147,7 +147,7 @@ namespace uTorrentNotifier
                     url += postData;
                 }
             }
-            else if (method == Method.GET && !String.IsNullOrEmpty(postData))
+            else if (method == Method.Get && !String.IsNullOrEmpty(postData))
             {
                 url += "?" + postData;
             }
@@ -155,7 +155,7 @@ namespace uTorrentNotifier
             Uri uri = new Uri(url);
             
             string nonce = this.GenerateNonce();
-            string timeStamp = this.GenerateTimeStamp();
+            string timeStamp = this.GenerateTimestamp();
 
             //Generate Signature
             string sig = this.GenerateSignature(uri,
@@ -166,14 +166,14 @@ namespace uTorrentNotifier
                 method.ToString(),
                 timeStamp,
                 nonce,
-                this.PIN,
+                this.Pin,
                 out outUrl,
                 out querystring);
 
             querystring += "&oauth_signature=" + HttpUtility.UrlEncode(sig);
 
             //Convert the querystring to postData
-            if (method == Method.POST)
+            if (method == Method.Post)
             {
                 postData = querystring;
                 querystring = "";
@@ -208,7 +208,7 @@ namespace uTorrentNotifier
             //webRequest.UserAgent  = "Identify your application please.";
             //webRequest.Timeout = 20000;
 
-            if (method == Method.POST)
+            if (method == Method.Post)
             {
                 webRequest.ContentType = "application/x-www-form-urlencoded";
 
@@ -269,7 +269,7 @@ namespace uTorrentNotifier
         // JMD: added for convenience. Reset the state of the oAuthTwitter object.
         public void Reset()
         {
-            ConsumerKey = ConsumerSecret = OAuthToken = Token = TokenSecret = PIN = String.Empty;
+            ConsumerKey = ConsumerSecret = OAuthToken = Token = TokenSecret = Pin = String.Empty;
         }
     }
 }
