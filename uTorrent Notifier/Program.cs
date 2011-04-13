@@ -43,9 +43,18 @@ namespace uTorrentNotifier
 
         public Program()
         {
-            this.ClassRegistry = new ClassRegistry();
-
+            bool firstRun = false;
             InitializeComponent();
+
+            if (Properties.Settings.Default.FirstRun)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.Reload();
+                Properties.Settings.Default.FirstRun = false;
+                firstRun = true;
+            }
+            this.ClassRegistry = new ClassRegistry();
+            this.settingsForm = new SettingsForm(this.ClassRegistry);
 
             if (this.ClassRegistry.Config.CheckForUpdates)
             {
@@ -57,21 +66,9 @@ namespace uTorrentNotifier
             this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(this.uTorrent_UpdatedList);
             this.ClassRegistry.uTorrent.Start();
 
-            this.settingsForm = new SettingsForm(this.ClassRegistry);
-
-            this.FirstRun();
-        }
-
-        private void FirstRun()
-        {
-            if (Properties.Settings.Default.FirstRun)
+            if (firstRun)
             {
                 this.settingsForm.Show();
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.Reload();
-                this.ClassRegistry.Config = new Config();
-                this.ClassRegistry.uTorrent.Config = this.ClassRegistry.Config;
-                Properties.Settings.Default.FirstRun = false;
             }
         }
 
