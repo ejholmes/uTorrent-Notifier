@@ -659,8 +659,8 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(267, 141);
             this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "Special Thanks:\nGrowl notifications by Ryan Farley\nhttps://github.com/RyanFarley\n" +
-                "\nTwitter notifications by Dave Nicoll\nhttp://davenicoll.com/";
+            this.richTextBox1.Text = "Special Thanks:\nGrowl notifications by Ryan Farley\nhttp://ryanfarley.com/\n\nTwitte" +
+                "r notifications by Dave Nicoll\nhttp://davenicoll.com/";
             // 
             // linkLabel1
             // 

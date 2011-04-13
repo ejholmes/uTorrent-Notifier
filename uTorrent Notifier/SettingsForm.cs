@@ -101,6 +101,7 @@ namespace uTorrentNotifier
         {
             this.ClassRegistry.Config.Boxcar.Email = this.tbBoxcarEmail.Text;
             this.ClassRegistry.Boxcar.SendInvite();
+            MessageBox.Show("Invitation has been sent", "uTorrent Notifier - Invitation sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cbBoxcarEnable_CheckedChanged(object sender, EventArgs e)
