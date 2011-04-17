@@ -9,7 +9,7 @@ namespace uTorrentNotifier
     {
         public class ProwlConfig
         {
-            private string _ApiKey = "";
+            private string _ApiKey = String.Empty;
 
             private bool _Enable                        = false;
 

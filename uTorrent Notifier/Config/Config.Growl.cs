@@ -9,9 +9,9 @@ namespace uTorrentNotifier
     {
 		public class GrowlConfig
 		{
-			private string _Password = "";
-			private string _Host = "";
-			private string _Port = "";
+            private string _Password        = String.Empty;
+            private string _Host            = String.Empty;
+            private string _Port            = String.Empty;
 
 			private bool _Enable = false;
 

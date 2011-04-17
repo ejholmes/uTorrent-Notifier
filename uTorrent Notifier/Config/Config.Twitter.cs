@@ -9,11 +9,11 @@ namespace uTorrentNotifier
     {
         public class TwitterConfig
         {
-            private string _ConsumerKey = "";
-            private string _ConsumerSecret = "";
-            private string _Token = "";
-            private string _TokenSecret = "";
-            private string _Pin = "";
+            private string _ConsumerKey         = String.Empty;
+            private string _ConsumerSecret      = String.Empty;
+            private string _Token               = String.Empty;
+            private string _TokenSecret         = String.Empty;
+            private string _Pin                 = String.Empty;
 
             private bool _Enable = false;
 

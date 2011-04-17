@@ -10,9 +10,9 @@ namespace uTorrentNotifier
     {
         public class BoxcarConfig
         {
-            private bool _Enable = false;
-            private string _ProviderKey = "oKAo3Dey0UZ6JjMfn6wD";
-            private string _Email = "";
+            private bool _Enable            = false;
+            private string _ProviderKey     = "oKAo3Dey0UZ6JjMfn6wD";
+            private string _Email           = String.Empty;
 
             public BoxcarConfig()
             {

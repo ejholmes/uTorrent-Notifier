@@ -9,9 +9,9 @@ namespace uTorrentNotifier
     {
         public const string LatestVersion = "http://ejholmes.github.com/uTorrent-Notifier/latest";
         public const string LatestDownload = "http://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe";
-        private string _Uri             = "";
-        private string _UserName        = "";
-        private string _Password        = "";
+        private string _Uri             = String.Empty;
+        private string _UserName        = String.Empty;
+        private string _Password        = String.Empty;
 
         private bool _RunOnStartup      = false;
         private bool _ShowBalloonTips   = true;
@@ -42,9 +42,9 @@ namespace uTorrentNotifier
                     Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
                 if (this._RunOnStartup)
-                    key.SetValue(Properties.Settings.Default.ApplicationName, System.Windows.Forms.Application.ExecutablePath.ToString());
+                    key.SetValue(Properties.Resources.Name, System.Windows.Forms.Application.ExecutablePath.ToString());
                 else
-                    key.DeleteValue(Properties.Settings.Default.ApplicationName, false);
+                    key.DeleteValue(Properties.Resources.Name, false);
 
                 Properties.Settings.Default.RunOnStartup = this._RunOnStartup;
             }
