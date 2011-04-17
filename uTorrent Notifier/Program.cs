@@ -188,15 +188,9 @@ namespace uTorrentNotifier
             System.Net.WebClient webclient = new System.Net.WebClient();
             string latestVersion = webclient.DownloadString(Config.LatestVersion);
 
-            string[] components = latestVersion.Split(".".ToCharArray());
-            if (components.Length < 3)
-            {
-                components[2] = "0";
-            }
+            Version latest = new Version(latestVersion);
 
-            if (Int32.Parse(components[0], CultureInfo.InvariantCulture) > ClassRegistry.Version.Major ||
-                (Int32.Parse(components[0], CultureInfo.InvariantCulture) == ClassRegistry.Version.Major && Int32.Parse(components[1], CultureInfo.CurrentCulture) > ClassRegistry.Version.Minor) ||
-                (Int32.Parse(components[0], CultureInfo.InvariantCulture) == ClassRegistry.Version.Major && Int32.Parse(components[1], CultureInfo.CurrentCulture) == ClassRegistry.Version.Minor && Int32.Parse(components[2], CultureInfo.InvariantCulture) > ClassRegistry.Version.Build))
+            if (latest > ClassRegistry.Version)
             {
                 if (MessageBox.Show("You are using version " + ClassRegistry.Version.ToString() + ". Would you like to download version " + latestVersion + "?",
                     "New Version Available",
