@@ -33,8 +33,21 @@ namespace uTorrentNotifier
             this._CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
         }
 
-        public static void Save()
+        public void Save()
         {
+            /* Save registry info only if we're changing the value */
+            if (this._RunOnStartup != Properties.Settings.Default.RunOnStartup)
+            {
+                Microsoft.Win32.RegistryKey key =
+                    Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+                if (this._RunOnStartup)
+                    key.SetValue(Properties.Settings.Default.ApplicationName, System.Windows.Forms.Application.ExecutablePath.ToString());
+                else
+                    key.DeleteValue(Properties.Settings.Default.ApplicationName, false);
+
+                Properties.Settings.Default.RunOnStartup = this._RunOnStartup;
+            }
             Properties.Settings.Default.Save();
         }
 
@@ -73,15 +86,6 @@ namespace uTorrentNotifier
             get { return this._RunOnStartup; }
             set 
             {
-                Microsoft.Win32.RegistryKey key = 
-                    Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
-                if (value)
-                    key.SetValue(Properties.Settings.Default.ApplicationName, System.Windows.Forms.Application.ExecutablePath.ToString());
-                else
-                    key.DeleteValue(Properties.Settings.Default.ApplicationName, false);
-
-                Properties.Settings.Default.RunOnStartup = value;
                 this._RunOnStartup = value;
             }
         }

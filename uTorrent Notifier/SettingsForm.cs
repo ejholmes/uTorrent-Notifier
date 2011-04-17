@@ -87,7 +87,7 @@ namespace uTorrentNotifier
             this.ClassRegistry.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
             this.ClassRegistry.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;
 
-            Config.Save();
+            this.ClassRegistry.Config.Save();
             this.Hide();
 
             if (!this.ClassRegistry.uTorrent.Stopped)
