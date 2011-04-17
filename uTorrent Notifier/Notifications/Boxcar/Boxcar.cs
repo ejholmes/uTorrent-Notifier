@@ -20,11 +20,20 @@ namespace uTorrentNotifier
 
         public void Add(string message)
         {
-            string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications";
+            try
+            {
+                string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications";
 
-            WebClient client = new WebClient();
-            client.Headers.Add("user-agent", "uTorrent Notifier");
-            client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email + "&notification[message]=" + message.Replace(" ", "+")));
+                WebClient client = new WebClient();
+                client.Headers.Add("user-agent", "uTorrent Notifier");
+                client.UploadData(url, Encoding.ASCII.GetBytes("email=" + this.BoxcarConfig.MD5Email + "&notification[message]=" + message.Replace(" ", "+")));
+            }
+            catch (WebException) 
+            {
+                /* User probably isn't subscribed to the provider yet */
+                this.SendInvite();
+                this.Add(message);
+            }
         }
 
         public void SendInvite()

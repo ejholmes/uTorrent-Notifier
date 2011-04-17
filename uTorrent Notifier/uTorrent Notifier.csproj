@@ -147,7 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\utorrent_icon.png" />
-    <Content Include="un_icon.ico" />
     <None Include="Resources\utorrent_icon_complete.png" />
     <None Include="Resources\utorrent_icon_added.png" />
     <None Include="Resources\utorrent_icon_error.png" />

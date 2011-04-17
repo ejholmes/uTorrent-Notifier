@@ -60,8 +60,6 @@ namespace uTorrentNotifier
 
             this.cbProwlNotification_TorentAdded.Checked        = this.ClassRegistry.Config.Notifications.TorrentAdded;
             this.cbTorrentNotification_DownloadComplete.Checked = this.ClassRegistry.Config.Notifications.DownloadComplete;
-
-            this.btnBoxcarInvite.Enabled                        = this.ClassRegistry.Config.Boxcar.Enable;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -95,21 +93,6 @@ namespace uTorrentNotifier
             if (!this.ClassRegistry.uTorrent.Stopped)
                 this.ClassRegistry.uTorrent.Stop();
             this.ClassRegistry.uTorrent.Start();
-        }
-
-        private void btnBoxcarInvite_Click(object sender, EventArgs e)
-        {
-            this.ClassRegistry.Config.Boxcar.Email = this.tbBoxcarEmail.Text;
-            this.ClassRegistry.Boxcar.SendInvite();
-            MessageBox.Show("Invitation has been sent", "uTorrent Notifier - Invitation sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void cbBoxcarEnable_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.cbBoxcarEnable.Checked)
-                this.btnBoxcarInvite.Enabled = true;
-            else
-                this.btnBoxcarInvite.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

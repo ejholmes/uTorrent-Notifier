@@ -71,7 +71,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblTwitterPIN = new System.Windows.Forms.Label();
             this.tpBoxcar = new System.Windows.Forms.TabPage();
-            this.btnBoxcarInvite = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
             this.lblBoxcarEmail = new System.Windows.Forms.Label();
@@ -538,7 +537,6 @@
             // tpBoxcar
             // 
             this.tpBoxcar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tpBoxcar.Controls.Add(this.btnBoxcarInvite);
             this.tpBoxcar.Controls.Add(this.groupBox10);
             this.tpBoxcar.Location = new System.Drawing.Point(4, 22);
             this.tpBoxcar.Name = "tpBoxcar";
@@ -546,16 +544,6 @@
             this.tpBoxcar.TabIndex = 5;
             this.tpBoxcar.Text = "Boxcar";
             this.tpBoxcar.UseVisualStyleBackColor = true;
-            // 
-            // btnBoxcarInvite
-            // 
-            this.btnBoxcarInvite.Location = new System.Drawing.Point(6, 85);
-            this.btnBoxcarInvite.Name = "btnBoxcarInvite";
-            this.btnBoxcarInvite.Size = new System.Drawing.Size(126, 23);
-            this.btnBoxcarInvite.TabIndex = 1;
-            this.btnBoxcarInvite.Text = "Send Boxcar Invitation";
-            this.btnBoxcarInvite.UseVisualStyleBackColor = true;
-            this.btnBoxcarInvite.Click += new System.EventHandler(this.btnBoxcarInvite_Click);
             // 
             // groupBox10
             // 
@@ -594,7 +582,6 @@
             this.cbBoxcarEnable.TabIndex = 0;
             this.cbBoxcarEnable.Text = "Enable";
             this.cbBoxcarEnable.UseVisualStyleBackColor = true;
-            this.cbBoxcarEnable.CheckedChanged += new System.EventHandler(this.cbBoxcarEnable_CheckedChanged);
             // 
             // tpNotifications
             // 
@@ -798,7 +785,6 @@
         private System.Windows.Forms.TextBox tbBoxcarEmail;
         private System.Windows.Forms.Label lblBoxcarEmail;
         private System.Windows.Forms.CheckBox cbBoxcarEnable;
-        private System.Windows.Forms.Button btnBoxcarInvite;
 
     }
 }

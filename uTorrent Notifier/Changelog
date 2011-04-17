@@ -2,8 +2,9 @@ v0.5
 -----------------
 * Added Growl, Twitter and Boxcar notifications
 * New icon
-* Fixed bug where listing torrents returned null
-
+* Fixed bug that was asking a user to upgrade even if they're version was more
+up to date than the suggested version
+* Made significant improvements to core code.
 
 v0.4.7
 -----------------
