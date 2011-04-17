@@ -67,17 +67,21 @@ namespace uTorrentNotifier
             this.ClassRegistry.uTorrent.Start();
 
             if (firstRun)
-            {
                 this.settingsForm.Show();
-            }
         }
 
         void utorrent_LogOnError(object sender, Exception e)
         {
             if (!this.ClassRegistry.Config.Growl.Enable)
+            {
                 this._trayIcon.ShowBalloonTip(5000, "Login Error", e.Message, ToolTipIcon.Error);
+                this._trayIcon.Text = global::uTorrentNotifier.Properties.Resources.Name + "\n" +
+                    "Error connecting to uTorrent";
+            }
             else
+            {
                 this.ClassRegistry.Growl.Add(GrowlNotificationType.Error, e.Message);
+            }
         }
 
         void utorrent_DownloadComplete(List<TorrentFile> finished)

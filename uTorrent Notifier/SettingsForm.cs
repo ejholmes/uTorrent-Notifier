@@ -100,14 +100,6 @@ namespace uTorrentNotifier
             this.Hide();
         }
 
-        /*private void systrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.RestoreFromSystray();
-            }
-        }*/
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://ejholmes.github.com/uTorrent-Notifier/");
