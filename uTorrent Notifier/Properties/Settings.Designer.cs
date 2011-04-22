@@ -292,5 +292,17 @@ namespace uTorrentNotifier.Properties {
                 this["BoxcarEmail"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BoxcarAPIKey {
+            get {
+                return ((string)(this["BoxcarAPIKey"]));
+            }
+            set {
+                this["BoxcarAPIKey"] = value;
+            }
+        }
     }
 }

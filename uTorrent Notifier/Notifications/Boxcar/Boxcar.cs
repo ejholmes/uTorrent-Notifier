@@ -20,9 +20,11 @@ namespace uTorrentNotifier
 
         public void Add(string message)
         {
+            if (String.IsNullOrEmpty(this.BoxcarConfig.APIKey))
+                return;
             try
             {
-                string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications";
+                string url = this._uri + "/devices/providers/" + this.BoxcarConfig.APIKey + "/notifications";
 
                 WebClient client = new WebClient();
                 client.Headers.Add("user-agent", "uTorrent Notifier");
@@ -38,7 +40,7 @@ namespace uTorrentNotifier
 
         public void SendInvite()
         {
-            string url = this._uri + "/devices/providers/" + this.BoxcarConfig.ProviderKey + "/notifications/subscribe";
+            string url = this._uri + "/devices/providers/" + this.BoxcarConfig.APIKey + "/notifications/subscribe";
 
             WebClient client = new WebClient();
             client.Headers.Add("user-agent", "uTorrent Notifier");

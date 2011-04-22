@@ -72,6 +72,9 @@
             this.lblTwitterPIN = new System.Windows.Forms.Label();
             this.tpBoxcar = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnBoxcarGetAPIKey = new System.Windows.Forms.Button();
+            this.tbBoxcarAPIKey = new System.Windows.Forms.TextBox();
+            this.lblBoxcarAPIKey = new System.Windows.Forms.Label();
             this.tbBoxcarEmail = new System.Windows.Forms.TextBox();
             this.lblBoxcarEmail = new System.Windows.Forms.Label();
             this.cbBoxcarEnable = new System.Windows.Forms.CheckBox();
@@ -547,21 +550,50 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.btnBoxcarGetAPIKey);
+            this.groupBox10.Controls.Add(this.tbBoxcarAPIKey);
+            this.groupBox10.Controls.Add(this.lblBoxcarAPIKey);
             this.groupBox10.Controls.Add(this.tbBoxcarEmail);
             this.groupBox10.Controls.Add(this.lblBoxcarEmail);
             this.groupBox10.Controls.Add(this.cbBoxcarEnable);
             this.groupBox10.Location = new System.Drawing.Point(6, 6);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(288, 72);
+            this.groupBox10.Size = new System.Drawing.Size(288, 132);
             this.groupBox10.TabIndex = 0;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Settings";
             // 
+            // btnBoxcarGetAPIKey
+            // 
+            this.btnBoxcarGetAPIKey.Location = new System.Drawing.Point(162, 103);
+            this.btnBoxcarGetAPIKey.Name = "btnBoxcarGetAPIKey";
+            this.btnBoxcarGetAPIKey.Size = new System.Drawing.Size(75, 23);
+            this.btnBoxcarGetAPIKey.TabIndex = 5;
+            this.btnBoxcarGetAPIKey.Text = "Get API Key";
+            this.btnBoxcarGetAPIKey.UseVisualStyleBackColor = true;
+            this.btnBoxcarGetAPIKey.Click += new System.EventHandler(this.btnBoxcarGetAPIKey_Click);
+            // 
+            // tbBoxcarAPIKey
+            // 
+            this.tbBoxcarAPIKey.Location = new System.Drawing.Point(58, 77);
+            this.tbBoxcarAPIKey.Name = "tbBoxcarAPIKey";
+            this.tbBoxcarAPIKey.Size = new System.Drawing.Size(179, 20);
+            this.tbBoxcarAPIKey.TabIndex = 4;
+            // 
+            // lblBoxcarAPIKey
+            // 
+            this.lblBoxcarAPIKey.AutoSize = true;
+            this.lblBoxcarAPIKey.Location = new System.Drawing.Point(7, 80);
+            this.lblBoxcarAPIKey.Name = "lblBoxcarAPIKey";
+            this.lblBoxcarAPIKey.Size = new System.Drawing.Size(45, 13);
+            this.lblBoxcarAPIKey.TabIndex = 3;
+            this.lblBoxcarAPIKey.Text = "API Key";
+            // 
             // tbBoxcarEmail
             // 
-            this.tbBoxcarEmail.Location = new System.Drawing.Point(48, 44);
+            this.tbBoxcarEmail.Location = new System.Drawing.Point(58, 44);
             this.tbBoxcarEmail.Name = "tbBoxcarEmail";
-            this.tbBoxcarEmail.Size = new System.Drawing.Size(189, 20);
+            this.tbBoxcarEmail.Size = new System.Drawing.Size(179, 20);
             this.tbBoxcarEmail.TabIndex = 2;
             // 
             // lblBoxcarEmail
@@ -785,6 +817,9 @@
         private System.Windows.Forms.TextBox tbBoxcarEmail;
         private System.Windows.Forms.Label lblBoxcarEmail;
         private System.Windows.Forms.CheckBox cbBoxcarEnable;
+        private System.Windows.Forms.Button btnBoxcarGetAPIKey;
+        private System.Windows.Forms.TextBox tbBoxcarAPIKey;
+        private System.Windows.Forms.Label lblBoxcarAPIKey;
 
     }
 }

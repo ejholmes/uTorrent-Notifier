@@ -57,6 +57,7 @@ namespace uTorrentNotifier
 
             this.cbBoxcarEnable.Checked                         = this.ClassRegistry.Config.Boxcar.Enable;
             this.tbBoxcarEmail.Text                             = this.ClassRegistry.Config.Boxcar.Email;
+            this.tbBoxcarAPIKey.Text                            = this.ClassRegistry.Config.Boxcar.APIKey;
 
             this.cbProwlNotification_TorentAdded.Checked        = this.ClassRegistry.Config.Notifications.TorrentAdded;
             this.cbTorrentNotification_DownloadComplete.Checked = this.ClassRegistry.Config.Notifications.DownloadComplete;
@@ -83,6 +84,7 @@ namespace uTorrentNotifier
 
             this.ClassRegistry.Config.Boxcar.Enable                       = this.cbBoxcarEnable.Checked;
             this.ClassRegistry.Config.Boxcar.Email                        = this.tbBoxcarEmail.Text;
+            this.ClassRegistry.Config.Boxcar.APIKey                       = this.tbBoxcarAPIKey.Text;
 
             this.ClassRegistry.Config.Notifications.TorrentAdded          = this.cbProwlNotification_TorentAdded.Checked;
             this.ClassRegistry.Config.Notifications.DownloadComplete      = this.cbTorrentNotification_DownloadComplete.Checked;
@@ -183,6 +185,11 @@ namespace uTorrentNotifier
             {
                 MessageBox.Show("uTorrent Notifier must be authenticated and enabled before testing. Please check your settings, and try again.", "uTorrent Notifier - Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnBoxcarGetAPIKey_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://boxcar.io/site/providers/new");
         }
     }
 }

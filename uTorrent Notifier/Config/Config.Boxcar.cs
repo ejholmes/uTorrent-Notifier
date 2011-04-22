@@ -11,7 +11,7 @@ namespace uTorrentNotifier
         public class BoxcarConfig
         {
             private bool _Enable            = false;
-            private string _ProviderKey     = "oKAo3Dey0UZ6JjMfn6wD";
+            private string _APIKey          = String.Empty;
             private string _Email           = String.Empty;
 
             public BoxcarConfig()
@@ -30,12 +30,12 @@ namespace uTorrentNotifier
                 }
             }
 
-            public string ProviderKey
+            public string APIKey
             {
-                get { return this._ProviderKey; }
+                get { return this._APIKey; }
                 set
                 {
-                    this._ProviderKey = value;
+                    this._APIKey = value;
                 }
             }
 
