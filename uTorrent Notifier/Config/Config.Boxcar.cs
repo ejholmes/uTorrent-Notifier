@@ -17,6 +17,7 @@ namespace uTorrentNotifier
             public BoxcarConfig()
             {
                 this._Email = Properties.Settings.Default.BoxcarEmail;
+                this._APIKey = Properties.Settings.Default.BoxcarAPIKey;
                 this._Enable = Properties.Settings.Default.BoxcarEnable;
             }
 
@@ -35,6 +36,7 @@ namespace uTorrentNotifier
                 get { return this._APIKey; }
                 set
                 {
+                    Properties.Settings.Default.BoxcarAPIKey = value;
                     this._APIKey = value;
                 }
             }
