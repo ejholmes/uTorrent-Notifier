@@ -62,7 +62,7 @@ namespace uTorrentNotifier
             }
             this.ClassRegistry.uTorrent.TorrentAdded += new WebUIAPI.TorrentAddedEventHandler(this.utorrent_TorrentAdded);
             this.ClassRegistry.uTorrent.DownloadComplete += new WebUIAPI.DownloadFinishedEventHandler(this.utorrent_DownloadComplete);
-            this.ClassRegistry.uTorrent.LogOnError += new WebUIAPI.LogOnErrorEventHandler(this.utorrent_LogOnError);
+            this.ClassRegistry.uTorrent.WebUIError += new WebUIAPI.WebUIErrorEventHandler(this.utorrent_LogOnError);
             this.ClassRegistry.uTorrent.UpdatedList += new WebUIAPI.UpdatedListEventHandler(this.uTorrent_UpdatedList);
             this.ClassRegistry.uTorrent.Start();
 

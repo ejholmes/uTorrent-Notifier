@@ -78,10 +78,16 @@ namespace uTorrentNotifier
 
                 return token;
             }
-            catch (WebException webex)
+            catch (WebException ex)
             {
-                if (LogOnError != null)
-                    LogOnError(this, webex);
+                if (WebUIError != null)
+                    WebUIError(this, ex);
+                return null;
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                if (WebUIError != null)
+                    WebUIError(this, ex);
                 return null;
             }
         }
@@ -147,15 +153,30 @@ namespace uTorrentNotifier
 
         private string Get(string get)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
-            request.Credentials = new NetworkCredential(this.Config.UserName, this.Config.Password);
-            request.CookieContainer = Cookies;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(get);
+                request.Credentials = new NetworkCredential(this.Config.UserName, this.Config.Password);
+                request.CookieContainer = Cookies;
 
-            Stream resStream = request.GetResponse().GetResponseStream();
-            string html = new StreamReader(resStream).ReadToEnd();
-            resStream.Close();
+                Stream resStream = request.GetResponse().GetResponseStream();
+                string html = new StreamReader(resStream).ReadToEnd();
+                resStream.Close();
 
-            return html;
+                return html;
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                if (WebUIError != null)
+                    WebUIError(this, ex);
+                return null;
+            }
+            catch (WebException ex)
+            {
+                if (WebUIError != null)
+                    WebUIError(this, ex);
+                return null;
+            }
         }
 
         private List<TorrentFile> FindDone()
@@ -187,7 +208,7 @@ namespace uTorrentNotifier
         {
             List<TorrentFile> newTorrents = new List<TorrentFile>();
 
-            if (this.Torrents.Last != null)
+            if (this.Torrents.Last != null && this.Torrents.Current != null)
             {
                 foreach (TorrentFile currentTorrent in this.Torrents.Current)
                 {
@@ -243,7 +264,8 @@ namespace uTorrentNotifier
             get { return this._Current; }
             set
             {
-                this._Last = this._Current;
+                if (this._Current != null)
+                    this._Last = this._Current;
                 this._Current = value;
             }
         }

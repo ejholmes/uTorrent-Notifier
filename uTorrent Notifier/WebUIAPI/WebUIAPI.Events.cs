@@ -15,12 +15,12 @@ namespace uTorrentNotifier
     {
         public delegate void DownloadFinishedEventHandler(List<TorrentFile> finished);
         public delegate void TorrentAddedEventHandler(List<TorrentFile> added);
-        public delegate void LogOnErrorEventHandler(object sender, Exception e);
+        public delegate void WebUIErrorEventHandler(object sender, Exception e);
         public delegate void UpdatedListEventHandler(List<TorrentFile> torrents);
 
         public event DownloadFinishedEventHandler DownloadComplete;
         public event TorrentAddedEventHandler TorrentAdded;
-        public event LogOnErrorEventHandler LogOnError;
+        public event WebUIErrorEventHandler WebUIError;
         public event UpdatedListEventHandler UpdatedList;
 
         public class DownloadFinishedEventArgs : EventArgs
