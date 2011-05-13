@@ -38,6 +38,7 @@ namespace uTorrentNotifier
                 return;
 
             this.Timer.Start();
+            this.Timer_Tick(null, null);
         }
 
         public void Stop()
