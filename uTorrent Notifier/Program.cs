@@ -204,6 +204,7 @@ namespace uTorrentNotifier
                     MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
                 {
                     Process.Start(Config.LatestDownload);
+                    Application.Exit();
                 }
             }
         }
