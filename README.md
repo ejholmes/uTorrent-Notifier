@@ -5,6 +5,8 @@ uTorrent Notifier is a .NET application that runs in the system tray and, well, 
 
 Supports notifications being sent by Growl, Prowl, Twitter and Boxcar.
 
+See [https://github.com/ejholmes/utorrent-notifier-daemon](https://github.com/ejholmes/utorrent-notifier-daemon) for a linux command line tool that can run as a daemon and send notifications.
+
 Author
 --
 Eric Holmes (eric@ejholmes.net)
