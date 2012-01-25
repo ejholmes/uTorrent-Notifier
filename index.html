@@ -1,114 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>uTorrent Notifier</title>
-	
-	<style type="text/css">
-		body {
-  		margin-top: 1.0em;
-  		background-color: #f7f8f2;
-		  font-family: "Helvetica,Arial,FreeSans";
-  		color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-		h1 { font-size: 3.8em; color: #08070d; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #08070d; }
-    h3 { text-align: center; color: #08070d; }
-    a { color: #08070d; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-	</style>
-	
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>uTorrent Notifier</title>
+    <link rel="stylesheet" href="http://ejholmes.github.com/css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="http://ejholmes.github.com/css/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="http://ejholmes.github.com/css/pygments.css" type="text/css" />
+    <style type="text/css" media="all">
+        #content h2 {
+            margin-bottom: -0.3em;
+        }
+    </style>
 </head>
 
 <body>
-  <a href="http://github.com/ejholmes/uTorrent-Notifier"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <a href="http://github.com/ejholmes/uTorrent-Notifier"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+    <div id="container">
+        <div id="content">
 
-    <h1><a href="http://github.com/ejholmes/uTorrent-Notifier">uTorrent Notifier</a></h1>
+            <h1><a href="http://github.com/ejholmes/uTorrent-Notifier">uTorrent Notifier</a></h1>
 
-    <div class="description">
-      uTorrent Notifier is an application that runs in the system tray and connects to a remote uTorrent process to notify you when new torrents are added, a download completes, etc.
+            <p>uTorrent Notifier is an application that runs in the system tray and connects to a remote uTorrent process to notify you when new torrents are added, a download completes, etc.</p>
 
+            <p>Along with running as a client you can also use it to send Growl, Prowl, Twitter and Boxcar notifications by setting it up on the same computer uTorrent is installed on.</p>
+            <p>There is also a linux command line tool that can be run as a daemon, which can send prowl, boxcar and syslog notifications. It can be found at <a href="https://github.com/ejholmes/utorrent-notifier-daemon">https://github.com/ejholmes/utorrent-notifier-daemon</a></p>
+            <img style="float: right" src="img/screenshot.png" />
+            <h2>Dependencies</h2>
+            <p>.NET Framework 3.5</p>
+            <h2>Install</h2>
+            <p>
+                <ul>
+                    <li><a href="https://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe">Download</a></li>
+                    <li>Install</li>
+                    <li>Run, right click on the icon in the system tray, click settings</li>
+                    <li>Enter the url for your uTorrent WebUI (e.g. http://localhost/gui/)</li>
+                    <li>Enter your username and password</li>
+                    <li>Click save</li>
+                    <li>Profit!</li>
+                </ul>
+                Report bugs <a href="https://github.com/ejholmes/uTorrent-Notifier/issues">here</a></p>
+            <h2>Authors</h2>
+            <p>Eric Holmes (eric@ejholmes.net)
+                <br/></p>
+            <h2>Contributors</h2>
+            <p>Ryan Farley (<a href="http://ryanfarley.com">http://ryanfarley.com</a>)<br />
+                Dave Nicoll (<a href="http://davenicoll.com">http://davenicoll.com</a>)
+                <br/>      </p>
+            <h2>Contact</h2>
+            <p>Eric Holmes (eric@ejholmes.net)
+                <br/>      </p>
+
+
+            <h2>Download</h2>
+            <p>
+                <a href="https://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe">Download</a> the most recent installer.
+            </p>
+            <p>
+                See what people have to say about it on <a href="http://utorrent-notifier.software.informer.com/">Software Informer</a>.
+            </p>
+            <p>
+                You can download this projects source in either
+                <a href="http://github.com/ejholmes/uTorrent-Notifier/zipball/master">zip</a> or
+                <a href="http://github.com/ejholmes/uTorrent-Notifier/tarball/master">tar</a> formats.
+            </p>
+            <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+                by running:
+                <pre>$ git clone git://github.com/ejholmes/uTorrent-Notifier</pre>
+            </p>
+
+            <div class="footer">
+                get the source code on GitHub: <a href="http://github.com/ejholmes/uTorrent-Notifier">ejholmes/uTorrent-Notifier</a>
+            </div>
+
+        </div>
     </div>
 
-    <p>Along with running as a client you can also use it to send Growl, Prowl, Twitter and Boxcar notifications by setting it up on the same computer uTorrent is installed on.</p>
-    <p>There is also a linux command line tool that can be run as a daemon, which can send prowl, boxcar and syslog notifications. It can be found at <a href="https://github.com/ejholmes/utorrent-notifier-daemon">https://github.com/ejholmes/utorrent-notifier-daemon</a></p>
-    <img style="float: right" src="img/screenshot.png" />
-<h2>Dependencies</h2>
-<p>.NET Framework 3.5</p>
-<h2>Install</h2>
-<p>
-<ul>
-<li><a href="https://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe">Download</a></li>
-<li>Install</li>
-<li>Run, right click on the icon in the system tray, click settings</li>
-<li>Enter the url for your uTorrent WebUI (e.g. http://localhost/gui/)</li>
-<li>Enter your username and password</li>
-<li>Click save</li>
-<li>Profit!</li>
-</ul>
-Report bugs <a href="https://github.com/ejholmes/uTorrent-Notifier/issues">here</a></p>
-<h2>Authors</h2>
-<p>Eric Holmes (eric@ejholmes.net)
-<br/></p>
-<h2>Contributors</h2>
-<p>Ryan Farley (<a href="http://ryanfarley.com">http://ryanfarley.com</a>)<br />
-Dave Nicoll (<a href="http://davenicoll.com">http://davenicoll.com</a>)
-<br/>      </p>
-<h2>Contact</h2>
-<p>Eric Holmes (eric@ejholmes.net)
-<br/>      </p>
+    <script type="text/javascript">
 
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-15555520-2']);
+        _gaq.push(['_trackPageview']);
 
-    <h2>Download</h2>
-    <p>
-      <a href="https://github.com/downloads/ejholmes/uTorrent-Notifier/setup.exe">Download</a> the most recent installer.
-    </p>
-    <p>
-      See what people have to say about it on <a href="http://utorrent-notifier.software.informer.com/">Software Informer</a>.
-    </p>
-    <p>
-      You can download this projects source in either
-      <a href="http://github.com/ejholmes/uTorrent-Notifier/zipball/master">zip</a> or
-      <a href="http://github.com/ejholmes/uTorrent-Notifier/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/ejholmes/uTorrent-Notifier</pre>
-    </p>
+        (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/ejholmes/uTorrent-Notifier">ejholmes/uTorrent-Notifier</a>
-    </div>
-
-  </div>
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-15555520-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+    </script>
 </body>
 </html>
