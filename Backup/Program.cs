@@ -102,7 +102,7 @@ namespace uTorrentNotifier
 
                     if (this.ClassRegistry.Config.Twitter.Enable)
                     {
-                        this.ClassRegistry.Twitter.Update("Downloaded " + f.Name + " | " + Utilities.FormatBytes((long)f.Size));
+                        this.ClassRegistry.Twitter.Update("Downloaded " + f.Name);
                     }
 
                     if (this.ClassRegistry.Config.Boxcar.Enable)
@@ -136,7 +136,7 @@ namespace uTorrentNotifier
 
                     if (this.ClassRegistry.Config.Twitter.Enable)
                     {
-                        this.ClassRegistry.Twitter.Update("Added " + f.Name);
+                        this.ClassRegistry.Twitter.Update("Added " + f.Name + " | " + Utilities.FormatBytes((long)f.Size));
                     }
 
                     if (this.ClassRegistry.Config.Boxcar.Enable)
