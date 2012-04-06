@@ -1,3 +1,8 @@
+v0.5.0.3
+-----------------
+* [Twitter] Adds the ability to prefix a tweet with an @username
+* Now targets .NET 4
+
 v0.5.0.1
 -----------------
 * Bug fixes
