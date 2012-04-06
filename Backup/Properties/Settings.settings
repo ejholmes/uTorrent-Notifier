@@ -74,8 +74,5 @@
     <Setting Name="BoxcarAPIKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TwitterPrefixTweet" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

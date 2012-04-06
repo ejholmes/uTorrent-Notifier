@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
+using System.Security.Principal;
+using System.Diagnostics;
+using System.Threading;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -52,7 +53,6 @@ namespace uTorrentNotifier
 			this.tbGrowlPort.Text								= this.ClassRegistry.Config.Growl.Port;
 
             this.tbTwitterPIN.Text                              = this.ClassRegistry.Config.Twitter.Pin;
-            this.tbTwitterPrefixTweet.Text                      = this.ClassRegistry.Config.Twitter.PrefixTweet;
             this.cbTwitterEnable.Checked                        = this.ClassRegistry.Config.Twitter.Enable;
 
             this.cbBoxcarEnable.Checked                         = this.ClassRegistry.Config.Boxcar.Enable;
@@ -80,7 +80,6 @@ namespace uTorrentNotifier
 			this.ClassRegistry.Config.Growl.Host						  = this.tbGrowlHost.Text;
 			this.ClassRegistry.Config.Growl.Port						  = this.tbGrowlPort.Text;
 
-            this.ClassRegistry.Config.Twitter.PrefixTweet                 = this.tbTwitterPrefixTweet.Text;
             this.ClassRegistry.Config.Twitter.Enable                      = this.cbTwitterEnable.Checked;
 
             this.ClassRegistry.Config.Boxcar.Enable                       = this.cbBoxcarEnable.Checked;
@@ -192,6 +191,5 @@ namespace uTorrentNotifier
         {
             Process.Start("http://boxcar.io/site/providers/new");
         }
-
     }
 }

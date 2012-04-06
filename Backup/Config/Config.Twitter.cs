@@ -14,7 +14,6 @@ namespace uTorrentNotifier
             private string _Token               = String.Empty;
             private string _TokenSecret         = String.Empty;
             private string _Pin                 = String.Empty;
-            private string _PrefixTweet         = String.Empty;
 
             private bool _Enable = false;
 
@@ -26,7 +25,6 @@ namespace uTorrentNotifier
                 this._TokenSecret = Properties.Settings.Default.TwitterTokenSecret;
                 this._Pin = Properties.Settings.Default.TwitterPIN;
                 this._Enable = Properties.Settings.Default.TwitterEnable;
-                this._PrefixTweet = Properties.Settings.Default.TwitterPrefixTweet;
             }
 
             public string ConsumerKey
@@ -76,16 +74,6 @@ namespace uTorrentNotifier
                 {
                     Properties.Settings.Default.TwitterEnable = value;
                     this._Enable = value;
-                }
-            }
-
-            public string PrefixTweet
-            {
-                get { return this._PrefixTweet; }
-                set
-                {
-                    Properties.Settings.Default.TwitterPrefixTweet = value;
-                    this._PrefixTweet = value;
                 }
             }
         }

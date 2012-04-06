@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="uTorrent Notifier - VS2008">
+</Property><Property Name="Solution File" Value="C:\Git\utorrent-notifier\uTorrent Notifier - VS2008.sln">
+</Property><Property Name="Date" Value="06 April 2012">
+</Property><Property Name="Time" Value="09:28">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="uTorrent Notifier - VS2008.sln" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\uTorrent Notifier - VS2008.sln">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="uTorrent Notifier.csproj" Description="Project file successfully backed up as C:\Git\utorrent-notifier\Backup\uTorrent Notifier.csproj">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Boxcar\Boxcar.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Boxcar\Boxcar.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.Boxcar.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.Boxcar.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.Notifications.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.Notifications.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.Prowl.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.Prowl.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.Growl.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.Growl.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Growl\Growl.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Growl\Growl.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="ClassRegistry.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\ClassRegistry.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Prowl\Prowl.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Prowl\Prowl.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Settings.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Settings.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.Twitter.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.Twitter.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Twitter\oAuth.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Twitter\oAuth.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Twitter\oAuthTwitter.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Twitter\oAuthTwitter.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Notifications\Twitter\Twitter.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Notifications\Twitter\Twitter.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Utilities.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Utilities.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="WebUIAPI\WebUIAPI.Events.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\WebUIAPI\WebUIAPI.Events.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="WebUIAPI\WebUIAPI.Actions.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\WebUIAPI\WebUIAPI.Actions.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="WebUIAPI\WebUIAPI.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\WebUIAPI\WebUIAPI.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="WebUIAPI\WebUIAPI.Codes.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\WebUIAPI\WebUIAPI.Codes.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Config\Config.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Config\Config.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="WebUIAPI\TorrentFile.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\WebUIAPI\TorrentFile.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="SettingsForm.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\SettingsForm.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="SettingsForm.Designer.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\SettingsForm.Designer.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Program.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Properties\Resources.Designer.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Properties\Settings.Designer.cs" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Properties\Settings.settings" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\un_icon.ico" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\un_icon.ico">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="app.config" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\un_icon_systray.ico" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\un_icon_systray.ico">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\utorrent_icon_complete.png" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\utorrent_icon_complete.png">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\utorrent_icon_added.png" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\utorrent_icon_added.png">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\utorrent_icon_error.png" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\utorrent_icon_error.png">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Resources\utorrent_icon.png" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Resources\utorrent_icon.png">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="SettingsForm.resx" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\SettingsForm.resx">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="Properties\Resources.resx" Description="File successfully backed up as C:\Git\utorrent-notifier\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="uTorrent Notifier" Source="uTorrent Notifier.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="uTorrent Notifier" Source="uTorrent Notifier.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="uTorrent Notifier - VS2008.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="uTorrent Notifier - VS2008.sln" Description="Converted">
+</Event></UpgradeLog>

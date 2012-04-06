@@ -54,9 +54,6 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\un_icon.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>uTorrentNotifier.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Growl.Connector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=980c2339411be384, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -157,7 +154,7 @@
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <ProductName>.NET Framework Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

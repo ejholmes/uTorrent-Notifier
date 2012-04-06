@@ -41,20 +41,13 @@ namespace uTorrentNotifier
 
             string tweet = HttpUtility.UrlEncode(e.Argument.ToString());
 
-            if (!String.IsNullOrEmpty(TwitterConfig.PrefixTweet))
-            {
-                tweet = TwitterConfig.PrefixTweet + " " + tweet;
-            }
-
             if (tweet.Length > 140) tweet = tweet.Substring(0, 140);
 
-            string oAuthReturn = oAuth.oAuthWebRequest(
+            oAuth.oAuthWebRequest(
                 oAuthTwitter.Method.Post,
                 "http://twitter.com/statuses/update.xml",
                 "status=" + tweet
                 );
-
-            //Console.WriteLine("Twitter test complete: " + oAuthReturn);
         }
     }
 }

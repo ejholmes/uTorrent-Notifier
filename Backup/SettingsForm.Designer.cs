@@ -62,8 +62,6 @@
             this.tpTwitter = new System.Windows.Forms.TabPage();
             this.btnSendTestTweet = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.tbTwitterPrefixTweet = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbTwitterEnable = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -172,9 +170,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(7, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 13);
+            this.label1.Size = new System.Drawing.Size(124, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "e.g. http://localhost:8080/gui/";
+            this.label1.Text = "e.x. http://localhost/gui/";
             // 
             // tbWebUI_URL
             // 
@@ -287,9 +285,9 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tpGeneral);
             this.tabControl1.Controls.Add(this.tpProwl);
             this.tabControl1.Controls.Add(this.tpGrowl);
@@ -451,8 +449,6 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.tbTwitterPrefixTweet);
-            this.groupBox9.Controls.Add(this.label4);
             this.groupBox9.Controls.Add(this.cbTwitterEnable);
             this.groupBox9.Location = new System.Drawing.Point(6, 150);
             this.groupBox9.Name = "groupBox9";
@@ -460,22 +456,6 @@
             this.groupBox9.TabIndex = 7;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Settings";
-            // 
-            // tbTwitterPrefixTweet
-            // 
-            this.tbTwitterPrefixTweet.Location = new System.Drawing.Point(181, 17);
-            this.tbTwitterPrefixTweet.MaxLength = 75;
-            this.tbTwitterPrefixTweet.Name = "tbTwitterPrefixTweet";
-            this.tbTwitterPrefixTweet.Size = new System.Drawing.Size(100, 20);
-            this.tbTwitterPrefixTweet.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(93, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Prefix tweet with:";
             // 
             // cbTwitterEnable
             // 
@@ -509,7 +489,7 @@
             this.label5.Size = new System.Drawing.Size(274, 29);
             this.label5.TabIndex = 7;
             this.label5.Text = "Like any Twitter client, uTorrent Notifier must be authorized to send tweets if y" +
-    "ou wish to use this feature.";
+                "ou wish to use this feature.";
             // 
             // btnTwitterAuthorize
             // 
@@ -699,7 +679,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(267, 141);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "Special Thanks:\nGrowl notifications by Ryan Farley\nhttp://ryanfarley.com/\n\nTwitte" +
-    "r notifications by Dave Nicoll\nhttp://davenicoll.com/";
+                "r notifications by Dave Nicoll\nhttp://davenicoll.com/";
             // 
             // linkLabel1
             // 
@@ -727,7 +707,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(14, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 16);
+            this.label2.Size = new System.Drawing.Size(120, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "uTorrent Notifier";
             // 
@@ -744,7 +724,6 @@
             this.Icon = global::uTorrentNotifier.Properties.Resources.un_icon;
             this.MaximizeBox = false;
             this.Name = "SettingsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "uTorrent Notifier";
             this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.groupBox1.ResumeLayout(false);
@@ -841,8 +820,6 @@
         private System.Windows.Forms.Button btnBoxcarGetAPIKey;
         private System.Windows.Forms.TextBox tbBoxcarAPIKey;
         private System.Windows.Forms.Label lblBoxcarAPIKey;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbTwitterPrefixTweet;
 
     }
 }
